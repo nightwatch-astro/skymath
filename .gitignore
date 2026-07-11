@@ -265,3 +265,8 @@ __pycache__/
 # Added by cargo
 
 /target
+
+
+# APM dependencies
+apm_modules/
+specs/**/spec-status.md
