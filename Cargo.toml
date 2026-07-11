@@ -1,0 +1,29 @@
+[package]
+name = "skymath"
+version = "0.0.0"
+edition = "2021"
+rust-version = "1.74"
+license = "Apache-2.0"
+description = "Planning-grade astronomy math for astrophotography tooling: angles, equatorial coordinates, sexagesimal parsing and formatting, angular separation and offsets, precession, MJD/JD/calendar conversions, sidereal time, and observer-local quantities (alt-az, airmass, transit)."
+repository = "https://github.com/nightwatch-astro/skymath"
+documentation = "https://docs.rs/skymath"
+readme = "README.md"
+keywords = ["astronomy", "astrophotography", "coordinates", "sidereal", "ephemeris"]
+categories = ["science", "mathematics"]
+
+# docs.rs builds with default features only unless told otherwise; include any
+# optional feature derives in the generated API documentation.
+[package.metadata.docs.rs]
+all-features = true
+
+[dependencies]
+
+[lib]
+path = "src/lib.rs"
+
+[lints.rust]
+missing_docs = "warn"
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }

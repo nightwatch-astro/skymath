@@ -1,0 +1,33 @@
+[modules]
+enabled = ["agents-md", "core-identity", "dirs-scaffold", "git-init", "gitignore-generate", "license-write"]
+
+[modules.source]
+enabled = "project"
+
+
+[module]
+[module.agents-md]
+description = "Planning-grade astronomy math for astrophotography tooling: angles, equatorial coordinates, sexagesimal parsing and formatting, angular separation and offsets, precession, MJD/JD/calendar conversions, sidereal time, and observer-local quantities (alt-az, airmass, transit)."
+project_name = "skymath"
+org = "nightwatch-astro"
+
+[module.agents-md.source]
+description = "project"
+project_name = "project"
+org = "project"
+
+[module.core-identity]
+project_name = "skymath"
+org = "nightwatch-astro"
+description = "Planning-grade astronomy math for astrophotography tooling: angles, equatorial coordinates, sexagesimal parsing and formatting, angular separation and offsets, precession, MJD/JD/calendar conversions, sidereal time, and observer-local quantities (alt-az, airmass, transit)."
+
+[module.core-identity.source]
+project_name = "project"
+org = "project"
+description = "project"
+
+[module.license-write]
+author = "Sjors Robroek"
+
+[module.license-write.source]
+author = "project"
