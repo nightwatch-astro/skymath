@@ -1,0 +1,15 @@
+skymath
+Copyright 2026 Sjors Robroek
+
+This product includes software ported from astro-math
+(https://github.com/gaker/astro-math), Copyright Greg Aker,
+licensed under MIT OR Apache-2.0. Ported material: the alt-azimuth
+transform, galactic frame rotation, airmass (Kasten-Young) and
+atmospheric refraction (Bennett/Saemundsson) formulas, portions of
+the location-string parsing behavior, and AstroPy-derived validation
+test vectors. Per-file provenance is recorded in module documentation.
+
+Portions of this crate are extracted from the sibling crates
+target-match and fits-header (Copyright 2026 Sjors Robroek,
+Apache-2.0): the angle/equatorial coordinate core, sexagesimal
+parsing, precession, and FITS date/MJD conversions.

@@ -1,0 +1,500 @@
+//! Angle primitives and sexagesimal parsing/formatting.
+//!
+//! Provenance: [`Angle`], the sexagesimal tokenizer, and their tests are
+//! extracted from the sibling crate `target-match`; the explicit
+//! [`ParseMode`]/[`SexaStyle`] surface and hour normalization are new here.
+//!
+//! - [`Angle`] — a unit-aware angle (degrees / radians / arcminutes /
+//!   arcseconds / hours) stored internally in radians.
+//! - [`parse_ra`] / [`parse_dec`] — sexagesimal (or bare-decimal) parsing in
+//!   [`ParseMode::Strict`] or [`ParseMode::Lenient`]. Lenient tolerates
+//!   missing minutes/seconds and mixed separators; **corrupt tokens are an
+//!   error in every mode** — no input is ever silently dropped.
+//! - [`format_ra`] / [`format_dec`] — sexagesimal formatting with rounding
+//!   carry (never emits `60` in a minutes or seconds field).
+
+use core::f64::consts::PI;
+use core::ops::{Add, Div, Mul, Neg, Sub};
+
+use crate::error::{Error, Result};
+
+const DEG_PER_RAD: f64 = 180.0 / PI;
+const RAD_PER_DEG: f64 = PI / 180.0;
+/// Exact number of arcseconds in one radian.
+pub const ARCSEC_PER_RADIAN: f64 = 206_264.806_247_096_36;
+
+// ── Angle ──────────────────────────────────────────────────────────────────────
+
+/// A unit-aware angle, stored internally in radians.
+///
+/// Construction and read-out are available in degrees, radians, arcminutes,
+/// arcseconds, and hours (1 hour = 15°). Normalization is explicit — an `Angle`
+/// holds whatever finite value it was given until you ask for a normalized form.
+#[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+pub struct Angle {
+    radians: f64,
+}
+
+impl Angle {
+    /// Construct from radians.
+    #[must_use]
+    pub const fn from_radians(radians: f64) -> Self {
+        Self { radians }
+    }
+    /// Construct from decimal degrees.
+    #[must_use]
+    pub fn from_degrees(degrees: f64) -> Self {
+        Self {
+            radians: degrees * RAD_PER_DEG,
+        }
+    }
+    /// Construct from arcminutes (1/60 degree).
+    #[must_use]
+    pub fn from_arcminutes(arcmin: f64) -> Self {
+        Self::from_degrees(arcmin / 60.0)
+    }
+    /// Construct from arcseconds (1/3600 degree).
+    #[must_use]
+    pub fn from_arcseconds(arcsec: f64) -> Self {
+        Self::from_degrees(arcsec / 3600.0)
+    }
+    /// Construct from hours of right ascension (1 hour = 15°).
+    #[must_use]
+    pub fn from_hours(hours: f64) -> Self {
+        Self::from_degrees(hours * 15.0)
+    }
+
+    /// Value in radians.
+    #[must_use]
+    pub const fn radians(self) -> f64 {
+        self.radians
+    }
+    /// Value in decimal degrees.
+    #[must_use]
+    pub fn degrees(self) -> f64 {
+        self.radians * DEG_PER_RAD
+    }
+    /// Value in arcminutes.
+    #[must_use]
+    pub fn arcminutes(self) -> f64 {
+        self.degrees() * 60.0
+    }
+    /// Value in arcseconds.
+    #[must_use]
+    pub fn arcseconds(self) -> f64 {
+        self.degrees() * 3600.0
+    }
+    /// Value in hours (degrees / 15).
+    #[must_use]
+    pub fn hours(self) -> f64 {
+        self.degrees() / 15.0
+    }
+
+    /// Return an equivalent angle wrapped into `[0, 360)` degrees.
+    #[must_use]
+    pub fn normalized_0_360(self) -> Self {
+        let mut d = self.degrees() % 360.0;
+        if d < 0.0 {
+            d += 360.0;
+        }
+        Self::from_degrees(d)
+    }
+    /// Return an equivalent angle wrapped into `(-180, 180]` degrees.
+    #[must_use]
+    pub fn normalized_pm_180(self) -> Self {
+        let mut d = self.normalized_0_360().degrees();
+        if d > 180.0 {
+            d -= 360.0;
+        }
+        Self::from_degrees(d)
+    }
+    /// Return an equivalent angle wrapped into `[0, 24)` hours.
+    #[must_use]
+    pub fn normalized_hours(self) -> Self {
+        self.normalized_0_360()
+    }
+}
+
+impl Add for Angle {
+    type Output = Angle;
+    fn add(self, rhs: Angle) -> Angle {
+        Angle::from_radians(self.radians + rhs.radians)
+    }
+}
+impl Sub for Angle {
+    type Output = Angle;
+    fn sub(self, rhs: Angle) -> Angle {
+        Angle::from_radians(self.radians - rhs.radians)
+    }
+}
+impl Neg for Angle {
+    type Output = Angle;
+    fn neg(self) -> Angle {
+        Angle::from_radians(-self.radians)
+    }
+}
+impl Mul<f64> for Angle {
+    type Output = Angle;
+    fn mul(self, rhs: f64) -> Angle {
+        Angle::from_radians(self.radians * rhs)
+    }
+}
+impl Div<f64> for Angle {
+    type Output = Angle;
+    fn div(self, rhs: f64) -> Angle {
+        Angle::from_radians(self.radians / rhs)
+    }
+}
+
+// ── Parse modes and styles ─────────────────────────────────────────────────────
+
+/// How permissive sexagesimal parsing is.
+///
+/// In **every** mode an unparseable token is [`Error::ParseCoord`]; lenient
+/// means flexible *format*, never acceptance of corrupt input.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+pub enum ParseMode {
+    /// All three fields present (`HH:MM:SS` / `±DD MM SS`), colon or space
+    /// separated, minutes/seconds in `[0, 60)`.
+    Strict,
+    /// One to three fields; missing minutes/seconds default to zero; separators
+    /// may be spaces, colons, or tabs; the sign comes from the leading token.
+    /// Bare decimals are accepted.
+    #[default]
+    Lenient,
+}
+
+/// Separator used in formatted sexagesimal output.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+pub enum Separator {
+    /// `HH:MM:SS.sss` (display convention).
+    #[default]
+    Colons,
+    /// `HH MM SS.sss` (FITS keyword convention).
+    Spaces,
+}
+
+/// Formatting control for sexagesimal output.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+pub struct SexaStyle {
+    /// Field separator.
+    pub separator: Separator,
+    /// Fractional digits on the seconds field.
+    pub seconds_places: u8,
+}
+
+impl Default for SexaStyle {
+    /// Colon-separated with 2 fractional seconds digits.
+    fn default() -> Self {
+        Self {
+            separator: Separator::Colons,
+            seconds_places: 2,
+        }
+    }
+}
+
+// ── Parsing ────────────────────────────────────────────────────────────────────
+
+/// Parse a right ascension string into an [`Angle`].
+///
+/// Sexagesimal input is in **hours** (`"06:00:00"` → 90°); a bare decimal is
+/// in **degrees** (matching FITS `RA`/`OBJCTRA` conventions). The result is
+/// not domain-checked — wrap/validate at the type that embeds it.
+///
+/// # Errors
+/// [`Error::ParseCoord`] on malformed input (any mode).
+pub fn parse_ra(s: &str, mode: ParseMode) -> Result<Angle> {
+    if looks_sexagesimal(s) {
+        Ok(Angle::from_hours(parse_sexagesimal(s, mode)?))
+    } else {
+        decimal_fallback(s, mode).map(Angle::from_degrees)
+    }
+}
+
+/// Parse a declination (or latitude/longitude) string into an [`Angle`].
+///
+/// Both sexagesimal and bare-decimal input are in **degrees**. The sign is
+/// taken from the leading field and preserved even for `-00 30 00`.
+///
+/// # Errors
+/// [`Error::ParseCoord`] on malformed input (any mode).
+pub fn parse_dec(s: &str, mode: ParseMode) -> Result<Angle> {
+    if looks_sexagesimal(s) {
+        Ok(Angle::from_degrees(parse_sexagesimal(s, mode)?))
+    } else {
+        decimal_fallback(s, mode).map(Angle::from_degrees)
+    }
+}
+
+fn decimal_fallback(s: &str, mode: ParseMode) -> Result<f64> {
+    match mode {
+        // A single bare field is only acceptable in lenient mode.
+        ParseMode::Strict => Err(Error::ParseCoord(format!(
+            "strict mode requires HH:MM:SS / DD:MM:SS fields: {s:?}"
+        ))),
+        ParseMode::Lenient => parse_decimal(s),
+    }
+}
+
+fn looks_sexagesimal(raw: &str) -> bool {
+    let t = raw.trim();
+    t.contains(':') || t.split_whitespace().count() > 1
+}
+
+fn parse_decimal(raw: &str) -> Result<f64> {
+    raw.trim()
+        .parse::<f64>()
+        .ok()
+        .filter(|v| v.is_finite())
+        .ok_or_else(|| Error::ParseCoord(format!("not a finite number: {raw:?}")))
+}
+
+/// Parse `±A:B:C(.c)` / `±A B C` into a signed decimal value (degrees for Dec,
+/// hours for RA). Minutes/seconds must be in `[0, 60)`; the sign comes from the
+/// leading field; every token must parse — corrupt tokens are never dropped.
+fn parse_sexagesimal(raw: &str, mode: ParseMode) -> Result<f64> {
+    let trimmed = raw.trim().trim_matches('\'').trim();
+    if trimmed.is_empty() {
+        return Err(Error::ParseCoord("empty coordinate".to_owned()));
+    }
+    let normalized = trimmed.replace([':', '\t'], " ");
+    let mut parts = normalized.split_whitespace();
+    let lead = parts
+        .next()
+        .ok_or_else(|| Error::ParseCoord(format!("no leading field: {raw:?}")))?;
+    let negative = lead.starts_with('-');
+    let lead_val: f64 = lead
+        .parse()
+        .ok()
+        .filter(|v: &f64| v.is_finite())
+        .ok_or_else(|| Error::ParseCoord(format!("bad degrees/hours field: {raw:?}")))?;
+    let min = next_field(&mut parts, raw, "minutes")?;
+    let sec = next_field(&mut parts, raw, "seconds")?;
+    if parts.next().is_some() {
+        return Err(Error::ParseCoord(format!("too many fields: {raw:?}")));
+    }
+    let field_count = 1 + usize::from(min.is_some()) + usize::from(sec.is_some());
+    if mode == ParseMode::Strict && field_count != 3 {
+        return Err(Error::ParseCoord(format!(
+            "strict mode requires 3 fields, got {field_count}: {raw:?}"
+        )));
+    }
+    let (min, sec) = (min.unwrap_or(0.0), sec.unwrap_or(0.0));
+    if min < 0.0 || sec < 0.0 || min >= 60.0 || sec >= 60.0 {
+        return Err(Error::ParseCoord(format!(
+            "minutes/seconds out of range: {raw:?}"
+        )));
+    }
+    let magnitude = lead_val.abs() + min / 60.0 + sec / 3600.0;
+    Ok(if negative { -magnitude } else { magnitude })
+}
+
+fn next_field<'a>(
+    parts: &mut impl Iterator<Item = &'a str>,
+    raw: &str,
+    what: &str,
+) -> Result<Option<f64>> {
+    match parts.next() {
+        None => Ok(None),
+        Some(s) => s
+            .parse::<f64>()
+            .ok()
+            .filter(|v| v.is_finite())
+            .map(Some)
+            .ok_or_else(|| Error::ParseCoord(format!("bad {what} field: {raw:?}"))),
+    }
+}
+
+// ── Formatting ─────────────────────────────────────────────────────────────────
+
+/// Format an angle as sexagesimal right ascension (hours), wrapped to
+/// `[0h, 24h)`, e.g. `06:30:00.00`.
+#[must_use]
+pub fn format_ra(a: Angle, style: SexaStyle) -> String {
+    let hours = a.normalized_0_360().degrees() / 15.0;
+    let s = format_sexagesimal(hours, false, style);
+    // Rounding carry can reach 24:00:00 — wrap to 00.
+    if s.starts_with("24:") || s.starts_with("24 ") {
+        format_sexagesimal(0.0, false, style)
+    } else {
+        s
+    }
+}
+
+/// Format an angle as signed sexagesimal degrees (declination/latitude), e.g.
+/// `+41:16:09.00`. The sign is always present; `-0°` keeps its minus sign.
+#[must_use]
+pub fn format_dec(a: Angle, style: SexaStyle) -> String {
+    format_sexagesimal(a.degrees(), true, style)
+}
+
+/// Format a signed decimal value as sexagesimal, with rounding performed at the
+/// seconds precision *before* field splitting so `59.9996″` carries into the
+/// minute (never emitting a `60` field).
+fn format_sexagesimal(value: f64, signed: bool, style: SexaStyle) -> String {
+    let neg = value.is_sign_negative() && value != 0.0;
+    let decimals = usize::from(style.seconds_places);
+    let sec_scale = 3600.0 * 10f64.powi(i32::from(style.seconds_places));
+    let v = (value.abs() * sec_scale).round() / sec_scale;
+    let a = v.trunc();
+    let rem_min = (v - a) * 60.0;
+    let b = rem_min.trunc();
+    let c = (rem_min - b) * 60.0;
+    let sign = if neg {
+        "-"
+    } else if signed {
+        "+"
+    } else {
+        ""
+    };
+    let sep = match style.separator {
+        Separator::Colons => ':',
+        Separator::Spaces => ' ',
+    };
+    let width = if decimals > 0 { decimals + 3 } else { 2 };
+    format!(
+        "{sign}{a:02}{sep}{b:02.0}{sep}{c:0width$.decimals$}",
+        a = a as i64,
+        b = b
+    )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn approx(a: f64, b: f64, eps: f64) -> bool {
+        (a - b).abs() < eps
+    }
+
+    #[test]
+    fn angle_conversions() {
+        let a = Angle::from_degrees(90.0);
+        assert!(approx(a.radians(), PI / 2.0, 1e-12));
+        assert!(approx(a.arcminutes(), 5400.0, 1e-6));
+        assert!(approx(a.arcseconds(), 324_000.0, 1e-3));
+        assert!(approx(Angle::from_hours(1.0).degrees(), 15.0, 1e-12));
+        assert!(approx(Angle::from_arcminutes(60.0).degrees(), 1.0, 1e-12));
+        assert!(approx(Angle::from_arcseconds(3600.0).degrees(), 1.0, 1e-12));
+    }
+
+    #[test]
+    fn angle_normalization() {
+        assert!(approx(
+            Angle::from_degrees(370.0).normalized_0_360().degrees(),
+            10.0,
+            1e-9
+        ));
+        assert!(approx(
+            Angle::from_degrees(-10.0).normalized_0_360().degrees(),
+            350.0,
+            1e-9
+        ));
+        assert!(approx(
+            Angle::from_degrees(350.0).normalized_pm_180().degrees(),
+            -10.0,
+            1e-9
+        ));
+        assert!(approx(
+            Angle::from_hours(25.0).normalized_hours().hours(),
+            1.0,
+            1e-9
+        ));
+    }
+
+    #[test]
+    fn angle_ops() {
+        let s = Angle::from_degrees(10.0) + Angle::from_degrees(5.0);
+        assert!(approx(s.degrees(), 15.0, 1e-12));
+        assert!(approx(
+            (Angle::from_degrees(10.0) * 3.0).degrees(),
+            30.0,
+            1e-12
+        ));
+        assert!(approx(
+            (Angle::from_degrees(10.0) / 2.0).degrees(),
+            5.0,
+            1e-12
+        ));
+        assert!(approx((-Angle::from_degrees(10.0)).degrees(), -10.0, 1e-12));
+    }
+
+    #[test]
+    fn lenient_accepts_partial_fields() {
+        assert!(approx(
+            parse_ra("10 30", ParseMode::Lenient).unwrap().hours(),
+            10.5,
+            1e-9
+        ));
+        assert!(approx(
+            parse_dec("45", ParseMode::Lenient).unwrap().degrees(),
+            45.0,
+            1e-9
+        ));
+    }
+
+    #[test]
+    fn garbage_errors_in_every_mode() {
+        for mode in [ParseMode::Strict, ParseMode::Lenient] {
+            assert!(matches!(
+                parse_ra("10 xx 30", mode).unwrap_err(),
+                Error::ParseCoord(_)
+            ));
+            assert!(matches!(
+                parse_dec("", mode).unwrap_err(),
+                Error::ParseCoord(_)
+            ));
+            assert!(matches!(
+                parse_dec("12 70 00", mode).unwrap_err(),
+                Error::ParseCoord(_)
+            ));
+        }
+    }
+
+    #[test]
+    fn strict_requires_three_fields() {
+        assert!(parse_ra("10 30", ParseMode::Strict).is_err());
+        assert!(parse_ra("10.5", ParseMode::Strict).is_err());
+        assert!(parse_ra("10:30:00", ParseMode::Strict).is_ok());
+    }
+
+    #[test]
+    fn sign_survives_zero_degrees() {
+        let d = parse_dec("-00 30 00", ParseMode::Lenient).unwrap();
+        assert!(approx(d.degrees(), -0.5, 1e-9));
+        let formatted = format_dec(d, SexaStyle::default());
+        assert!(formatted.starts_with("-00:30"), "{formatted}");
+    }
+
+    #[test]
+    fn format_carries_rounding() {
+        // 59.9996″ at 2 decimals must roll into the next minute, never ":60".
+        let a = Angle::from_degrees(10.0 + 59.0 / 60.0 + 59.9996 / 3600.0);
+        let s = format_dec(a, SexaStyle::default());
+        assert_eq!(s, "+11:00:00.00");
+        // RA carry across 24h wraps to zero.
+        let ra = Angle::from_hours(23.0 + 59.0 / 60.0 + 59.9996 / 3600.0);
+        let r = format_ra(ra, SexaStyle::default());
+        assert_eq!(r, "00:00:00.00");
+    }
+
+    #[test]
+    fn format_styles() {
+        let a = Angle::from_hours(6.5);
+        assert_eq!(
+            format_ra(
+                a,
+                SexaStyle {
+                    separator: Separator::Spaces,
+                    seconds_places: 0
+                }
+            ),
+            "06 30 00"
+        );
+        assert_eq!(format_ra(a, SexaStyle::default()), "06:30:00.00");
+    }
+}
