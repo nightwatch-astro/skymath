@@ -31,7 +31,9 @@ pub mod angle;
 pub mod coords;
 pub mod error;
 pub mod frames;
+pub mod moon;
 pub mod observer;
+pub mod sun;
 pub mod time;
 
 pub use angle::{
@@ -44,11 +46,16 @@ pub use coords::{
 };
 pub use error::{Error, Result};
 pub use frames::{from_ecliptic, from_galactic, to_ecliptic, to_galactic, Ecliptic, Galactic};
+pub use moon::{
+    lunar_separation, moon_avoidance_lorentzian, moon_crossings, moon_distance_km,
+    moon_illumination, moon_phase_angle, moon_position, moon_position_topocentric,
+};
 pub use observer::{
     airmass, alt_az, altitude_crossings, hour_angle, parallactic_angle,
     refraction_apparent_to_true, refraction_true_to_apparent, transit, CrossingOutcome, Horizontal,
     Location,
 };
+pub use sun::{sun_position, twilight, Twilight, TwilightOutcome};
 pub use time::{
     datetime_to_mjd, format_date_obs, gmst, jd_to_mjd, julian_date, julian_epoch_of, lst,
     mjd_to_datetime, mjd_to_jd, parse_date_obs,

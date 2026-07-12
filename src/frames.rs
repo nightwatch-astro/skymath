@@ -80,8 +80,8 @@ pub fn from_galactic(g: Galactic) -> Equatorial {
 // ── Ecliptic ───────────────────────────────────────────────────────────────────
 
 /// Mean obliquity of the ecliptic ε(T), IAU-1976 polynomial (Meeus 22.2),
-/// for the instant `at`.
-fn mean_obliquity(at: OffsetDateTime) -> f64 {
+/// for the instant `at`, in radians.
+pub(crate) fn mean_obliquity(at: OffsetDateTime) -> f64 {
     let t = match julian_epoch_of(at) {
         Epoch::OfDate(year) => (year - 2_000.0) / 100.0,
         Epoch::J2000 => 0.0,

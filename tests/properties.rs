@@ -148,6 +148,47 @@ proptest! {
     }
 }
 
+// ── 002: sun & moon properties ─────────────────────────────────────────────────
+
+use skymath::{
+    moon_avoidance_lorentzian, moon_illumination, sun_position, twilight, Twilight, TwilightOutcome,
+};
+
+proptest! {
+    /// Twilight never fabricates instants: every latitude yields a typed
+    /// outcome, and Night boundaries actually sit on the threshold (SC-003).
+    #[test]
+    fn twilight_outcomes_are_typed_across_latitudes(
+        lat in -80.0..80.0f64,
+        day_offset in 0i64..365,
+    ) {
+        let site = Location::new(Angle::from_degrees(lat), Angle::from_degrees(4.5), 0.0).unwrap();
+        let night = datetime!(2026-01-01 23:00 UTC) + Duration::days(day_offset);
+        match twilight(Twilight::Astronomical, night, &site) {
+            TwilightOutcome::Night { dusk, dawn } => {
+                prop_assert!(dusk < dawn, "dusk {dusk} not before dawn {dawn}");
+                let alt = skymath::alt_az(sun_position(dusk), dusk, &site).altitude.degrees();
+                prop_assert!((alt + 18.0).abs() < 0.25, "lat {lat}: dusk altitude {alt}°");
+            }
+            TwilightOutcome::NeverDark | TwilightOutcome::AlwaysDark => {}
+        }
+    }
+
+    /// The illuminated fraction is a fraction, and the avoidance criterion is
+    /// bounded by its full-Moon maximum.
+    #[test]
+    fn illumination_and_avoidance_are_bounded(
+        hours in 0i64..17_520, // two years of instants
+        half_width in 0.5..15.0f64,
+    ) {
+        let at = datetime!(2026-01-01 00:00 UTC) + Duration::hours(hours);
+        let k = moon_illumination(at);
+        prop_assert!((0.0..=1.0).contains(&k), "k = {k}");
+        let s = moon_avoidance_lorentzian(Angle::from_degrees(60.0), half_width, at);
+        prop_assert!(s.degrees() > 0.0 && s.degrees() <= 60.0 + 1e-9, "S = {}", s.degrees());
+    }
+}
+
 // ── US4: frame round-trips ─────────────────────────────────────────────────────
 
 use skymath::{from_ecliptic, from_galactic, to_ecliptic, to_galactic};

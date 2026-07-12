@@ -27,9 +27,12 @@ from astropy.coordinates import (
     Angle,
     EarthLocation,
     FK5,
+    GCRS,
     GeocentricMeanEcliptic,
     HADec,
     SkyCoord,
+    get_body,
+    get_sun,
 )
 from astropy.time import Time
 from astropy.utils import iers
@@ -251,6 +254,69 @@ out["crossings"] = [
         "rise": iso(rise),
         "set": iso(setting),
     }
+]
+
+# ── 002: Sun & Moon ephemerides ───────────────────────────────────────────────
+sun_instants = ["1992-10-13T00:00:00", "2026-07-11T22:00:00", "2026-10-15T23:00:00"]
+out["sun"] = []
+for when in sun_instants:
+    s = get_sun(Time(when, scale="utc"))
+    out["sun"].append({"at": when + "Z", "ra_deg": s.ra.deg, "dec_deg": s.dec.deg})
+
+moon_instants = ["1992-04-12T00:00:00", "2026-07-11T22:00:00"]
+out["moon_geocentric"] = []
+for when in moon_instants:
+    t = Time(when, scale="utc")
+    m = get_body("moon", t).transform_to(GCRS(obstime=t))
+    out["moon_geocentric"].append(
+        {
+            "at": when + "Z",
+            "ra_deg": m.ra.deg,
+            "dec_deg": m.dec.deg,
+            "distance_km": m.distance.to_value(u.km),
+        }
+    )
+
+out["moon_topocentric"] = []
+for site_v, when in [(LEIDEN, "2026-07-11T22:00:00"), (KITT_PEAK, "2026-03-01T04:00:00")]:
+    t = Time(when, scale="utc")
+    location = loc(site_v)
+    m = get_body("moon", t, location=location)  # topocentric GCRS
+    out["moon_topocentric"].append(
+        {
+            "at": when + "Z",
+            "site": list(site_v),
+            "ra_deg": m.ra.deg,
+            "dec_deg": m.dec.deg,
+        }
+    )
+
+out["moon_illumination"] = [
+    {"at": when + "Z", "k": float(astroplan.moon_illumination(Time(when, scale="utc")))}
+    for when in ["1992-04-12T00:00:00", "2026-07-11T22:00:00", "2026-07-29T00:00:00"]
+]
+
+# Twilight for Leiden, night of 2026-10-15: evening next after 18:00 UTC, the
+# following morning next after the evening instant.
+leiden_obs = astroplan.Observer(location=loc(LEIDEN))
+tw_ref = Time("2026-10-15T18:00:00", scale="utc")
+dusk = leiden_obs.twilight_evening_astronomical(tw_ref, which="next")
+dawn = leiden_obs.twilight_morning_astronomical(dusk, which="next")
+out["twilight"] = [
+    {
+        "kind": "astronomical",
+        "site": list(LEIDEN),
+        "night": "2026-10-15T23:42:00Z",
+        "dusk": iso(dusk),
+        "dawn": iso(dawn),
+    }
+]
+
+# Moonrise/set bracketing one lunar pass over Leiden.
+mr = leiden_obs.moon_rise_time(Time("2026-07-11T22:00:00", scale="utc"), which="nearest")
+ms = leiden_obs.moon_set_time(mr, which="next")
+out["moon_crossings"] = [
+    {"site": list(LEIDEN), "rise": iso(mr), "set": iso(ms)},
 ]
 
 dest = Path(__file__).resolve().parent.parent / "tests" / "data" / "astropy_vectors.json"

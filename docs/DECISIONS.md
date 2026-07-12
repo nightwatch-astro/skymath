@@ -64,6 +64,16 @@ maintainer input.
   `tests/astropy_vectors.rs` validates the full public surface against it with no
   Python at test time. Airmass (Kasten–Young) and refraction (Bennett/Sæmundsson)
   have no AstroPy analogue and stay pinned to their published values.
+- **[DECISION] 002 ephemerides (2026-07-12)**: Sun (Meeus 25 low-accuracy), Moon
+  (truncated ELP-2000/82, Meeus 47 — term tables ported from `saurvs/astro-rust`,
+  MIT, NOTICE updated; ch. 40 topocentric; ch. 48 illumination), twilight and
+  moonrise/set via a moving-body iteration of the analytic crossing solver, and the
+  ACP/Berry moon-avoidance Lorentzian. UTC≈TD accepted (Sun ~3″, Moon ~38″ — inside
+  the ≤1′/≤2′ claims; the spec's first ΔT estimate understated the lunar term and
+  was corrected in research R18). AstroPy suite extended (`get_sun`/`get_body`
+  return GCRS, i.e. J2000-aligned — of-date results precess back for comparison);
+  astroplan's 1992 illumination reproduces Meeus 48.a exactly, cross-confirming
+  both oracles. Constellation identification stays deferred (003 candidate).
 - **[BUG FOUND & FIXED by the AstroPy suite] Observer functions did not precess**:
   hour_angle/alt_az/parallactic/transit/crossings compared J2000 RA against of-date
   sidereal time (~2 s of RA per year, ≈13′ error for J2000 targets in 2026 — outside

@@ -5,8 +5,9 @@
 //! Run with `cargo run --example plan_night`.
 
 use skymath::{
-    airmass, alt_az, altitude_crossings, gmst, julian_epoch_of, lst, parallactic_angle, precess,
-    transit, Angle, CrossingOutcome, Equatorial, Location, ParseMode, SexaStyle,
+    airmass, alt_az, altitude_crossings, gmst, julian_epoch_of, lst, lunar_separation,
+    moon_illumination, parallactic_angle, precess, transit, twilight, Angle, CrossingOutcome,
+    Equatorial, Location, ParseMode, SexaStyle, Twilight, TwilightOutcome,
 };
 use time::OffsetDateTime;
 
@@ -65,5 +66,16 @@ fn main() -> skymath::Result<()> {
             println!("30° window: {rise} → {set} (UTC)");
         }
     }
+
+    match twilight(Twilight::Astronomical, now, &site) {
+        TwilightOutcome::Night { dusk, dawn } => println!("Dark sky   {dusk} → {dawn} (UTC)"),
+        TwilightOutcome::NeverDark => println!("Dark sky   never astronomically dark tonight"),
+        TwilightOutcome::AlwaysDark => println!("Dark sky   dark around the clock"),
+    }
+    println!(
+        "Moon      {:.1}° from target, {:.0}% illuminated",
+        lunar_separation(m31, now, &site).degrees(),
+        moon_illumination(now) * 100.0
+    );
     Ok(())
 }
