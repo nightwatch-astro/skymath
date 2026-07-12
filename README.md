@@ -19,6 +19,9 @@ Rust library of planning-grade astronomy math for astrophotography tooling.
   twilight times (civil / nautical / astronomical, with typed polar-night and
   midnight-sun outcomes), moonrise/set, lunar separation from a target, Moon
   illumination and phase angle, and the moon-avoidance Lorentzian criterion.
+- **Constellations** — which of the 88 IAU constellations contains a
+  coordinate (Roman 1987 boundary table at B1875.0), as a typed value with
+  official abbreviations ("UMi") and Latin names ("Ursa Minor", "Boötes").
 
 Precision is planning-grade (≈1 arcminute) throughout: suitable for framing,
 scheduling, and session planning, not for telescope pointing or astrometry.

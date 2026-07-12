@@ -2,8 +2,9 @@
 //!
 //! Angles, equatorial coordinates with sexagesimal parsing and formatting,
 //! great-circle geometry, precession, galactic and ecliptic frames, MJD/JD
-//! and FITS date conversions, sidereal time, and observer-local quantities
-//! (alt-azimuth, airmass, refraction, parallactic angle, transit times).
+//! and FITS date conversions, sidereal time, observer-local quantities
+//! (alt-azimuth, airmass, refraction, parallactic angle, transit times),
+//! Sun/Moon ephemerides, and IAU constellation identification.
 //! Precision is planning-grade (≈1 arcminute) by design — suitable for
 //! framing, scheduling, and session planning, not telescope pointing or
 //! astrometry. Apparent-place corrections (nutation, aberration, proper
@@ -28,6 +29,8 @@
 #![warn(missing_docs)]
 
 pub mod angle;
+pub mod constellation;
+mod constellation_data;
 pub mod coords;
 pub mod error;
 pub mod frames;
@@ -40,6 +43,7 @@ pub use angle::{
     format_dec, format_ra, parse_dec, parse_ra, Angle, ParseMode, Separator, SexaStyle,
     ARCSEC_PER_RADIAN,
 };
+pub use constellation::{constellation, Constellation};
 pub use coords::{
     apply_offset, position_angle, precess, separation, tangent_offset, Epoch, Equatorial,
     TangentOffset,

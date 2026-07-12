@@ -3,8 +3,8 @@
 #![cfg(feature = "serde")]
 
 use skymath::{
-    Angle, CrossingOutcome, Ecliptic, Epoch, Equatorial, Galactic, Horizontal, Location, Twilight,
-    TwilightOutcome,
+    Angle, Constellation, CrossingOutcome, Ecliptic, Epoch, Equatorial, Galactic, Horizontal,
+    Location, Twilight, TwilightOutcome,
 };
 use time::macros::datetime;
 
@@ -66,4 +66,15 @@ fn public_types_round_trip_through_json() {
         TwilightOutcome::NeverDark,
         round_trip(&TwilightOutcome::NeverDark)
     );
+}
+
+#[test]
+fn constellation_wire_form_is_the_iau_abbreviation() {
+    for c in Constellation::ALL {
+        assert_eq!(c, round_trip(&c));
+        assert_eq!(
+            serde_json::to_string(&c).unwrap(),
+            format!("\"{}\"", c.abbreviation())
+        );
+    }
 }

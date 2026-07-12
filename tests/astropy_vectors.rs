@@ -20,14 +20,20 @@
 //!   no AstroPy implementation; pinned to the published K&Y values inline in
 //!   `src/observer.rs`) and refraction (AstroPy's ERFA model differs from
 //!   Bennett/Sæmundsson; pinned to their published values inline).
+//! - Constellation identification is discrete: vectors are stability-filtered
+//!   at generation time (≥5″ from any boundary), so agreement is exact —
+//!   there is no tolerance to tune.
+
+use std::collections::HashSet;
 
 use serde_json::Value;
 use skymath::{
-    alt_az, altitude_crossings, apply_offset, datetime_to_mjd, gmst, hour_angle, julian_date,
-    julian_epoch_of, lst, moon_crossings, moon_distance_km, moon_illumination, moon_position,
-    moon_position_topocentric, parallactic_angle, parse_dec, parse_ra, position_angle, precess,
-    separation, sun_position, tangent_offset, transit, twilight, Angle, CrossingOutcome, Epoch,
-    Equatorial, Location, ParseMode, TangentOffset, Twilight, TwilightOutcome,
+    alt_az, altitude_crossings, apply_offset, constellation, datetime_to_mjd, gmst, hour_angle,
+    julian_date, julian_epoch_of, lst, moon_crossings, moon_distance_km, moon_illumination,
+    moon_position, moon_position_topocentric, parallactic_angle, parse_dec, parse_ra,
+    position_angle, precess, separation, sun_position, tangent_offset, transit, twilight, Angle,
+    Constellation, CrossingOutcome, Epoch, Equatorial, Location, ParseMode, TangentOffset,
+    Twilight, TwilightOutcome,
 };
 use time::format_description::well_known::Rfc3339;
 use time::OffsetDateTime;
@@ -455,6 +461,62 @@ fn altitude_crossings_match_astroplan() {
         assert!(
             set_delta < time::Duration::seconds(90),
             "set off by {set_delta}"
+        );
+    }
+}
+
+/// AstroPy's `constellation_names.dat` misspells three IAU names; skymath
+/// ships the official spellings. Mapping our variant to the exact string
+/// AstroPy produces keeps both name lists pinned — drift on either side
+/// (an AstroPy fix, or a skymath typo) fails the vector run.
+fn astropy_full_name(c: Constellation) -> &'static str {
+    match c {
+        Constellation::Cha => "Chamaleon",
+        Constellation::Oph => "Ophiucus",
+        Constellation::PsA => "Pisces Austrinus",
+        other => other.name(),
+    }
+}
+
+#[test]
+fn constellation_matches_astropy_everywhere() {
+    let v = vectors();
+    let cases = v["constellation"].as_array().unwrap();
+    assert!(cases.len() >= 1000, "expected ≥1000 cases (FR-C3)");
+    let mut seen = HashSet::new();
+    for case in cases {
+        let eq = Equatorial::j2000(
+            Angle::from_degrees(f(case, "ra_deg")),
+            Angle::from_degrees(f(case, "dec_deg")),
+        )
+        .unwrap();
+        let got = constellation(eq);
+        assert_eq!(
+            got.abbreviation(),
+            case["abbr"].as_str().unwrap(),
+            "misidentified ({}, {})",
+            f(case, "ra_deg"),
+            f(case, "dec_deg")
+        );
+        assert_eq!(astropy_full_name(got), case["name"].as_str().unwrap());
+        seen.insert(got);
+    }
+    assert_eq!(seen.len(), 88, "vector sample must reach all 88 (SC-001)");
+}
+
+#[test]
+fn constellation_honours_input_epoch() {
+    for case in vectors()["constellation_of_date"].as_array().unwrap() {
+        let eq = Equatorial::at_epoch(
+            Angle::from_degrees(f(case, "ra_deg")),
+            Angle::from_degrees(f(case, "dec_deg")),
+            Epoch::OfDate(f(case, "epoch_jyear")),
+        )
+        .unwrap();
+        assert_eq!(
+            constellation(eq).name(),
+            case["name"].as_str().unwrap(),
+            "of-date input must precess through the input epoch"
         );
     }
 }

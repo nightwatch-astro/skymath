@@ -5,9 +5,9 @@
 //! Run with `cargo run --example plan_night`.
 
 use skymath::{
-    airmass, alt_az, altitude_crossings, gmst, julian_epoch_of, lst, lunar_separation,
-    moon_illumination, parallactic_angle, precess, transit, twilight, Angle, CrossingOutcome,
-    Equatorial, Location, ParseMode, SexaStyle, Twilight, TwilightOutcome,
+    airmass, alt_az, altitude_crossings, constellation, gmst, julian_epoch_of, lst,
+    lunar_separation, moon_illumination, parallactic_angle, precess, transit, twilight, Angle,
+    CrossingOutcome, Equatorial, Location, ParseMode, SexaStyle, Twilight, TwilightOutcome,
 };
 use time::OffsetDateTime;
 
@@ -27,6 +27,8 @@ fn main() -> skymath::Result<()> {
         m31.ra_sexagesimal(SexaStyle::default()),
         m31.dec_sexagesimal(SexaStyle::default())
     );
+    let con = constellation(m31);
+    println!("In        {con} ({})", con.abbreviation());
 
     let now = OffsetDateTime::now_utc();
     let tonight = julian_epoch_of(now);

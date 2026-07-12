@@ -32,6 +32,7 @@ from astropy.coordinates import (
     HADec,
     SkyCoord,
     get_body,
+    get_constellation,
     get_sun,
 )
 from astropy.time import Time
@@ -317,6 +318,103 @@ mr = leiden_obs.moon_rise_time(Time("2026-07-11T22:00:00", scale="utc"), which="
 ms = leiden_obs.moon_set_time(mr, which="next")
 out["moon_crossings"] = [
     {"site": list(LEIDEN), "rise": iso(mr), "set": iso(ms)},
+]
+
+# ── 003: constellation identification ────────────────────────────────────────
+# Uniform seeded sky sample + one witness per Roman (1987) zone record + curated
+# probes. Sampled/witness points are kept only when AstroPy returns the same
+# constellation for the point and four ±5″ offsets, so no vector sits inside
+# the sub-arcsecond FK4/FK5-precession ambiguity band near boundaries (research
+# R21/R24); the Rust test can then demand 100% agreement.
+
+
+def stable(coords):
+    """(names, abbrs, keep-mask) for an array SkyCoord, ±5″ stability probe."""
+    names = np.atleast_1d(get_constellation(coords))
+    abbrs = np.atleast_1d(get_constellation(coords, short_name=True))
+    keep = np.ones(names.shape, dtype=bool)
+    for pa in (0.0, 90.0, 180.0, 270.0):
+        off = coords.directional_offset_by(pa * u.deg, 5 * u.arcsec)
+        keep &= np.atleast_1d(get_constellation(off)) == names
+    return names, abbrs, keep
+
+
+rng = np.random.default_rng(20260712)
+n_uniform = 1200
+uniform = SkyCoord(
+    ra=rng.uniform(0.0, 360.0, n_uniform) * u.deg,
+    dec=np.degrees(np.arcsin(rng.uniform(-1.0, 1.0, n_uniform))) * u.deg,
+)
+
+# Witness candidates: zone RA midpoint, just above the zone's lower Dec edge,
+# built in the table's own B1875 frame so every constellation is represented.
+roman = (
+    Path(str(astropy.coordinates.__file__)).parent / "data" / "constellation_data_roman87.dat"
+)
+w_ra_h, w_dec = [], []
+for line in roman.read_text(encoding="ascii").splitlines():
+    line = line.strip()
+    if not line or line.startswith("#"):
+        continue
+    lo, hi, dlo, _code = line.split()
+    w_ra_h.append((float(lo) + float(hi)) / 2.0)
+    w_dec.append(min(float(dlo) + 0.1, 89.9))
+witnesses = SkyCoord(
+    ra=np.array(w_ra_h) * 15.0 * u.deg, dec=np.array(w_dec) * u.deg, frame=FK5(equinox="B1875")
+).icrs
+
+SIGMA_OCT = (317.1958, -88.9564)
+ALPHA_SER = (236.0667, 6.4258)  # Serpens Caput
+ETA_SER = (275.3275, -2.8989)  # Serpens Cauda
+curated = SkyCoord(
+    ra=[
+        M31[0], POLARIS[0], SIGMA_OCT[0], ALPHA_SER[0], ETA_SER[0],
+        0.0, 180.0, 0.0, 123.456,           # celestial poles, any RA
+        359.999583, 0.000417,               # RA-wrap pair (±0.1ˢ of 0ʰ)
+        135.0, 352.5, 77.25, 141.8325,      # Roman-paper check positions…
+        193.332, 235.0305, 285.0, 93.333,   # …(fed as ICRS, AstroPy truth)
+    ] * u.deg,
+    dec=[
+        M31[1], POLARIS[1], SIGMA_OCT[1], ALPHA_SER[1], ETA_SER[1],
+        90.0, 90.0, -90.0, -90.0,
+        5.0, 5.0,
+        65.0, -20.0, -11.0, -30.0,
+        22.0, -12.0, -40.0, -81.1234,
+    ] * u.deg,
+)
+
+out["constellation"] = []
+for coords, filtered in ((uniform, True), (witnesses, True), (curated, False)):
+    names, abbrs, keep = stable(coords)
+    if not filtered:
+        keep[:] = True
+    for c, name, abbr, ok in zip(coords, names, abbrs, keep):
+        if ok:
+            # .strip(): astropy's names file carries a trailing space ("Crux ").
+            out["constellation"].append(
+                {
+                    "ra_deg": round(c.ra.deg, 6),
+                    "dec_deg": round(c.dec.deg, 6),
+                    "name": str(name).strip(),
+                    "abbr": str(abbr).strip(),
+                }
+            )
+
+covered = {case["name"] for case in out["constellation"]}
+if len(covered) != 88:
+    raise SystemExit(f"constellation coverage incomplete: {len(covered)}/88")
+print(f"constellation cases: {len(out['constellation'])} (all 88 covered)")
+
+# Epoch-of-date input: M31 expressed at equinox J2026.5 must still identify as
+# Andromeda (input epoch honoured via precession to B1875).
+m31_of_date = sc(M31).transform_to(FK5(equinox=Time(2026.5, format="jyear")))
+out["constellation_of_date"] = [
+    {
+        "ra_deg": m31_of_date.ra.deg,
+        "dec_deg": m31_of_date.dec.deg,
+        "epoch_jyear": 2026.5,
+        "name": "Andromeda",
+    }
 ]
 
 dest = Path(__file__).resolve().parent.parent / "tests" / "data" / "astropy_vectors.json"

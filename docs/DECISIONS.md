@@ -74,6 +74,20 @@ maintainer input.
   return GCRS, i.e. J2000-aligned — of-date results precess back for comparison);
   astroplan's 1992 illumination reproduces Meeus 48.a exactly, cross-confirming
   both oracles. Constellation identification stays deferred (003 candidate).
+- **[DECISION] 003 constellation identification (2026-07-12)**: Roman (1987)
+  precomputed table (ADC/CDS VI/42) fetched and generated into
+  `src/constellation_data.rs` by `scripts/gen_constellation_table.py` (no hand
+  transcription; committed output, script kept). Inputs precess to B1875.0
+  (Julian year 1875.0013923) with the existing IAU-1976 model — same FK5≈FK4
+  approximation AstroPy makes, differences confined to ≲1″ of a boundary and
+  excluded from vectors by a ±5″ stability filter at generation time, so the
+  1576-case AstroPy section demands 100% agreement (all 88 covered
+  structurally via one witness point per table record). `Constellation` enum:
+  88 abbreviation-named variants (serde wire form = IAU abbreviation),
+  `name()` uses official IAU spellings — AstroPy's names file misspells three
+  ("Chamaleon", "Ophiucus", "Pisces Austrinus") and carries a trailing space
+  in "Crux "; skymath ships the IAU forms and the vector test pins AstroPy's
+  exact strings for the three so drift on either side fails the suite.
 - **[BUG FOUND & FIXED by the AstroPy suite] Observer functions did not precess**:
   hour_angle/alt_az/parallactic/transit/crossings compared J2000 RA against of-date
   sidereal time (~2 s of RA per year, ≈13′ error for J2000 targets in 2026 — outside

@@ -19,6 +19,11 @@ pub enum Error {
     #[error("could not parse date: {0}")]
     ParseDate(String),
 
+    /// A string was not one of the 88 official IAU constellation
+    /// abbreviations.
+    #[error("unknown constellation abbreviation: {0}")]
+    UnknownConstellation(String),
+
     /// A numeric quantity was outside its valid domain (RA `[0, 360)`°, Dec
     /// `[-90, 90]`°, latitude/longitude bounds, non-finite input, or a formula
     /// validity edge such as airmass below the horizon).
