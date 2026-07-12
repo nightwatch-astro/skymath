@@ -58,7 +58,12 @@ Continues the numbering from 001's research log.
 
 ## R18 — Time-scale handling (ΔT)
 
-- **Decision**: treat UTC as TD (Terrestrial/Dynamical Time) in the series arguments —
-  ΔT ≈ 70 s in the current era shifts the Moon's series argument by ~0.04″ and the Sun's
-  by ~0.003″; both negligible at planning grade. Documented on each function.
+- **Decision**: treat UTC as TD (Terrestrial/Dynamical Time) in the series arguments.
+  ΔT ≈ 70 s in the current era displaces the Sun by ~2.9″ (0.04″/s of longitude motion is
+  wrong by a factor — the Sun moves 360°/365.25 d ≈ 0.041″/s) and the Moon by ~38″
+  (~0.55″/s). Both sit inside the documented claims (Sun ≤1′, Moon ≤2′ vs AstroPy) and
+  shift twilight instants by ~3 s and moonrise by well under a minute. Documented per
+  function. *(Correction 2026-07-12: the draft of this entry understated the lunar
+  effect as 0.04″; the pinned Meeus 47.a test is unaffected because it compares at the
+  same numeric Julian date.)*
 - **Alternatives**: ΔT polynomial models — rejected as precision theater at this grade.

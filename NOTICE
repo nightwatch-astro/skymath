@@ -5,7 +5,12 @@ This product includes software ported from astro-math
 (https://github.com/gaker/astro-math), Copyright Greg Aker,
 licensed under MIT OR Apache-2.0. Ported material: the alt-azimuth
 transform (including its zenith/pole degeneracy handling) and the
-edge-case scenarios of its test suite. The galactic rotation,
+edge-case scenarios of its test suite.
+
+This product includes data ported from astro-rust
+(https://github.com/saurvs/astro-rust), Copyright Saurav Sachidanand,
+licensed under MIT: the truncated ELP-2000/82 lunar periodic-term
+tables (Meeus tables 47.A/47.B) in src/moon.rs. The galactic rotation,
 airmass (Kasten-Young), and atmospheric refraction
 (Bennett/Saemundsson) implementations are original to this crate,
 validated against published references; all AstroPy reference

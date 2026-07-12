@@ -3,7 +3,8 @@
 #![cfg(feature = "serde")]
 
 use skymath::{
-    Angle, CrossingOutcome, Ecliptic, Epoch, Equatorial, Galactic, Horizontal, Location,
+    Angle, CrossingOutcome, Ecliptic, Epoch, Equatorial, Galactic, Horizontal, Location, Twilight,
+    TwilightOutcome,
 };
 use time::macros::datetime;
 
@@ -54,4 +55,15 @@ fn public_types_round_trip_through_json() {
         beta: Angle::from_degrees(6.68),
     };
     assert_eq!(ecliptic, round_trip(&ecliptic));
+
+    assert_eq!(Twilight::Astronomical, round_trip(&Twilight::Astronomical));
+    let night = TwilightOutcome::Night {
+        dusk: datetime!(2026-10-15 18:55:00 UTC),
+        dawn: datetime!(2026-10-16 05:10:00 UTC),
+    };
+    assert_eq!(night, round_trip(&night));
+    assert_eq!(
+        TwilightOutcome::NeverDark,
+        round_trip(&TwilightOutcome::NeverDark)
+    );
 }

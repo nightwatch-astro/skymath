@@ -4,9 +4,10 @@
 //! bounds; the public contract is ≤ 1 arcminute.
 
 use skymath::{
-    alt_az, altitude_crossings, gmst, hour_angle, julian_epoch_of, lst, parse_dec, parse_ra,
-    position_angle, separation, transit, Angle, CrossingOutcome, Epoch, Equatorial, Location,
-    ParseMode, SexaStyle,
+    alt_az, altitude_crossings, gmst, hour_angle, julian_epoch_of, lst, lunar_separation,
+    moon_crossings, moon_position, moon_position_topocentric, parse_dec, parse_ra, position_angle,
+    separation, sun_position, transit, twilight, Angle, CrossingOutcome, Epoch, Equatorial,
+    Location, ParseMode, SexaStyle, Twilight, TwilightOutcome,
 };
 use time::macros::datetime;
 
@@ -244,6 +245,110 @@ fn north_galactic_pole_has_latitude_90() {
         (g.b.degrees() - 90.0).abs() * 3600.0 < 1.0,
         "b = {}°",
         g.b.degrees()
+    );
+}
+
+// ── 002 / US1: twilight ────────────────────────────────────────────────────────
+
+#[test]
+fn leiden_october_night_has_astronomical_darkness() {
+    let site = leiden();
+    let outcome = twilight(
+        Twilight::Astronomical,
+        datetime!(2026-10-15 23:00 UTC),
+        &site,
+    );
+    let TwilightOutcome::Night { dusk, dawn } = outcome else {
+        panic!("expected Night, got {outcome:?}");
+    };
+    assert!(dusk < dawn);
+    // The window brackets local midnight (≈ 23:42 UTC at 4.485° E).
+    assert!(dusk < datetime!(2026-10-15 23:42 UTC) && datetime!(2026-10-15 23:42 UTC) < dawn);
+    // The Sun sits on the −18° threshold at both instants (the Sun descends
+    // ~1°/4 min; 0.05° ≈ 12 s of solver residual).
+    for instant in [dusk, dawn] {
+        let alt = alt_az(sun_position(instant), instant, &site).altitude;
+        assert!(
+            (alt.degrees() + 18.0).abs() < 0.05,
+            "sun altitude at boundary: {}°",
+            alt.degrees()
+        );
+    }
+}
+
+#[test]
+fn leiden_midsummer_is_never_astronomically_dark() {
+    // Solar minimum altitude at 52.155° N near the June solstice is ≈ −14.4°,
+    // above the −18° threshold — but civil darkness still occurs.
+    let site = leiden();
+    let night = datetime!(2026-06-21 23:00 UTC);
+    assert_eq!(
+        twilight(Twilight::Astronomical, night, &site),
+        TwilightOutcome::NeverDark
+    );
+    assert!(matches!(
+        twilight(Twilight::Civil, night, &site),
+        TwilightOutcome::Night { .. }
+    ));
+}
+
+#[test]
+fn polar_winter_is_always_civil_dark() {
+    // Longyearbyen (78.22° N) around the December solstice: solar maximum
+    // altitude ≈ −11.7°, below the −6° civil threshold all day.
+    let site = Location::new(
+        Angle::from_degrees(78.2232),
+        Angle::from_degrees(15.6267),
+        0.0,
+    )
+    .unwrap();
+    assert_eq!(
+        twilight(Twilight::Civil, datetime!(2026-12-21 12:00 UTC), &site),
+        TwilightOutcome::AlwaysDark
+    );
+}
+
+// ── 002 / US2: lunar position & separation ─────────────────────────────────────
+
+#[test]
+fn moonrise_and_set_sit_on_the_horizon() {
+    let site = leiden();
+    let outcome = moon_crossings(
+        Angle::from_degrees(0.0),
+        datetime!(2026-07-11 22:00 UTC),
+        &site,
+    );
+    let CrossingOutcome::Crosses { rise, set } = outcome else {
+        panic!("expected Crosses, got {outcome:?}");
+    };
+    assert!(rise < set);
+    // The topocentric Moon's altitude at the solved instants is ~0 (the Moon
+    // moves ~0.5°/h, so a small solver residual is expected).
+    for instant in [rise, set] {
+        let alt = alt_az(moon_position_topocentric(instant, &site), instant, &site).altitude;
+        assert!(
+            alt.degrees().abs() < 0.1,
+            "moon altitude at crossing: {}°",
+            alt.degrees()
+        );
+    }
+}
+
+#[test]
+fn lunar_separation_is_topocentric() {
+    // The topocentric and geocentric separations differ by up to the lunar
+    // parallax; the function must use the topocentric position.
+    let site = leiden();
+    let at = datetime!(2026-07-11 22:00 UTC);
+    let m31 = eq(10.6847, 41.2688);
+    let of_date = skymath::precess(m31, julian_epoch_of(at));
+    let via_fn = lunar_separation(m31, at, &site);
+    let topo = separation(moon_position_topocentric(at, &site), of_date);
+    let geo = separation(moon_position(at), of_date);
+    assert!((via_fn.degrees() - topo.degrees()).abs() < 1e-12);
+    assert!(
+        (via_fn.degrees() - geo.degrees()).abs() * 60.0 > 1.0,
+        "topocentric correction should be visible at this geometry"
     );
 }
 

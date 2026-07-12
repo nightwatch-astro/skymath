@@ -263,12 +263,25 @@ pub fn parallactic_angle(target: Equatorial, at: OffsetDateTime, site: &Location
 /// The meridian transit of `target` nearest to `near` (upper culmination,
 /// hour angle 0), found analytically from the sidereal rate.
 pub fn transit(target: Equatorial, near: OffsetDateTime, site: &Location) -> OffsetDateTime {
+    culmination(target, near, site, 0.0)
+}
+
+/// The instant nearest `near` when `target` reaches hour angle
+/// `ha_target_deg` (0 = transit, 180 = anti-transit).
+fn culmination(
+    target: Equatorial,
+    near: OffsetDateTime,
+    site: &Location,
+    ha_target_deg: f64,
+) -> OffsetDateTime {
     let mut t = near;
     // One step is exact up to the polynomial's tiny curvature; the second
     // absorbs it.
     for _ in 0..2 {
-        let ha = hour_angle(target, t, site).degrees();
-        t -= Duration::seconds_f64(ha / SIDEREAL_RATE_DEG_PER_DAY * 86_400.0);
+        let off = Angle::from_degrees(hour_angle(target, t, site).degrees() - ha_target_deg)
+            .normalized_pm_180()
+            .degrees();
+        t -= Duration::seconds_f64(off / SIDEREAL_RATE_DEG_PER_DAY * 86_400.0);
     }
     t
 }
@@ -305,34 +318,136 @@ pub fn altitude_crossings(
     site: &Location,
 ) -> CrossingOutcome {
     let target = precess(target, julian_epoch_of(night_of));
+    match semi_arc(target, threshold, site) {
+        SemiArc::AlwaysAbove => CrossingOutcome::AlwaysAbove,
+        SemiArc::NeverAbove => CrossingOutcome::NeverAbove,
+        SemiArc::Half(semi_arc_deg) => {
+            let half = sidereal_duration(semi_arc_deg);
+            let t0 = transit(target, night_of, site);
+            CrossingOutcome::Crosses {
+                rise: t0 - half,
+                set: t0 + half,
+            }
+        }
+    }
+}
+
+/// The half-arc (degrees of hour angle) a fixed of-date position spends above
+/// `threshold`, or the degenerate outcomes.
+enum SemiArc {
+    AlwaysAbove,
+    NeverAbove,
+    Half(f64),
+}
+
+fn semi_arc(target_of_date: Equatorial, threshold: Angle, site: &Location) -> SemiArc {
     let phi = site.latitude().radians();
-    let dec = target.dec().radians();
+    let dec = target_of_date.dec().radians();
     let sin_h0 = threshold.radians().sin();
 
     let denominator = phi.cos() * dec.cos();
     if denominator.abs() < 1e-12 {
         // Site at a pole or target at a celestial pole: altitude is constant.
         return if phi.sin() * dec.sin() >= sin_h0 {
-            CrossingOutcome::AlwaysAbove
+            SemiArc::AlwaysAbove
         } else {
-            CrossingOutcome::NeverAbove
+            SemiArc::NeverAbove
         };
     }
 
     let cos_h0 = (sin_h0 - phi.sin() * dec.sin()) / denominator;
     if cos_h0 < -1.0 {
-        return CrossingOutcome::AlwaysAbove;
+        SemiArc::AlwaysAbove
+    } else if cos_h0 > 1.0 {
+        SemiArc::NeverAbove
+    } else {
+        SemiArc::Half(cos_h0.acos().to_degrees())
     }
-    if cos_h0 > 1.0 {
-        return CrossingOutcome::NeverAbove;
+}
+
+fn sidereal_duration(degrees: f64) -> Duration {
+    Duration::seconds_f64(degrees / SIDEREAL_RATE_DEG_PER_DAY * 86_400.0)
+}
+
+/// Altitude crossings for a *moving* body (Sun, Moon): iterate the analytic
+/// fixed-body solution against `position`, re-evaluated at each estimate.
+///
+/// `anchor_ha_deg` selects the culmination the window brackets: 0 (transit)
+/// yields `Crosses { rise, set }` with rise < set around the body's upper
+/// culmination; 180 (anti-transit) yields the window around the body's lower
+/// culmination — `set` (evening, downward) precedes `rise` (morning, upward).
+pub(crate) fn moving_body_crossings<F>(
+    position: F,
+    threshold: Angle,
+    near: OffsetDateTime,
+    site: &Location,
+    anchor_ha_deg: f64,
+) -> CrossingOutcome
+where
+    F: Fn(OffsetDateTime) -> Equatorial,
+{
+    // Converge the anchor culmination against the moving position: the Sun
+    // moves ~1°/day and the Moon ~13°/day, so three passes settle well below
+    // the solvers' time tolerances.
+    let mut anchor = near;
+    for _ in 0..3 {
+        anchor = culmination(position(anchor), anchor, site, anchor_ha_deg);
     }
 
-    let semi_arc_deg = cos_h0.acos().to_degrees();
-    let half = Duration::seconds_f64(semi_arc_deg / SIDEREAL_RATE_DEG_PER_DAY * 86_400.0);
-    let t0 = transit(target, night_of, site);
-    CrossingOutcome::Crosses {
-        rise: t0 - half,
-        set: t0 + half,
+    let pos = precess(position(anchor), julian_epoch_of(anchor));
+    let h0 = match semi_arc(pos, threshold, site) {
+        SemiArc::AlwaysAbove => return CrossingOutcome::AlwaysAbove,
+        SemiArc::NeverAbove => return CrossingOutcome::NeverAbove,
+        SemiArc::Half(h0) => h0,
+    };
+
+    // Initial estimates either side of the anchor, then refine each crossing
+    // with the body's position at that estimate.
+    let offset = if anchor_ha_deg == 0.0 { h0 } else { 180.0 - h0 };
+    let first_is_rising = anchor_ha_deg == 0.0;
+    let mut first = anchor - sidereal_duration(offset);
+    let mut second = anchor + sidereal_duration(offset);
+    for _ in 0..3 {
+        first = refine_crossing(&position, threshold, first, site, first_is_rising);
+        second = refine_crossing(&position, threshold, second, site, !first_is_rising);
+    }
+
+    if first_is_rising {
+        CrossingOutcome::Crosses {
+            rise: first,
+            set: second,
+        }
+    } else {
+        CrossingOutcome::Crosses {
+            rise: second,
+            set: first,
+        }
+    }
+}
+
+/// One refinement pass for a single moving-body crossing near `t`.
+fn refine_crossing<F>(
+    position: &F,
+    threshold: Angle,
+    t: OffsetDateTime,
+    site: &Location,
+    rising: bool,
+) -> OffsetDateTime
+where
+    F: Fn(OffsetDateTime) -> Equatorial,
+{
+    let pos = precess(position(t), julian_epoch_of(t));
+    match semi_arc(pos, threshold, site) {
+        // Grazing flip mid-refinement: keep the current estimate.
+        SemiArc::AlwaysAbove | SemiArc::NeverAbove => t,
+        SemiArc::Half(h0) => {
+            let tr = culmination(pos, t, site, 0.0);
+            if rising {
+                tr - sidereal_duration(h0)
+            } else {
+                tr + sidereal_duration(h0)
+            }
+        }
     }
 }
 
