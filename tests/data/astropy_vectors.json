@@ -499,5 +499,9471 @@
    "rise": "2026-07-12T00:39:54.496Z",
    "set": "2026-07-12T18:50:57.345Z"
   }
+ ],
+ "constellation": [
+  {
+   "ra_deg": 249.303013,
+   "dec_deg": 9.800355,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 173.662142,
+   "dec_deg": 1.506842,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 312.962411,
+   "dec_deg": 39.69465,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 150.494554,
+   "dec_deg": 30.662826,
+   "name": "Leo Minor",
+   "abbr": "LMi"
+  },
+  {
+   "ra_deg": 12.195026,
+   "dec_deg": -36.531156,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 55.495495,
+   "dec_deg": -71.271982,
+   "name": "Hydrus",
+   "abbr": "Hyi"
+  },
+  {
+   "ra_deg": 338.711398,
+   "dec_deg": -14.933685,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 328.448488,
+   "dec_deg": -33.802077,
+   "name": "Pisces Austrinus",
+   "abbr": "PsA"
+  },
+  {
+   "ra_deg": 64.958492,
+   "dec_deg": -65.310181,
+   "name": "Reticulum",
+   "abbr": "Ret"
+  },
+  {
+   "ra_deg": 177.800831,
+   "dec_deg": -26.437063,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 106.251994,
+   "dec_deg": 47.091157,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 137.949041,
+   "dec_deg": 14.109156,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 5.316874,
+   "dec_deg": -54.490665,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 344.43167,
+   "dec_deg": -7.796273,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 93.310842,
+   "dec_deg": -50.482695,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 235.972106,
+   "dec_deg": -3.912461,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 149.628252,
+   "dec_deg": -47.574939,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 28.642711,
+   "dec_deg": -53.828434,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 337.606814,
+   "dec_deg": 24.815318,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 308.386615,
+   "dec_deg": -8.904828,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 172.835262,
+   "dec_deg": -20.400227,
+   "name": "Crater",
+   "abbr": "Crt"
+  },
+  {
+   "ra_deg": 230.457245,
+   "dec_deg": 19.843149,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 271.171199,
+   "dec_deg": 49.70895,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 125.075077,
+   "dec_deg": -28.321845,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 292.258865,
+   "dec_deg": -73.627195,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 224.273812,
+   "dec_deg": -20.872109,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 239.983526,
+   "dec_deg": 84.840819,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 141.09117,
+   "dec_deg": 31.945789,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 288.79789,
+   "dec_deg": -1.236978,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 220.879335,
+   "dec_deg": 6.487911,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 271.273849,
+   "dec_deg": -31.463282,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 55.782623,
+   "dec_deg": -47.890262,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 359.158398,
+   "dec_deg": 45.854962,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 271.585269,
+   "dec_deg": 23.573312,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 88.486551,
+   "dec_deg": -51.219299,
+   "name": "Pictor",
+   "abbr": "Pic"
+  },
+  {
+   "ra_deg": 115.31137,
+   "dec_deg": -55.02885,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 324.452305,
+   "dec_deg": 11.854682,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 338.623761,
+   "dec_deg": -10.927577,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 315.157225,
+   "dec_deg": 20.14758,
+   "name": "Vulpecula",
+   "abbr": "Vul"
+  },
+  {
+   "ra_deg": 181.562156,
+   "dec_deg": 24.614259,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 194.747,
+   "dec_deg": -26.216729,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 82.807824,
+   "dec_deg": 35.738445,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 241.509306,
+   "dec_deg": -59.733176,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 50.660597,
+   "dec_deg": -41.360651,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 154.548435,
+   "dec_deg": -16.087724,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 231.69948,
+   "dec_deg": -19.374279,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 159.047823,
+   "dec_deg": -0.0333,
+   "name": "Sextans",
+   "abbr": "Sex"
+  },
+  {
+   "ra_deg": 43.438925,
+   "dec_deg": -44.775056,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 333.78216,
+   "dec_deg": -80.232997,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 302.818687,
+   "dec_deg": -38.168122,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 346.171098,
+   "dec_deg": -50.956358,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 68.73914,
+   "dec_deg": 25.295822,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 149.557813,
+   "dec_deg": 60.880229,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 145.911881,
+   "dec_deg": -29.611999,
+   "name": "Antlia",
+   "abbr": "Ant"
+  },
+  {
+   "ra_deg": 52.989442,
+   "dec_deg": -21.693821,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 226.99829,
+   "dec_deg": -28.537834,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 113.835475,
+   "dec_deg": 8.541454,
+   "name": "Canis Minor",
+   "abbr": "CMi"
+  },
+  {
+   "ra_deg": 2.09472,
+   "dec_deg": -6.431087,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 11.392142,
+   "dec_deg": 65.490431,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 217.98993,
+   "dec_deg": 7.578732,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 50.759858,
+   "dec_deg": 34.145852,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 96.061565,
+   "dec_deg": 23.278417,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 329.831352,
+   "dec_deg": 31.720795,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 221.174104,
+   "dec_deg": 35.286579,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 339.330348,
+   "dec_deg": -12.758898,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 27.961908,
+   "dec_deg": -55.368749,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 252.583252,
+   "dec_deg": 65.559466,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 178.948489,
+   "dec_deg": -20.641665,
+   "name": "Crater",
+   "abbr": "Crt"
+  },
+  {
+   "ra_deg": 114.436649,
+   "dec_deg": -0.066504,
+   "name": "Canis Minor",
+   "abbr": "CMi"
+  },
+  {
+   "ra_deg": 290.00586,
+   "dec_deg": 47.051134,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 147.86256,
+   "dec_deg": 20.650798,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 292.144496,
+   "dec_deg": 38.606972,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 334.530583,
+   "dec_deg": 9.564416,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 2.86596,
+   "dec_deg": -5.391868,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 40.508734,
+   "dec_deg": 57.820765,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 242.143216,
+   "dec_deg": 56.278861,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 32.07566,
+   "dec_deg": 13.746542,
+   "name": "Aries",
+   "abbr": "Ari"
+  },
+  {
+   "ra_deg": 150.932798,
+   "dec_deg": -6.53495,
+   "name": "Sextans",
+   "abbr": "Sex"
+  },
+  {
+   "ra_deg": 207.928882,
+   "dec_deg": -76.105665,
+   "name": "Apus",
+   "abbr": "Aps"
+  },
+  {
+   "ra_deg": 15.683553,
+   "dec_deg": 45.281821,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 31.167172,
+   "dec_deg": -2.402017,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 228.690896,
+   "dec_deg": 17.816106,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 105.913259,
+   "dec_deg": -51.247407,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 328.947537,
+   "dec_deg": 54.462931,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 194.430389,
+   "dec_deg": 29.068136,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 19.808649,
+   "dec_deg": 8.294218,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 203.828024,
+   "dec_deg": 10.814416,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 323.253059,
+   "dec_deg": 72.21225,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 78.270262,
+   "dec_deg": -27.157827,
+   "name": "Columba",
+   "abbr": "Col"
+  },
+  {
+   "ra_deg": 93.688845,
+   "dec_deg": -28.748299,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 166.944472,
+   "dec_deg": -4.609644,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 118.066991,
+   "dec_deg": -74.298576,
+   "name": "Volans",
+   "abbr": "Vol"
+  },
+  {
+   "ra_deg": 301.286082,
+   "dec_deg": 36.556965,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 344.180931,
+   "dec_deg": -79.112789,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 317.670002,
+   "dec_deg": -52.54392,
+   "name": "Indus",
+   "abbr": "Ind"
+  },
+  {
+   "ra_deg": 256.052821,
+   "dec_deg": 13.861769,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 69.016178,
+   "dec_deg": -11.238621,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 248.172589,
+   "dec_deg": -52.758451,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 61.275439,
+   "dec_deg": -20.690211,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 84.136809,
+   "dec_deg": -34.694049,
+   "name": "Columba",
+   "abbr": "Col"
+  },
+  {
+   "ra_deg": 95.789271,
+   "dec_deg": 67.274629,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 170.00499,
+   "dec_deg": -23.130191,
+   "name": "Crater",
+   "abbr": "Crt"
+  },
+  {
+   "ra_deg": 7.797325,
+   "dec_deg": 57.745117,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 207.705227,
+   "dec_deg": -71.302537,
+   "name": "Apus",
+   "abbr": "Aps"
+  },
+  {
+   "ra_deg": 181.800979,
+   "dec_deg": 40.658137,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 303.812921,
+   "dec_deg": -24.16389,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 189.914217,
+   "dec_deg": 33.878233,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 210.317789,
+   "dec_deg": 7.248131,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 11.596149,
+   "dec_deg": 6.583973,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 140.002657,
+   "dec_deg": 10.266344,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 17.615223,
+   "dec_deg": 21.9607,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 231.593904,
+   "dec_deg": 44.990712,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 252.917846,
+   "dec_deg": -47.504599,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 275.308061,
+   "dec_deg": 31.227365,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 312.941284,
+   "dec_deg": 52.645185,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 124.730262,
+   "dec_deg": -23.864785,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 245.419699,
+   "dec_deg": -61.792013,
+   "name": "Triangulum Australe",
+   "abbr": "TrA"
+  },
+  {
+   "ra_deg": 155.995649,
+   "dec_deg": 37.926394,
+   "name": "Leo Minor",
+   "abbr": "LMi"
+  },
+  {
+   "ra_deg": 75.04288,
+   "dec_deg": -40.291346,
+   "name": "Caelum",
+   "abbr": "Cae"
+  },
+  {
+   "ra_deg": 204.030243,
+   "dec_deg": 36.65457,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 74.68436,
+   "dec_deg": -31.556159,
+   "name": "Caelum",
+   "abbr": "Cae"
+  },
+  {
+   "ra_deg": 339.441012,
+   "dec_deg": -18.915083,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 268.180175,
+   "dec_deg": 39.797319,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 184.523383,
+   "dec_deg": -45.301846,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 270.723059,
+   "dec_deg": 22.690932,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 116.476335,
+   "dec_deg": -11.331621,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 125.137622,
+   "dec_deg": -4.197825,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 173.040221,
+   "dec_deg": -27.145353,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 229.287227,
+   "dec_deg": 13.725888,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 307.768672,
+   "dec_deg": -11.740741,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 77.465478,
+   "dec_deg": 64.266966,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 131.984021,
+   "dec_deg": -2.047628,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 337.569619,
+   "dec_deg": -29.921406,
+   "name": "Pisces Austrinus",
+   "abbr": "PsA"
+  },
+  {
+   "ra_deg": 78.668328,
+   "dec_deg": 4.464791,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 113.495592,
+   "dec_deg": -47.044769,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 75.953485,
+   "dec_deg": 38.260779,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 334.11651,
+   "dec_deg": 46.556257,
+   "name": "Lacerta",
+   "abbr": "Lac"
+  },
+  {
+   "ra_deg": 189.010235,
+   "dec_deg": 30.602753,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 193.01093,
+   "dec_deg": 5.5831,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 137.687383,
+   "dec_deg": 10.929143,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 318.348503,
+   "dec_deg": -78.631767,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 207.818495,
+   "dec_deg": -15.357974,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 253.997183,
+   "dec_deg": 65.627779,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 35.703381,
+   "dec_deg": 20.871286,
+   "name": "Aries",
+   "abbr": "Ari"
+  },
+  {
+   "ra_deg": 101.701106,
+   "dec_deg": 13.616421,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 74.819144,
+   "dec_deg": -0.621167,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 329.805492,
+   "dec_deg": 48.089077,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 25.27239,
+   "dec_deg": 8.289056,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 240.745184,
+   "dec_deg": 22.492983,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 305.092456,
+   "dec_deg": -84.012994,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 235.540772,
+   "dec_deg": -22.954111,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 340.808857,
+   "dec_deg": -35.329247,
+   "name": "Pisces Austrinus",
+   "abbr": "PsA"
+  },
+  {
+   "ra_deg": 203.420592,
+   "dec_deg": -2.234947,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 194.720474,
+   "dec_deg": 40.474265,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 213.191606,
+   "dec_deg": -62.575915,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 78.288181,
+   "dec_deg": -34.41776,
+   "name": "Columba",
+   "abbr": "Col"
+  },
+  {
+   "ra_deg": 33.607975,
+   "dec_deg": -33.675376,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 9.196994,
+   "dec_deg": -84.118095,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 179.704201,
+   "dec_deg": 28.43252,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 101.597539,
+   "dec_deg": 28.323356,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 257.191034,
+   "dec_deg": -24.904632,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 155.012763,
+   "dec_deg": -69.390097,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 66.903199,
+   "dec_deg": 58.5115,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 53.4086,
+   "dec_deg": 16.371796,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 111.838626,
+   "dec_deg": 66.371451,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 341.493439,
+   "dec_deg": 17.373135,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 177.311001,
+   "dec_deg": 11.31564,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 169.035838,
+   "dec_deg": 78.489659,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 303.953128,
+   "dec_deg": -24.187133,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 308.585975,
+   "dec_deg": -39.801748,
+   "name": "Microscopium",
+   "abbr": "Mic"
+  },
+  {
+   "ra_deg": 240.27512,
+   "dec_deg": -45.166112,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 151.858755,
+   "dec_deg": -51.51163,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 344.49512,
+   "dec_deg": 67.178391,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 51.065252,
+   "dec_deg": -59.897346,
+   "name": "Reticulum",
+   "abbr": "Ret"
+  },
+  {
+   "ra_deg": 260.824402,
+   "dec_deg": 15.648321,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 237.887049,
+   "dec_deg": -7.357255,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 53.385834,
+   "dec_deg": 21.695755,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 213.138225,
+   "dec_deg": -62.132299,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 48.904205,
+   "dec_deg": -6.991971,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 106.808408,
+   "dec_deg": -17.189581,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 81.330431,
+   "dec_deg": 8.322167,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 111.195475,
+   "dec_deg": -47.579107,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 157.032938,
+   "dec_deg": -42.838179,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 165.391502,
+   "dec_deg": 17.303002,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 234.335047,
+   "dec_deg": 46.891334,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 314.85388,
+   "dec_deg": -1.867459,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 176.014522,
+   "dec_deg": -0.711373,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 326.830666,
+   "dec_deg": 45.731209,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 133.447389,
+   "dec_deg": -64.261804,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 239.39307,
+   "dec_deg": -51.299068,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 207.463987,
+   "dec_deg": -30.396439,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 349.388362,
+   "dec_deg": -6.272816,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 19.146418,
+   "dec_deg": -14.174851,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 329.109913,
+   "dec_deg": -14.938391,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 287.762906,
+   "dec_deg": -82.579165,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 139.533364,
+   "dec_deg": -26.824825,
+   "name": "Pyxis",
+   "abbr": "Pyx"
+  },
+  {
+   "ra_deg": 178.650636,
+   "dec_deg": -14.03489,
+   "name": "Crater",
+   "abbr": "Crt"
+  },
+  {
+   "ra_deg": 170.481525,
+   "dec_deg": -23.297635,
+   "name": "Crater",
+   "abbr": "Crt"
+  },
+  {
+   "ra_deg": 78.79128,
+   "dec_deg": -17.070743,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 15.061509,
+   "dec_deg": 28.834612,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 158.88409,
+   "dec_deg": -11.513358,
+   "name": "Sextans",
+   "abbr": "Sex"
+  },
+  {
+   "ra_deg": 44.829085,
+   "dec_deg": 31.988207,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 64.26736,
+   "dec_deg": -4.876464,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 100.851662,
+   "dec_deg": 11.413511,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 99.717821,
+   "dec_deg": 43.192226,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 204.844128,
+   "dec_deg": -5.856483,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 352.975795,
+   "dec_deg": 36.304293,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 8.233069,
+   "dec_deg": 9.472859,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 351.549634,
+   "dec_deg": -55.825899,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 174.578193,
+   "dec_deg": 44.379626,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 353.564555,
+   "dec_deg": -45.968832,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 347.914336,
+   "dec_deg": -15.536392,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 61.376908,
+   "dec_deg": -18.274997,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 102.522166,
+   "dec_deg": -3.228012,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 140.402632,
+   "dec_deg": 47.375315,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 202.080309,
+   "dec_deg": -64.561346,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 271.235449,
+   "dec_deg": -37.082623,
+   "name": "Corona Australis",
+   "abbr": "CrA"
+  },
+  {
+   "ra_deg": 259.138498,
+   "dec_deg": 34.800714,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 263.341337,
+   "dec_deg": 15.429457,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 329.478575,
+   "dec_deg": 43.609542,
+   "name": "Lacerta",
+   "abbr": "Lac"
+  },
+  {
+   "ra_deg": 40.056589,
+   "dec_deg": -52.923099,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 297.98787,
+   "dec_deg": 49.894661,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 301.33654,
+   "dec_deg": 31.005187,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 284.003609,
+   "dec_deg": 46.300619,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 7.164572,
+   "dec_deg": -19.322439,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 271.35571,
+   "dec_deg": -45.917906,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 236.232299,
+   "dec_deg": -44.92645,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 204.097411,
+   "dec_deg": -48.583799,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 275.037409,
+   "dec_deg": 0.943108,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 328.834609,
+   "dec_deg": -26.793862,
+   "name": "Pisces Austrinus",
+   "abbr": "PsA"
+  },
+  {
+   "ra_deg": 243.829197,
+   "dec_deg": -55.143666,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 184.274771,
+   "dec_deg": -9.875128,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 169.629331,
+   "dec_deg": 49.936316,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 171.34231,
+   "dec_deg": 53.290399,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 227.766916,
+   "dec_deg": -28.955507,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 225.933095,
+   "dec_deg": -1.404224,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 268.650211,
+   "dec_deg": 23.302646,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 118.301102,
+   "dec_deg": 81.506804,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 119.94764,
+   "dec_deg": -1.173157,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 161.285061,
+   "dec_deg": -12.247073,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 271.184532,
+   "dec_deg": 22.976597,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 250.096992,
+   "dec_deg": 49.376123,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 31.459939,
+   "dec_deg": -40.232395,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 250.766532,
+   "dec_deg": 1.387252,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 261.819162,
+   "dec_deg": -77.552601,
+   "name": "Apus",
+   "abbr": "Aps"
+  },
+  {
+   "ra_deg": 271.642144,
+   "dec_deg": 5.097936,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 19.298072,
+   "dec_deg": 22.310367,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 329.237377,
+   "dec_deg": -23.739572,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 250.914011,
+   "dec_deg": 63.046137,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 223.219103,
+   "dec_deg": -24.062954,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 13.44154,
+   "dec_deg": 40.467491,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 240.798024,
+   "dec_deg": -46.711689,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 322.06563,
+   "dec_deg": 8.370743,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 196.406609,
+   "dec_deg": 30.49555,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 103.495351,
+   "dec_deg": 61.378268,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 178.940771,
+   "dec_deg": 81.397455,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 355.181918,
+   "dec_deg": -6.369003,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 72.469743,
+   "dec_deg": -54.654888,
+   "name": "Dorado",
+   "abbr": "Dor"
+  },
+  {
+   "ra_deg": 97.64687,
+   "dec_deg": 55.191653,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 9.512867,
+   "dec_deg": -50.062616,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 262.932074,
+   "dec_deg": -4.073808,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 93.843126,
+   "dec_deg": -1.223356,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 331.411547,
+   "dec_deg": -56.220603,
+   "name": "Indus",
+   "abbr": "Ind"
+  },
+  {
+   "ra_deg": 173.770433,
+   "dec_deg": 57.779906,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 199.768185,
+   "dec_deg": -5.533418,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 37.063468,
+   "dec_deg": -33.628695,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 164.028084,
+   "dec_deg": 4.300292,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 261.798585,
+   "dec_deg": -44.850321,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 72.201539,
+   "dec_deg": -48.199961,
+   "name": "Pictor",
+   "abbr": "Pic"
+  },
+  {
+   "ra_deg": 286.26776,
+   "dec_deg": 36.845193,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 22.669951,
+   "dec_deg": 22.230363,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 62.145431,
+   "dec_deg": 0.383941,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 287.414519,
+   "dec_deg": -53.663895,
+   "name": "Telescopium",
+   "abbr": "Tel"
+  },
+  {
+   "ra_deg": 215.065121,
+   "dec_deg": 17.208033,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 200.743057,
+   "dec_deg": -47.495159,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 199.892591,
+   "dec_deg": -64.596018,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 122.805277,
+   "dec_deg": 26.373175,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 274.675853,
+   "dec_deg": 3.516856,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 308.542085,
+   "dec_deg": -33.021746,
+   "name": "Microscopium",
+   "abbr": "Mic"
+  },
+  {
+   "ra_deg": 228.584544,
+   "dec_deg": 50.081524,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 199.322837,
+   "dec_deg": -5.04451,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 85.459714,
+   "dec_deg": -11.285966,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 19.824504,
+   "dec_deg": -38.303707,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 15.5002,
+   "dec_deg": -14.247862,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 303.697419,
+   "dec_deg": -8.973497,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 331.892807,
+   "dec_deg": 41.1821,
+   "name": "Lacerta",
+   "abbr": "Lac"
+  },
+  {
+   "ra_deg": 330.664113,
+   "dec_deg": 32.635886,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 254.238033,
+   "dec_deg": -52.121104,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 179.043508,
+   "dec_deg": 13.400161,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 108.676639,
+   "dec_deg": -72.933675,
+   "name": "Volans",
+   "abbr": "Vol"
+  },
+  {
+   "ra_deg": 86.370024,
+   "dec_deg": 25.433737,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 258.170372,
+   "dec_deg": 11.682705,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 26.138969,
+   "dec_deg": 16.221703,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 227.378701,
+   "dec_deg": -41.339424,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 43.169398,
+   "dec_deg": 1.265798,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 285.86875,
+   "dec_deg": 1.115989,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 324.642022,
+   "dec_deg": -77.093127,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 198.830466,
+   "dec_deg": 50.116015,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 298.709673,
+   "dec_deg": -52.816875,
+   "name": "Telescopium",
+   "abbr": "Tel"
+  },
+  {
+   "ra_deg": 184.653953,
+   "dec_deg": 66.178641,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 238.094555,
+   "dec_deg": -6.883514,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 75.852369,
+   "dec_deg": 61.32988,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 117.293042,
+   "dec_deg": 49.13039,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 195.725708,
+   "dec_deg": 66.269915,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 249.976278,
+   "dec_deg": -22.698024,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 348.926284,
+   "dec_deg": 42.41944,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 337.169177,
+   "dec_deg": -48.342278,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 22.003744,
+   "dec_deg": 15.461049,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 90.083649,
+   "dec_deg": -2.25113,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 107.10236,
+   "dec_deg": -58.654158,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 345.233097,
+   "dec_deg": 55.143001,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 0.161636,
+   "dec_deg": 42.197837,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 322.891696,
+   "dec_deg": -44.64149,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 182.543202,
+   "dec_deg": 21.699305,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 239.731286,
+   "dec_deg": 5.981586,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 288.813534,
+   "dec_deg": -66.596219,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 174.476879,
+   "dec_deg": 56.275414,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 351.873521,
+   "dec_deg": 24.033432,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 119.322393,
+   "dec_deg": -63.557847,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 110.435518,
+   "dec_deg": -20.432674,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 210.708498,
+   "dec_deg": -14.17737,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 35.139106,
+   "dec_deg": -11.768763,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 225.436456,
+   "dec_deg": 52.165002,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 171.980603,
+   "dec_deg": -21.325078,
+   "name": "Crater",
+   "abbr": "Crt"
+  },
+  {
+   "ra_deg": 127.206282,
+   "dec_deg": -21.812598,
+   "name": "Pyxis",
+   "abbr": "Pyx"
+  },
+  {
+   "ra_deg": 198.47176,
+   "dec_deg": -15.45356,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 163.092991,
+   "dec_deg": -48.306092,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 82.517007,
+   "dec_deg": 28.975461,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 185.086978,
+   "dec_deg": 30.35823,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 119.024442,
+   "dec_deg": 14.728042,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 184.107543,
+   "dec_deg": 68.307457,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 294.113483,
+   "dec_deg": 22.353707,
+   "name": "Vulpecula",
+   "abbr": "Vul"
+  },
+  {
+   "ra_deg": 357.546523,
+   "dec_deg": -62.319972,
+   "name": "Tucana",
+   "abbr": "Tuc"
+  },
+  {
+   "ra_deg": 357.607191,
+   "dec_deg": 2.449053,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 333.878151,
+   "dec_deg": 75.934695,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 332.672226,
+   "dec_deg": 4.748543,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 121.171122,
+   "dec_deg": 73.436795,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 211.773761,
+   "dec_deg": -38.859644,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 322.319887,
+   "dec_deg": -17.217433,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 253.465776,
+   "dec_deg": -76.769447,
+   "name": "Apus",
+   "abbr": "Aps"
+  },
+  {
+   "ra_deg": 333.852915,
+   "dec_deg": -32.527155,
+   "name": "Pisces Austrinus",
+   "abbr": "PsA"
+  },
+  {
+   "ra_deg": 167.023645,
+   "dec_deg": -54.58353,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 39.834137,
+   "dec_deg": 83.938717,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 212.975166,
+   "dec_deg": 28.454243,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 199.708715,
+   "dec_deg": 32.761364,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 203.538539,
+   "dec_deg": -44.866953,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 153.455699,
+   "dec_deg": -54.608151,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 4.263074,
+   "dec_deg": -1.518937,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 134.890017,
+   "dec_deg": 1.179691,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 115.37978,
+   "dec_deg": -26.99361,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 86.976748,
+   "dec_deg": -13.566301,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 86.310927,
+   "dec_deg": -64.135791,
+   "name": "Dorado",
+   "abbr": "Dor"
+  },
+  {
+   "ra_deg": 200.600084,
+   "dec_deg": 25.55251,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 100.04022,
+   "dec_deg": -28.374476,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 184.327244,
+   "dec_deg": 12.303072,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 69.332714,
+   "dec_deg": 70.776412,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 245.180502,
+   "dec_deg": -57.893622,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 60.914848,
+   "dec_deg": -5.12428,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 50.385278,
+   "dec_deg": 52.498272,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 238.572541,
+   "dec_deg": -65.41992,
+   "name": "Triangulum Australe",
+   "abbr": "TrA"
+  },
+  {
+   "ra_deg": 45.868076,
+   "dec_deg": 41.113888,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 33.869649,
+   "dec_deg": -1.793997,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 102.887335,
+   "dec_deg": 48.833257,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 61.089622,
+   "dec_deg": 3.883729,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 261.545285,
+   "dec_deg": -34.468449,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 157.755938,
+   "dec_deg": 20.968886,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 340.895322,
+   "dec_deg": -41.885825,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 78.830412,
+   "dec_deg": 38.303253,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 337.779458,
+   "dec_deg": 85.145946,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 5.781246,
+   "dec_deg": 56.47578,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 217.453585,
+   "dec_deg": 44.33503,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 225.938136,
+   "dec_deg": 25.954552,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 324.672293,
+   "dec_deg": -17.479624,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 131.803756,
+   "dec_deg": 32.575284,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 326.911826,
+   "dec_deg": -27.254275,
+   "name": "Pisces Austrinus",
+   "abbr": "PsA"
+  },
+  {
+   "ra_deg": 188.931432,
+   "dec_deg": 19.861425,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 255.978085,
+   "dec_deg": -14.628348,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 261.097561,
+   "dec_deg": -2.223757,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 53.074279,
+   "dec_deg": 66.187019,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 6.306525,
+   "dec_deg": 53.19449,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 55.770425,
+   "dec_deg": -32.36474,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 243.557068,
+   "dec_deg": 28.883009,
+   "name": "Corona Borealis",
+   "abbr": "CrB"
+  },
+  {
+   "ra_deg": 231.188955,
+   "dec_deg": 51.147175,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 52.403055,
+   "dec_deg": -8.715387,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 205.354637,
+   "dec_deg": -34.299297,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 322.399612,
+   "dec_deg": 2.108905,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 167.574338,
+   "dec_deg": -1.586541,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 294.014525,
+   "dec_deg": 33.771686,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 74.610206,
+   "dec_deg": -22.700571,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 262.07973,
+   "dec_deg": -48.527889,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 351.183972,
+   "dec_deg": 51.019698,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 293.853553,
+   "dec_deg": -14.087663,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 330.412495,
+   "dec_deg": -38.050134,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 162.389882,
+   "dec_deg": 15.122587,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 25.452564,
+   "dec_deg": 19.660163,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 298.715507,
+   "dec_deg": 15.817403,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 16.12073,
+   "dec_deg": -34.757234,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 85.405359,
+   "dec_deg": 17.141455,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 148.602782,
+   "dec_deg": 37.985451,
+   "name": "Leo Minor",
+   "abbr": "LMi"
+  },
+  {
+   "ra_deg": 236.911659,
+   "dec_deg": -14.091602,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 348.291072,
+   "dec_deg": -13.391841,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 60.668526,
+   "dec_deg": -41.118073,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 39.494752,
+   "dec_deg": 8.5757,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 6.646735,
+   "dec_deg": -9.079197,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 225.372193,
+   "dec_deg": -21.905881,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 153.653495,
+   "dec_deg": 45.492888,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 286.553565,
+   "dec_deg": 0.875829,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 84.53489,
+   "dec_deg": -17.661032,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 119.059237,
+   "dec_deg": 17.95232,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 107.604379,
+   "dec_deg": -72.127688,
+   "name": "Volans",
+   "abbr": "Vol"
+  },
+  {
+   "ra_deg": 113.042588,
+   "dec_deg": -12.369452,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 320.810519,
+   "dec_deg": -28.464219,
+   "name": "Microscopium",
+   "abbr": "Mic"
+  },
+  {
+   "ra_deg": 319.27748,
+   "dec_deg": -21.483559,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 306.308119,
+   "dec_deg": 58.22704,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 297.60004,
+   "dec_deg": -67.021275,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 92.950449,
+   "dec_deg": -34.789336,
+   "name": "Columba",
+   "abbr": "Col"
+  },
+  {
+   "ra_deg": 343.651297,
+   "dec_deg": 30.375961,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 279.42373,
+   "dec_deg": -34.345102,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 141.60809,
+   "dec_deg": -17.684289,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 210.432423,
+   "dec_deg": 34.829385,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 160.521125,
+   "dec_deg": 19.48731,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 305.690915,
+   "dec_deg": 41.799545,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 4.298623,
+   "dec_deg": -3.448799,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 5.095774,
+   "dec_deg": -7.922631,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 333.003635,
+   "dec_deg": 83.878196,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 53.110303,
+   "dec_deg": 33.686089,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 154.259297,
+   "dec_deg": 50.07646,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 145.228768,
+   "dec_deg": 13.970891,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 244.415206,
+   "dec_deg": -39.806195,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 188.539914,
+   "dec_deg": 46.454434,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 260.604019,
+   "dec_deg": -0.66153,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 197.116036,
+   "dec_deg": -56.776515,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 294.756394,
+   "dec_deg": -3.078817,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 133.037531,
+   "dec_deg": -24.83631,
+   "name": "Pyxis",
+   "abbr": "Pyx"
+  },
+  {
+   "ra_deg": 191.401083,
+   "dec_deg": -19.341457,
+   "name": "Corvus",
+   "abbr": "Crv"
+  },
+  {
+   "ra_deg": 233.862072,
+   "dec_deg": 63.775151,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 165.197781,
+   "dec_deg": 22.037616,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 126.873804,
+   "dec_deg": -16.310846,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 230.980653,
+   "dec_deg": -12.436074,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 259.013409,
+   "dec_deg": 15.021819,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 71.458047,
+   "dec_deg": -61.150484,
+   "name": "Dorado",
+   "abbr": "Dor"
+  },
+  {
+   "ra_deg": 302.682902,
+   "dec_deg": -47.830339,
+   "name": "Telescopium",
+   "abbr": "Tel"
+  },
+  {
+   "ra_deg": 322.328181,
+   "dec_deg": -8.344922,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 321.658375,
+   "dec_deg": -39.220567,
+   "name": "Microscopium",
+   "abbr": "Mic"
+  },
+  {
+   "ra_deg": 289.921907,
+   "dec_deg": -38.753057,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 322.834812,
+   "dec_deg": -12.440702,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 278.149752,
+   "dec_deg": 60.817851,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 346.019908,
+   "dec_deg": 34.262141,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 243.244139,
+   "dec_deg": -8.841142,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 293.144529,
+   "dec_deg": -33.737208,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 233.869512,
+   "dec_deg": 19.46769,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 197.951727,
+   "dec_deg": 38.751095,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 246.767804,
+   "dec_deg": 10.486484,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 44.531478,
+   "dec_deg": 28.452466,
+   "name": "Aries",
+   "abbr": "Ari"
+  },
+  {
+   "ra_deg": 355.36941,
+   "dec_deg": -43.320842,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 155.923596,
+   "dec_deg": -34.24489,
+   "name": "Antlia",
+   "abbr": "Ant"
+  },
+  {
+   "ra_deg": 53.118784,
+   "dec_deg": 60.76968,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 334.880263,
+   "dec_deg": -14.997531,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 6.990775,
+   "dec_deg": -41.739109,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 85.139409,
+   "dec_deg": -3.092469,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 59.324514,
+   "dec_deg": -6.966626,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 320.377955,
+   "dec_deg": 40.551553,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 204.663736,
+   "dec_deg": 11.883129,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 359.395734,
+   "dec_deg": -7.997368,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 259.012662,
+   "dec_deg": 4.091264,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 105.287273,
+   "dec_deg": 31.743665,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 262.870557,
+   "dec_deg": -22.541095,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 248.503835,
+   "dec_deg": -24.928662,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 324.858983,
+   "dec_deg": -30.873569,
+   "name": "Pisces Austrinus",
+   "abbr": "PsA"
+  },
+  {
+   "ra_deg": 137.183615,
+   "dec_deg": 10.353935,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 21.485574,
+   "dec_deg": 63.246463,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 80.274667,
+   "dec_deg": 55.945597,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 24.691803,
+   "dec_deg": -27.238645,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 172.16135,
+   "dec_deg": 48.255464,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 280.567768,
+   "dec_deg": 30.263273,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 309.782528,
+   "dec_deg": -73.752001,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 334.800269,
+   "dec_deg": 20.241278,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 313.913759,
+   "dec_deg": -14.47917,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 34.392947,
+   "dec_deg": -9.993764,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 284.470384,
+   "dec_deg": -13.570663,
+   "name": "Scutum",
+   "abbr": "Sct"
+  },
+  {
+   "ra_deg": 223.356637,
+   "dec_deg": 34.752552,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 148.336032,
+   "dec_deg": 41.017136,
+   "name": "Leo Minor",
+   "abbr": "LMi"
+  },
+  {
+   "ra_deg": 311.927469,
+   "dec_deg": 55.970922,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 195.095304,
+   "dec_deg": -58.22183,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 5.893003,
+   "dec_deg": -1.237632,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 121.483901,
+   "dec_deg": 3.313271,
+   "name": "Canis Minor",
+   "abbr": "CMi"
+  },
+  {
+   "ra_deg": 62.379778,
+   "dec_deg": -43.589691,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 109.58253,
+   "dec_deg": -24.094819,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 123.444056,
+   "dec_deg": 20.362857,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 295.117887,
+   "dec_deg": -4.103259,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 164.349547,
+   "dec_deg": -72.135752,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 306.426342,
+   "dec_deg": -35.230963,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 238.5703,
+   "dec_deg": -9.283836,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 276.212771,
+   "dec_deg": 36.091777,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 35.819361,
+   "dec_deg": -18.670278,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 141.538027,
+   "dec_deg": 22.250539,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 150.446832,
+   "dec_deg": -52.745771,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 336.355139,
+   "dec_deg": -24.753505,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 258.465886,
+   "dec_deg": -32.877266,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 293.530144,
+   "dec_deg": 64.835761,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 86.619048,
+   "dec_deg": -88.374417,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 295.688004,
+   "dec_deg": 35.633521,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 203.068549,
+   "dec_deg": 36.355823,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 177.260591,
+   "dec_deg": -42.944361,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 202.72385,
+   "dec_deg": -69.49603,
+   "name": "Musca",
+   "abbr": "Mus"
+  },
+  {
+   "ra_deg": 143.779693,
+   "dec_deg": -26.111964,
+   "name": "Antlia",
+   "abbr": "Ant"
+  },
+  {
+   "ra_deg": 71.882507,
+   "dec_deg": -10.556002,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 209.136342,
+   "dec_deg": -8.030072,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 238.54539,
+   "dec_deg": -6.289889,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 78.666435,
+   "dec_deg": 8.251947,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 255.739031,
+   "dec_deg": -16.477557,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 273.711508,
+   "dec_deg": -24.460558,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 187.942217,
+   "dec_deg": -34.24309,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 272.916948,
+   "dec_deg": -25.435397,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 193.473306,
+   "dec_deg": 63.806633,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 346.942376,
+   "dec_deg": -50.781699,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 183.440825,
+   "dec_deg": -54.106369,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 199.85122,
+   "dec_deg": 59.248975,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 165.538672,
+   "dec_deg": 52.593177,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 158.410706,
+   "dec_deg": 45.544108,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 16.087311,
+   "dec_deg": -7.376782,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 186.488156,
+   "dec_deg": -11.039234,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 349.940535,
+   "dec_deg": 47.451517,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 91.928699,
+   "dec_deg": 10.126321,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 304.079044,
+   "dec_deg": 68.450343,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 177.565095,
+   "dec_deg": 24.334486,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 193.520192,
+   "dec_deg": -21.033851,
+   "name": "Corvus",
+   "abbr": "Crv"
+  },
+  {
+   "ra_deg": 346.695542,
+   "dec_deg": 48.006685,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 33.354031,
+   "dec_deg": 62.909613,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 130.492034,
+   "dec_deg": -2.229234,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 322.016395,
+   "dec_deg": -8.30618,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 155.222659,
+   "dec_deg": -41.01575,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 168.476224,
+   "dec_deg": 58.613923,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 310.296898,
+   "dec_deg": 0.01421,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 329.467224,
+   "dec_deg": 11.252687,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 291.035312,
+   "dec_deg": 14.229293,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 105.67839,
+   "dec_deg": -3.745311,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 230.91658,
+   "dec_deg": -30.744729,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 252.044488,
+   "dec_deg": 11.581171,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 74.89906,
+   "dec_deg": 62.450463,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 186.052101,
+   "dec_deg": 50.657118,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 109.232035,
+   "dec_deg": -83.350587,
+   "name": "Mensa",
+   "abbr": "Men"
+  },
+  {
+   "ra_deg": 310.672067,
+   "dec_deg": 6.96036,
+   "name": "Delphinus",
+   "abbr": "Del"
+  },
+  {
+   "ra_deg": 273.316094,
+   "dec_deg": -49.540987,
+   "name": "Telescopium",
+   "abbr": "Tel"
+  },
+  {
+   "ra_deg": 245.085154,
+   "dec_deg": 6.585729,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 12.578654,
+   "dec_deg": 63.014932,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 179.06377,
+   "dec_deg": -62.121184,
+   "name": "Crux",
+   "abbr": "Cru"
+  },
+  {
+   "ra_deg": 270.638986,
+   "dec_deg": -12.843766,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 36.055051,
+   "dec_deg": -18.196295,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 76.534945,
+   "dec_deg": -78.875411,
+   "name": "Mensa",
+   "abbr": "Men"
+  },
+  {
+   "ra_deg": 12.559885,
+   "dec_deg": 39.102543,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 158.728474,
+   "dec_deg": 26.168109,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 24.803108,
+   "dec_deg": 41.676642,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 1.698222,
+   "dec_deg": 34.235003,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 289.079795,
+   "dec_deg": -72.764526,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 92.161767,
+   "dec_deg": -4.387782,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 12.568765,
+   "dec_deg": 48.561073,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 44.339301,
+   "dec_deg": -63.119066,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 79.220902,
+   "dec_deg": -30.652109,
+   "name": "Columba",
+   "abbr": "Col"
+  },
+  {
+   "ra_deg": 239.992231,
+   "dec_deg": 41.878969,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 56.041392,
+   "dec_deg": -53.944774,
+   "name": "Reticulum",
+   "abbr": "Ret"
+  },
+  {
+   "ra_deg": 41.199106,
+   "dec_deg": -44.628019,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 260.591905,
+   "dec_deg": 34.362662,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 7.024061,
+   "dec_deg": 51.842892,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 95.974233,
+   "dec_deg": 27.573428,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 50.383683,
+   "dec_deg": -51.394609,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 184.140222,
+   "dec_deg": -9.319104,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 329.27718,
+   "dec_deg": -50.497131,
+   "name": "Indus",
+   "abbr": "Ind"
+  },
+  {
+   "ra_deg": 233.986478,
+   "dec_deg": -81.588134,
+   "name": "Apus",
+   "abbr": "Aps"
+  },
+  {
+   "ra_deg": 86.590094,
+   "dec_deg": -51.486008,
+   "name": "Pictor",
+   "abbr": "Pic"
+  },
+  {
+   "ra_deg": 209.707822,
+   "dec_deg": 73.645313,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 340.497708,
+   "dec_deg": 33.825564,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 300.003543,
+   "dec_deg": -0.863748,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 228.119405,
+   "dec_deg": 6.896796,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 0.11035,
+   "dec_deg": -83.990848,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 172.200204,
+   "dec_deg": 47.168084,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 204.984308,
+   "dec_deg": 21.91702,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 189.605886,
+   "dec_deg": -19.976858,
+   "name": "Corvus",
+   "abbr": "Crv"
+  },
+  {
+   "ra_deg": 337.396435,
+   "dec_deg": -70.825023,
+   "name": "Indus",
+   "abbr": "Ind"
+  },
+  {
+   "ra_deg": 296.927662,
+   "dec_deg": -24.389774,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 90.117526,
+   "dec_deg": -10.6159,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 11.917346,
+   "dec_deg": -15.996462,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 240.856802,
+   "dec_deg": 17.313628,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 109.344623,
+   "dec_deg": 33.438959,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 298.748035,
+   "dec_deg": -48.073367,
+   "name": "Telescopium",
+   "abbr": "Tel"
+  },
+  {
+   "ra_deg": 344.872349,
+   "dec_deg": -11.486276,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 229.586486,
+   "dec_deg": -59.871613,
+   "name": "Circinus",
+   "abbr": "Cir"
+  },
+  {
+   "ra_deg": 309.417644,
+   "dec_deg": -35.91957,
+   "name": "Microscopium",
+   "abbr": "Mic"
+  },
+  {
+   "ra_deg": 41.79636,
+   "dec_deg": 44.787237,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 53.832778,
+   "dec_deg": -7.918197,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 21.920308,
+   "dec_deg": 44.006347,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 266.015285,
+   "dec_deg": 20.787393,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 78.053161,
+   "dec_deg": -13.943835,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 326.797583,
+   "dec_deg": 22.742998,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 340.797775,
+   "dec_deg": -15.728354,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 232.849249,
+   "dec_deg": 5.251869,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 74.135553,
+   "dec_deg": -45.388756,
+   "name": "Pictor",
+   "abbr": "Pic"
+  },
+  {
+   "ra_deg": 203.691407,
+   "dec_deg": -61.175813,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 56.297985,
+   "dec_deg": 27.795787,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 168.115298,
+   "dec_deg": -76.43123,
+   "name": "Chamaleon",
+   "abbr": "Cha"
+  },
+  {
+   "ra_deg": 92.188747,
+   "dec_deg": 9.982472,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 72.862639,
+   "dec_deg": -56.560754,
+   "name": "Dorado",
+   "abbr": "Dor"
+  },
+  {
+   "ra_deg": 258.588589,
+   "dec_deg": 27.020867,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 241.018698,
+   "dec_deg": 52.026838,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 61.689275,
+   "dec_deg": -5.15166,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 149.083903,
+   "dec_deg": 42.991362,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 155.867032,
+   "dec_deg": -17.638967,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 132.436962,
+   "dec_deg": -50.696307,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 36.564189,
+   "dec_deg": 53.674523,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 321.444849,
+   "dec_deg": 1.792925,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 75.001644,
+   "dec_deg": -0.287149,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 321.2528,
+   "dec_deg": 53.638552,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 162.479448,
+   "dec_deg": 14.765468,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 190.088616,
+   "dec_deg": -0.344224,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 83.213457,
+   "dec_deg": 32.323733,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 283.236071,
+   "dec_deg": -53.570383,
+   "name": "Telescopium",
+   "abbr": "Tel"
+  },
+  {
+   "ra_deg": 159.511066,
+   "dec_deg": -43.774564,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 33.58831,
+   "dec_deg": 12.015381,
+   "name": "Aries",
+   "abbr": "Ari"
+  },
+  {
+   "ra_deg": 80.508286,
+   "dec_deg": -46.616174,
+   "name": "Pictor",
+   "abbr": "Pic"
+  },
+  {
+   "ra_deg": 227.3876,
+   "dec_deg": 19.163989,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 104.030672,
+   "dec_deg": 63.114196,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 294.26966,
+   "dec_deg": -6.659279,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 249.833145,
+   "dec_deg": -31.868299,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 3.440336,
+   "dec_deg": 3.242601,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 11.004338,
+   "dec_deg": 37.761438,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 234.624274,
+   "dec_deg": -3.128341,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 195.37978,
+   "dec_deg": -24.759939,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 169.394917,
+   "dec_deg": 42.540921,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 264.559918,
+   "dec_deg": -36.517322,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 68.896198,
+   "dec_deg": -33.685324,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 322.274678,
+   "dec_deg": -24.48731,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 267.913372,
+   "dec_deg": -15.006307,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 181.067179,
+   "dec_deg": -38.889381,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 347.0553,
+   "dec_deg": -9.083774,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 124.184919,
+   "dec_deg": -53.90054,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 270.268745,
+   "dec_deg": 0.617852,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 331.211878,
+   "dec_deg": 26.99362,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 264.504478,
+   "dec_deg": 12.689811,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 179.523105,
+   "dec_deg": -45.206155,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 109.236622,
+   "dec_deg": 31.57812,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 180.916451,
+   "dec_deg": -43.532928,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 347.369634,
+   "dec_deg": -51.288957,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 46.788962,
+   "dec_deg": 7.227304,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 328.493632,
+   "dec_deg": -55.110196,
+   "name": "Indus",
+   "abbr": "Ind"
+  },
+  {
+   "ra_deg": 145.998672,
+   "dec_deg": -38.381698,
+   "name": "Antlia",
+   "abbr": "Ant"
+  },
+  {
+   "ra_deg": 155.637097,
+   "dec_deg": 89.023745,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 277.400762,
+   "dec_deg": -44.515137,
+   "name": "Corona Australis",
+   "abbr": "CrA"
+  },
+  {
+   "ra_deg": 326.181856,
+   "dec_deg": 55.37518,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 159.255836,
+   "dec_deg": 46.062934,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 18.317273,
+   "dec_deg": 53.763753,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 345.851483,
+   "dec_deg": 16.991037,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 301.15994,
+   "dec_deg": -9.296916,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 295.302813,
+   "dec_deg": -4.060267,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 249.859679,
+   "dec_deg": 56.918514,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 162.105134,
+   "dec_deg": 0.362966,
+   "name": "Sextans",
+   "abbr": "Sex"
+  },
+  {
+   "ra_deg": 37.760003,
+   "dec_deg": 47.423115,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 61.316044,
+   "dec_deg": 17.252734,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 0.201238,
+   "dec_deg": -51.768636,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 126.909199,
+   "dec_deg": 8.589079,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 293.896019,
+   "dec_deg": -25.067914,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 337.701119,
+   "dec_deg": -21.027013,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 170.027772,
+   "dec_deg": -7.875919,
+   "name": "Crater",
+   "abbr": "Crt"
+  },
+  {
+   "ra_deg": 145.527616,
+   "dec_deg": -55.404713,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 108.568874,
+   "dec_deg": -25.527083,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 223.478568,
+   "dec_deg": -4.182058,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 170.505506,
+   "dec_deg": 71.154113,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 112.296856,
+   "dec_deg": -0.099876,
+   "name": "Canis Minor",
+   "abbr": "CMi"
+  },
+  {
+   "ra_deg": 350.972622,
+   "dec_deg": -31.538134,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 225.879283,
+   "dec_deg": -8.243248,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 11.442055,
+   "dec_deg": 0.967423,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 239.603238,
+   "dec_deg": -47.418714,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 186.818525,
+   "dec_deg": -3.523493,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 59.207631,
+   "dec_deg": 24.401924,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 58.533995,
+   "dec_deg": -40.596376,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 40.105714,
+   "dec_deg": 82.243356,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 103.862309,
+   "dec_deg": -50.937656,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 175.338456,
+   "dec_deg": 11.854746,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 31.718069,
+   "dec_deg": 4.151524,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 193.270252,
+   "dec_deg": -30.436571,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 65.048532,
+   "dec_deg": 47.39608,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 259.662518,
+   "dec_deg": 54.900237,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 109.091861,
+   "dec_deg": 6.140861,
+   "name": "Canis Minor",
+   "abbr": "CMi"
+  },
+  {
+   "ra_deg": 23.162104,
+   "dec_deg": 7.381624,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 284.018983,
+   "dec_deg": -4.49309,
+   "name": "Scutum",
+   "abbr": "Sct"
+  },
+  {
+   "ra_deg": 75.692456,
+   "dec_deg": 60.531486,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 38.168059,
+   "dec_deg": -6.379822,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 167.779802,
+   "dec_deg": -57.538929,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 63.572061,
+   "dec_deg": -39.153596,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 98.137675,
+   "dec_deg": -2.892894,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 38.54697,
+   "dec_deg": 71.970993,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 29.677565,
+   "dec_deg": 66.889416,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 196.925172,
+   "dec_deg": 1.380108,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 196.276719,
+   "dec_deg": 9.207421,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 163.377058,
+   "dec_deg": -39.369713,
+   "name": "Antlia",
+   "abbr": "Ant"
+  },
+  {
+   "ra_deg": 300.002134,
+   "dec_deg": -82.596791,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 24.485911,
+   "dec_deg": -47.865497,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 234.69783,
+   "dec_deg": -15.633358,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 192.697479,
+   "dec_deg": -13.587705,
+   "name": "Corvus",
+   "abbr": "Crv"
+  },
+  {
+   "ra_deg": 87.743817,
+   "dec_deg": -54.297702,
+   "name": "Pictor",
+   "abbr": "Pic"
+  },
+  {
+   "ra_deg": 12.89444,
+   "dec_deg": -33.724405,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 126.745816,
+   "dec_deg": -36.977563,
+   "name": "Pyxis",
+   "abbr": "Pyx"
+  },
+  {
+   "ra_deg": 328.863067,
+   "dec_deg": 61.20825,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 199.558604,
+   "dec_deg": -6.079181,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 78.585561,
+   "dec_deg": 2.226363,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 242.846231,
+   "dec_deg": -1.791249,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 104.756047,
+   "dec_deg": -43.008295,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 213.50281,
+   "dec_deg": 48.449312,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 23.657762,
+   "dec_deg": 34.751066,
+   "name": "Triangulum",
+   "abbr": "Tri"
+  },
+  {
+   "ra_deg": 317.206103,
+   "dec_deg": 70.214037,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 274.765285,
+   "dec_deg": 73.022202,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 82.071441,
+   "dec_deg": 7.291046,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 207.891633,
+   "dec_deg": -2.129071,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 304.960218,
+   "dec_deg": 71.685909,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 173.779396,
+   "dec_deg": 43.362669,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 39.418494,
+   "dec_deg": 69.334113,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 257.654957,
+   "dec_deg": -44.489424,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 57.607306,
+   "dec_deg": 19.66591,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 43.063104,
+   "dec_deg": -46.075003,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 323.692773,
+   "dec_deg": -18.279148,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 115.832936,
+   "dec_deg": 38.540732,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 150.382939,
+   "dec_deg": 50.701645,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 200.295679,
+   "dec_deg": 25.855084,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 317.103137,
+   "dec_deg": 34.588762,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 252.054103,
+   "dec_deg": 3.516885,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 347.313351,
+   "dec_deg": 57.908171,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 2.960739,
+   "dec_deg": 49.788677,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 202.109931,
+   "dec_deg": -9.201401,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 13.10052,
+   "dec_deg": -55.65866,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 208.97722,
+   "dec_deg": 0.59379,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 336.101034,
+   "dec_deg": -16.352657,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 140.485693,
+   "dec_deg": -1.616041,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 91.969841,
+   "dec_deg": -13.74947,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 288.093236,
+   "dec_deg": -22.437415,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 196.560343,
+   "dec_deg": 84.876636,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 60.489438,
+   "dec_deg": -44.270086,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 340.909157,
+   "dec_deg": 6.678413,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 13.249698,
+   "dec_deg": -75.337818,
+   "name": "Hydrus",
+   "abbr": "Hyi"
+  },
+  {
+   "ra_deg": 211.214406,
+   "dec_deg": 42.902978,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 357.261336,
+   "dec_deg": -45.295653,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 309.724025,
+   "dec_deg": -21.793897,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 112.114913,
+   "dec_deg": 24.990633,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 273.66445,
+   "dec_deg": -2.433126,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 34.346161,
+   "dec_deg": 35.882292,
+   "name": "Triangulum",
+   "abbr": "Tri"
+  },
+  {
+   "ra_deg": 73.16874,
+   "dec_deg": 18.414137,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 0.405374,
+   "dec_deg": 68.323003,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 239.666319,
+   "dec_deg": -42.262746,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 136.238033,
+   "dec_deg": -53.569004,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 70.33354,
+   "dec_deg": 18.932132,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 313.456342,
+   "dec_deg": -42.908474,
+   "name": "Microscopium",
+   "abbr": "Mic"
+  },
+  {
+   "ra_deg": 249.533847,
+   "dec_deg": -26.243079,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 31.396529,
+   "dec_deg": -44.599313,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 81.209584,
+   "dec_deg": -9.808272,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 95.574613,
+   "dec_deg": 27.606745,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 265.43993,
+   "dec_deg": -60.100904,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 269.341253,
+   "dec_deg": -53.52273,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 53.96162,
+   "dec_deg": -58.094998,
+   "name": "Reticulum",
+   "abbr": "Ret"
+  },
+  {
+   "ra_deg": 52.265837,
+   "dec_deg": 66.087378,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 312.385042,
+   "dec_deg": -19.288191,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 346.678308,
+   "dec_deg": 3.772821,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 322.577306,
+   "dec_deg": 67.111211,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 359.42962,
+   "dec_deg": 37.213604,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 270.92339,
+   "dec_deg": -55.2337,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 117.294266,
+   "dec_deg": 16.067621,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 38.39507,
+   "dec_deg": -54.464992,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 239.413993,
+   "dec_deg": -46.141709,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 18.0856,
+   "dec_deg": -83.235593,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 50.774812,
+   "dec_deg": 23.760999,
+   "name": "Aries",
+   "abbr": "Ari"
+  },
+  {
+   "ra_deg": 236.470451,
+   "dec_deg": -6.833009,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 279.941822,
+   "dec_deg": -59.165958,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 320.89611,
+   "dec_deg": -15.785326,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 24.177161,
+   "dec_deg": -28.653184,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 283.03316,
+   "dec_deg": -9.31656,
+   "name": "Scutum",
+   "abbr": "Sct"
+  },
+  {
+   "ra_deg": 146.382504,
+   "dec_deg": -14.47063,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 131.923615,
+   "dec_deg": 12.978827,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 59.164857,
+   "dec_deg": -1.465176,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 267.148069,
+   "dec_deg": 63.093638,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 8.320259,
+   "dec_deg": -64.433326,
+   "name": "Tucana",
+   "abbr": "Tuc"
+  },
+  {
+   "ra_deg": 115.430143,
+   "dec_deg": -24.143483,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 288.102632,
+   "dec_deg": 18.987756,
+   "name": "Sagitta",
+   "abbr": "Sge"
+  },
+  {
+   "ra_deg": 84.632175,
+   "dec_deg": 76.340012,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 194.053308,
+   "dec_deg": 81.48873,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 241.379354,
+   "dec_deg": 6.367218,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 269.08754,
+   "dec_deg": 42.399565,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 298.141544,
+   "dec_deg": 31.644895,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 91.244967,
+   "dec_deg": 10.537722,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 76.277957,
+   "dec_deg": 14.060744,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 95.048088,
+   "dec_deg": 54.611343,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 236.186319,
+   "dec_deg": 35.023726,
+   "name": "Corona Borealis",
+   "abbr": "CrB"
+  },
+  {
+   "ra_deg": 228.337514,
+   "dec_deg": -47.38432,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 65.868385,
+   "dec_deg": 53.093762,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 338.801316,
+   "dec_deg": 52.354962,
+   "name": "Lacerta",
+   "abbr": "Lac"
+  },
+  {
+   "ra_deg": 170.1317,
+   "dec_deg": 26.188574,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 237.770712,
+   "dec_deg": -66.713291,
+   "name": "Triangulum Australe",
+   "abbr": "TrA"
+  },
+  {
+   "ra_deg": 194.537118,
+   "dec_deg": -37.731144,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 11.389692,
+   "dec_deg": 0.232174,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 229.536426,
+   "dec_deg": 62.775512,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 23.507047,
+   "dec_deg": 46.050833,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 260.882744,
+   "dec_deg": -83.971561,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 24.595881,
+   "dec_deg": -36.825119,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 174.013433,
+   "dec_deg": -12.156272,
+   "name": "Crater",
+   "abbr": "Crt"
+  },
+  {
+   "ra_deg": 75.851999,
+   "dec_deg": 11.903106,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 121.784526,
+   "dec_deg": 34.341826,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 81.364557,
+   "dec_deg": 38.804742,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 95.761112,
+   "dec_deg": -4.814946,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 212.796928,
+   "dec_deg": 55.972051,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 109.093764,
+   "dec_deg": -55.161349,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 230.797583,
+   "dec_deg": 60.993273,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 300.929445,
+   "dec_deg": 53.593114,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 113.22521,
+   "dec_deg": 47.43601,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 82.773342,
+   "dec_deg": -32.39615,
+   "name": "Columba",
+   "abbr": "Col"
+  },
+  {
+   "ra_deg": 140.000152,
+   "dec_deg": -76.212487,
+   "name": "Chamaleon",
+   "abbr": "Cha"
+  },
+  {
+   "ra_deg": 100.052511,
+   "dec_deg": 21.836399,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 343.925127,
+   "dec_deg": 58.241324,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 115.128698,
+   "dec_deg": -10.230494,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 329.938817,
+   "dec_deg": -42.18147,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 226.470845,
+   "dec_deg": -48.044359,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 98.769189,
+   "dec_deg": 18.693075,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 296.322353,
+   "dec_deg": -31.354597,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 204.827873,
+   "dec_deg": 49.049784,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 281.487564,
+   "dec_deg": 43.30891,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 348.612719,
+   "dec_deg": 34.118815,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 344.288986,
+   "dec_deg": -25.414451,
+   "name": "Pisces Austrinus",
+   "abbr": "PsA"
+  },
+  {
+   "ra_deg": 12.451724,
+   "dec_deg": -1.84891,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 41.002083,
+   "dec_deg": 55.592678,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 230.211722,
+   "dec_deg": 31.508608,
+   "name": "Corona Borealis",
+   "abbr": "CrB"
+  },
+  {
+   "ra_deg": 359.716728,
+   "dec_deg": 25.37292,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 142.929376,
+   "dec_deg": 46.090511,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 276.831967,
+   "dec_deg": -10.309488,
+   "name": "Scutum",
+   "abbr": "Sct"
+  },
+  {
+   "ra_deg": 241.148742,
+   "dec_deg": 22.171323,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 312.5847,
+   "dec_deg": 54.52193,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 359.208649,
+   "dec_deg": 15.429196,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 335.69831,
+   "dec_deg": 27.124502,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 281.926496,
+   "dec_deg": 63.034253,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 189.838594,
+   "dec_deg": 20.610678,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 167.294398,
+   "dec_deg": 22.399096,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 268.422639,
+   "dec_deg": 14.966256,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 245.968972,
+   "dec_deg": -8.39736,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 130.794254,
+   "dec_deg": 40.111469,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 249.887805,
+   "dec_deg": 14.917942,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 173.052129,
+   "dec_deg": -30.271191,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 177.730151,
+   "dec_deg": -36.478305,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 309.873401,
+   "dec_deg": -61.810895,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 234.191449,
+   "dec_deg": 47.191429,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 268.195222,
+   "dec_deg": 52.759185,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 208.510113,
+   "dec_deg": -5.252459,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 273.413368,
+   "dec_deg": -5.345536,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 254.02376,
+   "dec_deg": -73.412854,
+   "name": "Apus",
+   "abbr": "Aps"
+  },
+  {
+   "ra_deg": 117.651423,
+   "dec_deg": 13.670176,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 250.375892,
+   "dec_deg": 7.541113,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 94.664916,
+   "dec_deg": -55.878315,
+   "name": "Pictor",
+   "abbr": "Pic"
+  },
+  {
+   "ra_deg": 32.359916,
+   "dec_deg": 12.749454,
+   "name": "Aries",
+   "abbr": "Ari"
+  },
+  {
+   "ra_deg": 224.418586,
+   "dec_deg": -44.819281,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 147.894435,
+   "dec_deg": 41.973027,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 293.337485,
+   "dec_deg": -32.249034,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 105.44267,
+   "dec_deg": -12.724055,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 38.345612,
+   "dec_deg": -31.479635,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 17.428147,
+   "dec_deg": -2.859544,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 23.994069,
+   "dec_deg": 5.127975,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 171.392273,
+   "dec_deg": -12.470459,
+   "name": "Crater",
+   "abbr": "Crt"
+  },
+  {
+   "ra_deg": 261.407723,
+   "dec_deg": -26.702994,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 256.783182,
+   "dec_deg": 58.936363,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 179.126909,
+   "dec_deg": 8.851603,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 269.537243,
+   "dec_deg": -17.883749,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 152.114895,
+   "dec_deg": 45.339883,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 114.367,
+   "dec_deg": -14.83562,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 128.953021,
+   "dec_deg": -5.384124,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 255.129349,
+   "dec_deg": -13.142566,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 344.122962,
+   "dec_deg": -11.579568,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 2.520363,
+   "dec_deg": -18.530819,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 296.899742,
+   "dec_deg": 9.742754,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 141.172765,
+   "dec_deg": 47.438474,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 102.898847,
+   "dec_deg": 36.53873,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 298.165754,
+   "dec_deg": -48.701567,
+   "name": "Telescopium",
+   "abbr": "Tel"
+  },
+  {
+   "ra_deg": 301.686524,
+   "dec_deg": 34.638104,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 356.175679,
+   "dec_deg": -65.329882,
+   "name": "Tucana",
+   "abbr": "Tuc"
+  },
+  {
+   "ra_deg": 270.946871,
+   "dec_deg": 22.051296,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 123.048286,
+   "dec_deg": -65.74605,
+   "name": "Volans",
+   "abbr": "Vol"
+  },
+  {
+   "ra_deg": 99.300281,
+   "dec_deg": 52.426539,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 84.044504,
+   "dec_deg": -28.691822,
+   "name": "Columba",
+   "abbr": "Col"
+  },
+  {
+   "ra_deg": 323.97925,
+   "dec_deg": 47.134408,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 324.458515,
+   "dec_deg": -45.769684,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 201.756942,
+   "dec_deg": -58.192084,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 99.709358,
+   "dec_deg": 24.113495,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 266.570879,
+   "dec_deg": 11.094796,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 40.174938,
+   "dec_deg": 7.87308,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 20.871313,
+   "dec_deg": -41.168579,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 359.640127,
+   "dec_deg": 31.214057,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 190.643331,
+   "dec_deg": -17.222837,
+   "name": "Corvus",
+   "abbr": "Crv"
+  },
+  {
+   "ra_deg": 29.767693,
+   "dec_deg": -17.180011,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 297.234673,
+   "dec_deg": 3.038435,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 139.374513,
+   "dec_deg": 34.352964,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 99.471536,
+   "dec_deg": -11.504946,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 170.649279,
+   "dec_deg": -0.60024,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 68.0794,
+   "dec_deg": 29.295667,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 153.173059,
+   "dec_deg": 27.41491,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 222.051828,
+   "dec_deg": -4.04155,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 187.472256,
+   "dec_deg": -12.155,
+   "name": "Corvus",
+   "abbr": "Crv"
+  },
+  {
+   "ra_deg": 315.931569,
+   "dec_deg": 34.622858,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 342.892301,
+   "dec_deg": -53.748554,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 139.504374,
+   "dec_deg": -6.227706,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 271.603257,
+   "dec_deg": 26.940498,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 245.420781,
+   "dec_deg": -25.262367,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 181.845657,
+   "dec_deg": -13.361112,
+   "name": "Corvus",
+   "abbr": "Crv"
+  },
+  {
+   "ra_deg": 215.752152,
+   "dec_deg": 26.031387,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 120.163923,
+   "dec_deg": 33.405974,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 5.600186,
+   "dec_deg": 52.838135,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 245.976644,
+   "dec_deg": -4.621936,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 345.393653,
+   "dec_deg": 80.86011,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 184.872311,
+   "dec_deg": 4.46472,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 115.729255,
+   "dec_deg": 23.462109,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 198.59448,
+   "dec_deg": 66.165383,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 30.608734,
+   "dec_deg": -35.065841,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 285.205869,
+   "dec_deg": -69.220536,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 24.397097,
+   "dec_deg": 26.484294,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 271.425375,
+   "dec_deg": -44.906302,
+   "name": "Corona Australis",
+   "abbr": "CrA"
+  },
+  {
+   "ra_deg": 98.882257,
+   "dec_deg": 85.347384,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 236.745571,
+   "dec_deg": 3.171687,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 355.823793,
+   "dec_deg": -8.614628,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 36.523412,
+   "dec_deg": 7.529538,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 47.585635,
+   "dec_deg": 78.87947,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 76.965357,
+   "dec_deg": 16.103412,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 255.509403,
+   "dec_deg": 25.503236,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 160.279669,
+   "dec_deg": -15.679328,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 40.175856,
+   "dec_deg": 70.483364,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 153.68227,
+   "dec_deg": -73.856738,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 140.742738,
+   "dec_deg": 70.780572,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 54.323605,
+   "dec_deg": 56.846775,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 355.905473,
+   "dec_deg": -35.696682,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 249.425299,
+   "dec_deg": -1.716737,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 296.151259,
+   "dec_deg": 2.146693,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 130.269704,
+   "dec_deg": -43.594336,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 314.001667,
+   "dec_deg": -31.89495,
+   "name": "Microscopium",
+   "abbr": "Mic"
+  },
+  {
+   "ra_deg": 271.223768,
+   "dec_deg": -8.835449,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 81.410211,
+   "dec_deg": 40.536536,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 336.316282,
+   "dec_deg": 26.858424,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 23.821797,
+   "dec_deg": -3.362233,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 260.766228,
+   "dec_deg": 59.357732,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 297.449005,
+   "dec_deg": 32.129189,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 70.434647,
+   "dec_deg": -13.832868,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 40.809037,
+   "dec_deg": 63.518402,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 199.957887,
+   "dec_deg": -40.401817,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 22.57322,
+   "dec_deg": -51.821005,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 334.179919,
+   "dec_deg": 36.036571,
+   "name": "Lacerta",
+   "abbr": "Lac"
+  },
+  {
+   "ra_deg": 225.95249,
+   "dec_deg": 27.794744,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 211.819151,
+   "dec_deg": -19.153237,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 152.353729,
+   "dec_deg": 13.260681,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 146.085074,
+   "dec_deg": 48.192152,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 97.846558,
+   "dec_deg": -24.651627,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 349.713711,
+   "dec_deg": 25.168233,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 73.315075,
+   "dec_deg": 11.522558,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 212.860811,
+   "dec_deg": 45.762611,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 145.252456,
+   "dec_deg": 0.425903,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 160.495161,
+   "dec_deg": 8.540214,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 84.775225,
+   "dec_deg": 44.050307,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 317.176082,
+   "dec_deg": 10.781246,
+   "name": "Equuleus",
+   "abbr": "Equ"
+  },
+  {
+   "ra_deg": 70.985273,
+   "dec_deg": -61.113733,
+   "name": "Dorado",
+   "abbr": "Dor"
+  },
+  {
+   "ra_deg": 225.480677,
+   "dec_deg": -20.004675,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 5.807186,
+   "dec_deg": 67.735867,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 89.141498,
+   "dec_deg": -15.620122,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 343.900419,
+   "dec_deg": 60.183128,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 100.268739,
+   "dec_deg": 18.010655,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 10.547619,
+   "dec_deg": -41.458173,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 336.498112,
+   "dec_deg": 19.178936,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 241.14205,
+   "dec_deg": 54.827636,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 31.89044,
+   "dec_deg": -50.14686,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 170.725267,
+   "dec_deg": 29.592941,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 330.698756,
+   "dec_deg": 70.526034,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 288.23137,
+   "dec_deg": -70.021205,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 111.840173,
+   "dec_deg": 64.831376,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 320.093118,
+   "dec_deg": -27.197943,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 142.300681,
+   "dec_deg": 72.729333,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 323.893215,
+   "dec_deg": 14.895937,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 244.806749,
+   "dec_deg": 15.518886,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 305.101111,
+   "dec_deg": -0.118577,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 308.04638,
+   "dec_deg": 38.536439,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 288.379761,
+   "dec_deg": 66.620602,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 333.239838,
+   "dec_deg": 3.930241,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 48.408721,
+   "dec_deg": -5.147763,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 186.623029,
+   "dec_deg": 63.392194,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 7.613071,
+   "dec_deg": -25.929847,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 338.421476,
+   "dec_deg": -32.624269,
+   "name": "Pisces Austrinus",
+   "abbr": "PsA"
+  },
+  {
+   "ra_deg": 275.732033,
+   "dec_deg": -2.66018,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 198.918191,
+   "dec_deg": -1.325789,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 321.478095,
+   "dec_deg": 10.995169,
+   "name": "Equuleus",
+   "abbr": "Equ"
+  },
+  {
+   "ra_deg": 16.780565,
+   "dec_deg": -14.297026,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 205.79324,
+   "dec_deg": 25.683348,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 21.749954,
+   "dec_deg": 41.416897,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 123.818457,
+   "dec_deg": -10.164543,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 317.442277,
+   "dec_deg": 67.255873,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 244.612174,
+   "dec_deg": -45.500602,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 1.265275,
+   "dec_deg": 57.636884,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 161.429158,
+   "dec_deg": 27.919547,
+   "name": "Leo Minor",
+   "abbr": "LMi"
+  },
+  {
+   "ra_deg": 323.41966,
+   "dec_deg": 39.164806,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 335.041036,
+   "dec_deg": -14.099424,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 62.732711,
+   "dec_deg": -11.484978,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 63.157887,
+   "dec_deg": -9.203679,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 215.895198,
+   "dec_deg": -37.541592,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 69.531515,
+   "dec_deg": 5.745128,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 299.444881,
+   "dec_deg": -26.947278,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 247.294694,
+   "dec_deg": -6.860562,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 150.220767,
+   "dec_deg": -46.978349,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 26.151631,
+   "dec_deg": 0.632349,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 66.094593,
+   "dec_deg": 23.454079,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 91.551255,
+   "dec_deg": -29.004941,
+   "name": "Columba",
+   "abbr": "Col"
+  },
+  {
+   "ra_deg": 206.494866,
+   "dec_deg": -8.16267,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 120.542813,
+   "dec_deg": 42.158411,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 263.632393,
+   "dec_deg": -0.485472,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 312.38667,
+   "dec_deg": 49.521144,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 93.897914,
+   "dec_deg": 38.041614,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 51.915784,
+   "dec_deg": 15.8165,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 345.244855,
+   "dec_deg": 38.635536,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 168.935928,
+   "dec_deg": -56.231795,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 54.780675,
+   "dec_deg": -59.264053,
+   "name": "Reticulum",
+   "abbr": "Ret"
+  },
+  {
+   "ra_deg": 244.089048,
+   "dec_deg": 47.629119,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 344.446095,
+   "dec_deg": -15.562047,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 321.049051,
+   "dec_deg": 23.40106,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 111.729274,
+   "dec_deg": 48.261749,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 319.638589,
+   "dec_deg": -5.139995,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 107.776765,
+   "dec_deg": -12.393556,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 341.503189,
+   "dec_deg": 58.515743,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 11.204371,
+   "dec_deg": -2.432495,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 132.136153,
+   "dec_deg": -31.197032,
+   "name": "Pyxis",
+   "abbr": "Pyx"
+  },
+  {
+   "ra_deg": 325.748476,
+   "dec_deg": -3.360871,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 338.786452,
+   "dec_deg": 59.873505,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 189.831413,
+   "dec_deg": -31.129888,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 4.081176,
+   "dec_deg": 10.915011,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 282.466517,
+   "dec_deg": 47.359774,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 321.404556,
+   "dec_deg": -24.46669,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 302.118167,
+   "dec_deg": 48.762586,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 166.095129,
+   "dec_deg": 15.706274,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 64.224479,
+   "dec_deg": 6.477546,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 183.344199,
+   "dec_deg": 34.055256,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 194.364456,
+   "dec_deg": 0.524266,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 128.674195,
+   "dec_deg": -30.821238,
+   "name": "Pyxis",
+   "abbr": "Pyx"
+  },
+  {
+   "ra_deg": 134.411249,
+   "dec_deg": 73.370239,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 307.85217,
+   "dec_deg": 23.094105,
+   "name": "Vulpecula",
+   "abbr": "Vul"
+  },
+  {
+   "ra_deg": 215.819958,
+   "dec_deg": -6.36175,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 111.515367,
+   "dec_deg": -8.49968,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 20.673107,
+   "dec_deg": 5.068349,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 247.775036,
+   "dec_deg": 3.03408,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 119.77132,
+   "dec_deg": -17.905993,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 292.725376,
+   "dec_deg": 10.479214,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 242.514083,
+   "dec_deg": 16.99185,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 270.015329,
+   "dec_deg": 63.658896,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 334.431291,
+   "dec_deg": 7.559792,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 217.004018,
+   "dec_deg": -49.373719,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 245.613349,
+   "dec_deg": 84.088917,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 157.823512,
+   "dec_deg": -0.825737,
+   "name": "Sextans",
+   "abbr": "Sex"
+  },
+  {
+   "ra_deg": 272.736397,
+   "dec_deg": -17.871917,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 63.636778,
+   "dec_deg": -21.059452,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 266.665091,
+   "dec_deg": 56.00135,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 9.119129,
+   "dec_deg": -26.051643,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 254.598411,
+   "dec_deg": 25.775409,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 43.961857,
+   "dec_deg": -5.043152,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 34.55887,
+   "dec_deg": 15.197816,
+   "name": "Aries",
+   "abbr": "Ari"
+  },
+  {
+   "ra_deg": 6.119504,
+   "dec_deg": -1.762644,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 216.062851,
+   "dec_deg": 4.20408,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 64.749458,
+   "dec_deg": -3.967561,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 54.265736,
+   "dec_deg": 3.681297,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 62.584576,
+   "dec_deg": -45.145172,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 143.211876,
+   "dec_deg": -79.984358,
+   "name": "Chamaleon",
+   "abbr": "Cha"
+  },
+  {
+   "ra_deg": 29.550104,
+   "dec_deg": -56.193171,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 179.772399,
+   "dec_deg": -39.11608,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 2.807417,
+   "dec_deg": 18.55589,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 26.095843,
+   "dec_deg": 19.615047,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 151.495405,
+   "dec_deg": -31.334169,
+   "name": "Antlia",
+   "abbr": "Ant"
+  },
+  {
+   "ra_deg": 66.837008,
+   "dec_deg": 3.047818,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 336.492099,
+   "dec_deg": 59.513414,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 46.83842,
+   "dec_deg": -33.01632,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 101.025092,
+   "dec_deg": 20.909371,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 70.066854,
+   "dec_deg": 36.301561,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 18.96132,
+   "dec_deg": -44.832383,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 79.719647,
+   "dec_deg": -73.740935,
+   "name": "Mensa",
+   "abbr": "Men"
+  },
+  {
+   "ra_deg": 141.633301,
+   "dec_deg": 15.173401,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 15.640507,
+   "dec_deg": -63.349948,
+   "name": "Tucana",
+   "abbr": "Tuc"
+  },
+  {
+   "ra_deg": 95.267612,
+   "dec_deg": -5.088915,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 107.53874,
+   "dec_deg": -37.551994,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 334.084401,
+   "dec_deg": 16.440956,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 264.675591,
+   "dec_deg": -53.399732,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 359.212078,
+   "dec_deg": -52.724517,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 223.41351,
+   "dec_deg": -52.743667,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 33.236137,
+   "dec_deg": 37.738393,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 44.555888,
+   "dec_deg": -48.393671,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 150.122476,
+   "dec_deg": -12.358971,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 148.255427,
+   "dec_deg": -10.95158,
+   "name": "Sextans",
+   "abbr": "Sex"
+  },
+  {
+   "ra_deg": 313.685295,
+   "dec_deg": 49.818513,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 298.084119,
+   "dec_deg": -15.32851,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 101.025627,
+   "dec_deg": -70.815972,
+   "name": "Volans",
+   "abbr": "Vol"
+  },
+  {
+   "ra_deg": 165.979465,
+   "dec_deg": 57.767288,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 19.647243,
+   "dec_deg": 21.587347,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 98.770591,
+   "dec_deg": -17.30969,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 181.625877,
+   "dec_deg": -59.542371,
+   "name": "Crux",
+   "abbr": "Cru"
+  },
+  {
+   "ra_deg": 173.845666,
+   "dec_deg": 32.538017,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 64.283379,
+   "dec_deg": -58.121517,
+   "name": "Reticulum",
+   "abbr": "Ret"
+  },
+  {
+   "ra_deg": 354.556111,
+   "dec_deg": 5.273753,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 141.682404,
+   "dec_deg": 37.527704,
+   "name": "Leo Minor",
+   "abbr": "LMi"
+  },
+  {
+   "ra_deg": 126.731707,
+   "dec_deg": 27.080527,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 256.777957,
+   "dec_deg": -67.137548,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 81.354401,
+   "dec_deg": 76.095857,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 42.038558,
+   "dec_deg": -47.617976,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 151.97687,
+   "dec_deg": 6.008403,
+   "name": "Sextans",
+   "abbr": "Sex"
+  },
+  {
+   "ra_deg": 352.984428,
+   "dec_deg": 49.25088,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 336.689924,
+   "dec_deg": -19.435742,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 36.942712,
+   "dec_deg": -17.281092,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 318.424441,
+   "dec_deg": 50.132979,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 343.809873,
+   "dec_deg": -63.748822,
+   "name": "Tucana",
+   "abbr": "Tuc"
+  },
+  {
+   "ra_deg": 124.238387,
+   "dec_deg": 76.890495,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 234.714271,
+   "dec_deg": 34.03885,
+   "name": "Corona Borealis",
+   "abbr": "CrB"
+  },
+  {
+   "ra_deg": 76.765506,
+   "dec_deg": -13.575269,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 191.54355,
+   "dec_deg": 18.791268,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 119.346627,
+   "dec_deg": 4.411019,
+   "name": "Canis Minor",
+   "abbr": "CMi"
+  },
+  {
+   "ra_deg": 66.192524,
+   "dec_deg": 12.211707,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 347.105783,
+   "dec_deg": -65.756086,
+   "name": "Tucana",
+   "abbr": "Tuc"
+  },
+  {
+   "ra_deg": 299.048624,
+   "dec_deg": 68.706348,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 171.80189,
+   "dec_deg": 13.926109,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 285.855838,
+   "dec_deg": 24.303735,
+   "name": "Vulpecula",
+   "abbr": "Vul"
+  },
+  {
+   "ra_deg": 31.777106,
+   "dec_deg": -67.79392,
+   "name": "Hydrus",
+   "abbr": "Hyi"
+  },
+  {
+   "ra_deg": 318.07164,
+   "dec_deg": -35.139807,
+   "name": "Microscopium",
+   "abbr": "Mic"
+  },
+  {
+   "ra_deg": 338.645085,
+   "dec_deg": -0.189248,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 316.731774,
+   "dec_deg": -13.312069,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 58.970804,
+   "dec_deg": 85.123803,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 61.150489,
+   "dec_deg": 28.102664,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 287.387902,
+   "dec_deg": -36.160614,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 315.066146,
+   "dec_deg": 42.525876,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 35.157992,
+   "dec_deg": -26.567434,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 158.124981,
+   "dec_deg": 73.570746,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 336.661223,
+   "dec_deg": 51.746305,
+   "name": "Lacerta",
+   "abbr": "Lac"
+  },
+  {
+   "ra_deg": 220.480104,
+   "dec_deg": 75.079983,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 278.91494,
+   "dec_deg": 36.538499,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 166.548881,
+   "dec_deg": 12.092401,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 298.564505,
+   "dec_deg": -1.81529,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 87.443886,
+   "dec_deg": -12.834064,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 173.791914,
+   "dec_deg": 5.07138,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 336.815509,
+   "dec_deg": 30.355225,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 81.627485,
+   "dec_deg": 5.670148,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 286.262062,
+   "dec_deg": -22.926701,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 248.074151,
+   "dec_deg": 13.923452,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 6.239238,
+   "dec_deg": 7.203721,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 266.434078,
+   "dec_deg": 24.77034,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 208.992315,
+   "dec_deg": -53.030992,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 110.007081,
+   "dec_deg": 80.40986,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 137.921308,
+   "dec_deg": 27.200046,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 171.359679,
+   "dec_deg": -39.193808,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 328.148058,
+   "dec_deg": 8.244461,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 92.550509,
+   "dec_deg": -7.494254,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 69.476701,
+   "dec_deg": 18.422034,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 300.55977,
+   "dec_deg": -5.302731,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 184.246792,
+   "dec_deg": -68.379223,
+   "name": "Musca",
+   "abbr": "Mus"
+  },
+  {
+   "ra_deg": 299.003322,
+   "dec_deg": -55.058099,
+   "name": "Telescopium",
+   "abbr": "Tel"
+  },
+  {
+   "ra_deg": 237.808812,
+   "dec_deg": 77.795279,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 246.767033,
+   "dec_deg": 8.083237,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 72.526656,
+   "dec_deg": -58.605288,
+   "name": "Dorado",
+   "abbr": "Dor"
+  },
+  {
+   "ra_deg": 7.12171,
+   "dec_deg": 6.265949,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 59.226693,
+   "dec_deg": 21.756692,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 36.179718,
+   "dec_deg": 22.685729,
+   "name": "Aries",
+   "abbr": "Ari"
+  },
+  {
+   "ra_deg": 283.930799,
+   "dec_deg": 52.721853,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 329.379582,
+   "dec_deg": 1.896467,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 129.423,
+   "dec_deg": -22.291491,
+   "name": "Pyxis",
+   "abbr": "Pyx"
+  },
+  {
+   "ra_deg": 37.246278,
+   "dec_deg": 61.285808,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 304.126514,
+   "dec_deg": 45.822957,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 63.823977,
+   "dec_deg": 16.246878,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 152.739667,
+   "dec_deg": -48.687561,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 49.881361,
+   "dec_deg": 34.513699,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 289.569604,
+   "dec_deg": -86.061424,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 178.267751,
+   "dec_deg": 15.651324,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 46.462913,
+   "dec_deg": 0.431575,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 66.261545,
+   "dec_deg": 17.075826,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 1.591351,
+   "dec_deg": 70.884544,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 173.581084,
+   "dec_deg": 25.080131,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 18.025684,
+   "dec_deg": -31.242606,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 281.056656,
+   "dec_deg": 43.517765,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 327.216434,
+   "dec_deg": 36.492533,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 157.152946,
+   "dec_deg": 31.99491,
+   "name": "Leo Minor",
+   "abbr": "LMi"
+  },
+  {
+   "ra_deg": 55.049803,
+   "dec_deg": 7.836028,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 31.83584,
+   "dec_deg": -61.723165,
+   "name": "Hydrus",
+   "abbr": "Hyi"
+  },
+  {
+   "ra_deg": 198.392282,
+   "dec_deg": -73.247907,
+   "name": "Musca",
+   "abbr": "Mus"
+  },
+  {
+   "ra_deg": 220.629993,
+   "dec_deg": 30.507169,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 107.409831,
+   "dec_deg": 41.781977,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 331.841939,
+   "dec_deg": -16.116272,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 349.818316,
+   "dec_deg": 26.985121,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 195.393928,
+   "dec_deg": -8.526304,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 23.706804,
+   "dec_deg": 1.95983,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 54.978337,
+   "dec_deg": -32.370666,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 32.390498,
+   "dec_deg": -33.248544,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 320.699711,
+   "dec_deg": -78.270165,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 206.975267,
+   "dec_deg": -27.549204,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 143.719445,
+   "dec_deg": -13.393688,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 273.923074,
+   "dec_deg": 22.346781,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 50.34044,
+   "dec_deg": -4.355108,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 301.27372,
+   "dec_deg": 73.898544,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 3.612539,
+   "dec_deg": -9.620914,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 191.184045,
+   "dec_deg": 20.761599,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 298.806645,
+   "dec_deg": 9.94815,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 84.140131,
+   "dec_deg": 20.963406,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 109.302416,
+   "dec_deg": 28.556947,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 260.843231,
+   "dec_deg": -76.788224,
+   "name": "Apus",
+   "abbr": "Aps"
+  },
+  {
+   "ra_deg": 237.062434,
+   "dec_deg": -41.636104,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 309.670813,
+   "dec_deg": 53.261015,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 166.927504,
+   "dec_deg": -58.350915,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 241.258151,
+   "dec_deg": -19.952817,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 181.386295,
+   "dec_deg": 87.403996,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 172.118855,
+   "dec_deg": 85.913542,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 325.408669,
+   "dec_deg": 86.855938,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 284.113244,
+   "dec_deg": 86.319469,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 69.172069,
+   "dec_deg": 85.39937,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 152.71201,
+   "dec_deg": 81.492676,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 41.715915,
+   "dec_deg": 80.636398,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 189.732506,
+   "dec_deg": 79.412971,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 263.888768,
+   "dec_deg": 80.040139,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 307.134508,
+   "dec_deg": 80.528154,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 29.368323,
+   "dec_deg": 77.715538,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 189.278159,
+   "dec_deg": 76.411953,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 254.342048,
+   "dec_deg": 74.91741,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 305.703391,
+   "dec_deg": 75.50898,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 131.882219,
+   "dec_deg": 73.150749,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 156.328946,
+   "dec_deg": 72.968934,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 221.840074,
+   "dec_deg": 69.580023,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 51.82438,
+   "dec_deg": 68.544184,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 308.418951,
+   "dec_deg": 67.531167,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 176.714878,
+   "dec_deg": 65.905765,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 4.19381,
+   "dec_deg": 66.794867,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 223.047078,
+   "dec_deg": 65.589044,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 358.409899,
+   "dec_deg": 66.795464,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 192.559545,
+   "dec_deg": 63.418915,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 210.302243,
+   "dec_deg": 62.496211,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 352.01567,
+   "dec_deg": 63.788083,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 101.143513,
+   "dec_deg": 61.982751,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 303.642498,
+   "dec_deg": 61.983022,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 309.138345,
+   "dec_deg": 61.453171,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 114.954114,
+   "dec_deg": 59.821294,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 125.469982,
+   "dec_deg": 59.709015,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 298.80173,
+   "dec_deg": 59.932424,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 304.638622,
+   "dec_deg": 59.992584,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 346.563362,
+   "dec_deg": 59.858406,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 20.23126,
+   "dec_deg": 59.257179,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 294.450352,
+   "dec_deg": 58.384933,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 29.186288,
+   "dec_deg": 58.213876,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 43.837012,
+   "dec_deg": 57.611813,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 49.41042,
+   "dec_deg": 57.563908,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 340.105413,
+   "dec_deg": 57.001938,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 85.883328,
+   "dec_deg": 56.16591,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 214.415004,
+   "dec_deg": 55.022225,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 254.377308,
+   "dec_deg": 55.40888,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 51.120863,
+   "dec_deg": 55.548027,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 334.532579,
+   "dec_deg": 55.725369,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 320.203711,
+   "dec_deg": 55.464382,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 14.580857,
+   "dec_deg": 54.776351,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 97.056303,
+   "dec_deg": 54.029919,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 193.276211,
+   "dec_deg": 52.420644,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 233.366704,
+   "dec_deg": 52.680447,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 331.905132,
+   "dec_deg": 53.460708,
+   "name": "Cepheus",
+   "abbr": "Cep"
+  },
+  {
+   "ra_deg": 64.921407,
+   "dec_deg": 52.908296,
+   "name": "Camelopardalis",
+   "abbr": "Cam"
+  },
+  {
+   "ra_deg": 347.896615,
+   "dec_deg": 53.278753,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 246.427435,
+   "dec_deg": 51.317172,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 36.28271,
+   "dec_deg": 51.168536,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 265.007877,
+   "dec_deg": 50.534843,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 12.013776,
+   "dec_deg": 50.782958,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 24.690031,
+   "dec_deg": 50.737255,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 102.166229,
+   "dec_deg": 49.96768,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 356.538409,
+   "dec_deg": 50.794157,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 207.744546,
+   "dec_deg": 47.980483,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 10.102149,
+   "dec_deg": 48.787025,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 358.443512,
+   "dec_deg": 48.795473,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 273.901639,
+   "dec_deg": 47.642277,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 280.72369,
+   "dec_deg": 47.724451,
+   "name": "Draco",
+   "abbr": "Dra"
+  },
+  {
+   "ra_deg": 287.745425,
+   "dec_deg": 47.807115,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 29.778522,
+   "dec_deg": 47.709985,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 134.020094,
+   "dec_deg": 46.625747,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 9.460879,
+   "dec_deg": 46.788217,
+   "name": "Cassiopeia",
+   "abbr": "Cas"
+  },
+  {
+   "ra_deg": 182.208525,
+   "dec_deg": 44.404159,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 108.503799,
+   "dec_deg": 44.392111,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 330.319335,
+   "dec_deg": 44.700919,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 329.627603,
+   "dec_deg": 44.446647,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 290.224607,
+   "dec_deg": 43.835072,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 146.949716,
+   "dec_deg": 41.523109,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 158.942591,
+   "dec_deg": 39.454474,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 235.002174,
+   "dec_deg": 39.695186,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 241.71514,
+   "dec_deg": 39.764348,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 143.202994,
+   "dec_deg": 39.299808,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 20.654606,
+   "dec_deg": 37.505049,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 40.058528,
+   "dec_deg": 37.390235,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 291.804058,
+   "dec_deg": 36.852233,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 71.017573,
+   "dec_deg": 36.338323,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 328.389119,
+   "dec_deg": 36.688519,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 330.404677,
+   "dec_deg": 36.701179,
+   "name": "Lacerta",
+   "abbr": "Lac"
+  },
+  {
+   "ra_deg": 106.329905,
+   "dec_deg": 35.416443,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 115.427503,
+   "dec_deg": 35.312436,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 16.736264,
+   "dec_deg": 35.76953,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 337.531298,
+   "dec_deg": 35.739905,
+   "name": "Lacerta",
+   "abbr": "Lac"
+  },
+  {
+   "ra_deg": 344.087084,
+   "dec_deg": 35.266893,
+   "name": "Lacerta",
+   "abbr": "Lac"
+  },
+  {
+   "ra_deg": 349.254148,
+   "dec_deg": 35.282086,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 41.535963,
+   "dec_deg": 34.62865,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 165.101993,
+   "dec_deg": 33.430117,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 184.073917,
+   "dec_deg": 33.405092,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 129.459903,
+   "dec_deg": 33.166881,
+   "name": "Lynx",
+   "abbr": "Lyn"
+  },
+  {
+   "ra_deg": 145.366703,
+   "dec_deg": 33.033799,
+   "name": "Leo Minor",
+   "abbr": "LMi"
+  },
+  {
+   "ra_deg": 17.671194,
+   "dec_deg": 33.766331,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 230.879412,
+   "dec_deg": 32.65493,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 355.938353,
+   "dec_deg": 32.876868,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 193.381379,
+   "dec_deg": 31.420784,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 359.717719,
+   "dec_deg": 32.12923,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 211.328499,
+   "dec_deg": 30.251078,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 40.367369,
+   "dec_deg": 31.304305,
+   "name": "Triangulum",
+   "abbr": "Tri"
+  },
+  {
+   "ra_deg": 56.068628,
+   "dec_deg": 31.164979,
+   "name": "Perseus",
+   "abbr": "Per"
+  },
+  {
+   "ra_deg": 71.357661,
+   "dec_deg": 30.33388,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 282.704901,
+   "dec_deg": 30.245937,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 174.145247,
+   "dec_deg": 28.408668,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 305.656432,
+   "dec_deg": 29.499405,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 81.726016,
+   "dec_deg": 28.712031,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 154.64122,
+   "dec_deg": 27.975683,
+   "name": "Leo Minor",
+   "abbr": "LMi"
+  },
+  {
+   "ra_deg": 205.506078,
+   "dec_deg": 27.968056,
+   "name": "Canes Venatici",
+   "abbr": "CVn"
+  },
+  {
+   "ra_deg": 2.109675,
+   "dec_deg": 28.795873,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 24.816167,
+   "dec_deg": 28.736177,
+   "name": "Triangulum",
+   "abbr": "Tri"
+  },
+  {
+   "ra_deg": 95.095655,
+   "dec_deg": 28.05011,
+   "name": "Auriga",
+   "abbr": "Aur"
+  },
+  {
+   "ra_deg": 121.044827,
+   "dec_deg": 27.751076,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 321.237038,
+   "dec_deg": 28.637529,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 293.200401,
+   "dec_deg": 27.867147,
+   "name": "Cygnus",
+   "abbr": "Cyg"
+  },
+  {
+   "ra_deg": 34.302005,
+   "dec_deg": 27.931093,
+   "name": "Triangulum",
+   "abbr": "Tri"
+  },
+  {
+   "ra_deg": 245.03171,
+   "dec_deg": 26.799142,
+   "name": "Corona Borealis",
+   "abbr": "CrB"
+  },
+  {
+   "ra_deg": 228.350828,
+   "dec_deg": 25.631321,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 236.446285,
+   "dec_deg": 25.708612,
+   "name": "Corona Borealis",
+   "abbr": "CrB"
+  },
+  {
+   "ra_deg": 280.514511,
+   "dec_deg": 26.219466,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 164.816547,
+   "dec_deg": 24.931007,
+   "name": "Leo Minor",
+   "abbr": "LMi"
+  },
+  {
+   "ra_deg": 287.217278,
+   "dec_deg": 25.798595,
+   "name": "Lyra",
+   "abbr": "Lyr"
+  },
+  {
+   "ra_deg": 28.630299,
+   "dec_deg": 25.715984,
+   "name": "Triangulum",
+   "abbr": "Tri"
+  },
+  {
+   "ra_deg": 13.419213,
+   "dec_deg": 24.529331,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 161.077117,
+   "dec_deg": 22.944988,
+   "name": "Leo Minor",
+   "abbr": "LMi"
+  },
+  {
+   "ra_deg": 321.406014,
+   "dec_deg": 24.138663,
+   "name": "Vulpecula",
+   "abbr": "Vul"
+  },
+  {
+   "ra_deg": 88.770068,
+   "dec_deg": 22.959747,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 3.175725,
+   "dec_deg": 22.795458,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 240.982432,
+   "dec_deg": 21.755171,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 92.626163,
+   "dec_deg": 21.579494,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 301.990955,
+   "dec_deg": 21.7117,
+   "name": "Vulpecula",
+   "abbr": "Vul"
+  },
+  {
+   "ra_deg": 287.216176,
+   "dec_deg": 21.381526,
+   "name": "Vulpecula",
+   "abbr": "Vul"
+  },
+  {
+   "ra_deg": 9.077855,
+   "dec_deg": 21.788837,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 307.514325,
+   "dec_deg": 21.01715,
+   "name": "Vulpecula",
+   "abbr": "Vul"
+  },
+  {
+   "ra_deg": 119.509469,
+   "dec_deg": 19.766819,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 315.04642,
+   "dec_deg": 20.08645,
+   "name": "Vulpecula",
+   "abbr": "Vul"
+  },
+  {
+   "ra_deg": 294.501242,
+   "dec_deg": 19.547738,
+   "name": "Vulpecula",
+   "abbr": "Vul"
+  },
+  {
+   "ra_deg": 51.664867,
+   "dec_deg": 19.540212,
+   "name": "Aries",
+   "abbr": "Ari"
+  },
+  {
+   "ra_deg": 285.373334,
+   "dec_deg": 18.776478,
+   "name": "Sagitta",
+   "abbr": "Sge"
+  },
+  {
+   "ra_deg": 87.828516,
+   "dec_deg": 18.137466,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 95.757958,
+   "dec_deg": 17.541176,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 292.66062,
+   "dec_deg": 16.526946,
+   "name": "Sagitta",
+   "abbr": "Sge"
+  },
+  {
+   "ra_deg": 79.048383,
+   "dec_deg": 16.242945,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 241.427559,
+   "dec_deg": 15.759507,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 302.054766,
+   "dec_deg": 16.21203,
+   "name": "Sagitta",
+   "abbr": "Sge"
+  },
+  {
+   "ra_deg": 73.663248,
+   "dec_deg": 15.806185,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 83.793998,
+   "dec_deg": 15.686071,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 199.043052,
+   "dec_deg": 14.43904,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 267.672177,
+   "dec_deg": 14.3964,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 186.832904,
+   "dec_deg": 13.407812,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 116.563092,
+   "dec_deg": 13.298281,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 256.446991,
+   "dec_deg": 12.761651,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 2.668797,
+   "dec_deg": 13.295684,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 87.006618,
+   "dec_deg": 12.646997,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 110.495985,
+   "dec_deg": 12.366241,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 319.871815,
+   "dec_deg": 13.126304,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 101.058938,
+   "dec_deg": 11.97691,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 279.828051,
+   "dec_deg": 12.210109,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 315.932443,
+   "dec_deg": 12.427075,
+   "name": "Delphinus",
+   "abbr": "Del"
+  },
+  {
+   "ra_deg": 317.748554,
+   "dec_deg": 12.44236,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 176.985142,
+   "dec_deg": 10.405493,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 95.848977,
+   "dec_deg": 10.03949,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 106.219031,
+   "dec_deg": 9.915631,
+   "name": "Gemini",
+   "abbr": "Gem"
+  },
+  {
+   "ra_deg": 119.707338,
+   "dec_deg": 9.764099,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 0.349577,
+   "dec_deg": 10.796032,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 38.803584,
+   "dec_deg": 10.565466,
+   "name": "Aries",
+   "abbr": "Ari"
+  },
+  {
+   "ra_deg": 304.824376,
+   "dec_deg": 8.989923,
+   "name": "Delphinus",
+   "abbr": "Del"
+  },
+  {
+   "ra_deg": 215.920585,
+   "dec_deg": 7.530856,
+   "name": "Bo\u00f6tes",
+   "abbr": "Boo"
+  },
+  {
+   "ra_deg": 350.959001,
+   "dec_deg": 8.285828,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 130.477987,
+   "dec_deg": 6.655891,
+   "name": "Cancer",
+   "abbr": "Cnc"
+  },
+  {
+   "ra_deg": 151.641279,
+   "dec_deg": 6.492275,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 278.364995,
+   "dec_deg": 6.442099,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 282.990997,
+   "dec_deg": 6.497439,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 314.357067,
+   "dec_deg": 6.579881,
+   "name": "Delphinus",
+   "abbr": "Del"
+  },
+  {
+   "ra_deg": 106.790577,
+   "dec_deg": 5.40863,
+   "name": "Canis Minor",
+   "abbr": "CMi"
+  },
+  {
+   "ra_deg": 276.607192,
+   "dec_deg": 4.670764,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 247.806175,
+   "dec_deg": 3.828341,
+   "name": "Hercules",
+   "abbr": "Her"
+  },
+  {
+   "ra_deg": 276.625405,
+   "dec_deg": 3.170874,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 325.079101,
+   "dec_deg": 3.415184,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 16.608897,
+   "dec_deg": 2.769741,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 282.450001,
+   "dec_deg": 2.240708,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 310.078757,
+   "dec_deg": 2.54077,
+   "name": "Delphinus",
+   "abbr": "Del"
+  },
+  {
+   "ra_deg": 317.83083,
+   "dec_deg": 2.609398,
+   "name": "Equuleus",
+   "abbr": "Equ"
+  },
+  {
+   "ra_deg": 322.582991,
+   "dec_deg": 2.646938,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 337.214073,
+   "dec_deg": 2.737934,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 329.087377,
+   "dec_deg": 2.442173,
+   "name": "Pegasus",
+   "abbr": "Peg"
+  },
+  {
+   "ra_deg": 108.243426,
+   "dec_deg": 1.39145,
+   "name": "Canis Minor",
+   "abbr": "CMi"
+  },
+  {
+   "ra_deg": 63.103652,
+   "dec_deg": 0.423537,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 71.228815,
+   "dec_deg": 0.333183,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 116.225044,
+   "dec_deg": -0.198839,
+   "name": "Canis Minor",
+   "abbr": "CMi"
+  },
+  {
+   "ra_deg": 224.727106,
+   "dec_deg": -0.401325,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 272.224267,
+   "dec_deg": 0.117305,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 46.088451,
+   "dec_deg": -1.160347,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 53.08652,
+   "dec_deg": -1.224275,
+   "name": "Taurus",
+   "abbr": "Tau"
+  },
+  {
+   "ra_deg": 236.75954,
+   "dec_deg": -3.539812,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 74.681375,
+   "dec_deg": -3.70701,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 92.115797,
+   "dec_deg": -3.916269,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 270.148336,
+   "dec_deg": -3.908209,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 277.897159,
+   "dec_deg": -3.814284,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 282.52146,
+   "dec_deg": -3.758867,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 350.982967,
+   "dec_deg": -3.214147,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 168.584993,
+   "dec_deg": -6.580315,
+   "name": "Leo",
+   "abbr": "Leo"
+  },
+  {
+   "ra_deg": 176.720419,
+   "dec_deg": -6.594292,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 4.095986,
+   "dec_deg": -6.205099,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 0.351213,
+   "dec_deg": -6.203968,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 218.537247,
+   "dec_deg": -8.450689,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 243.063568,
+   "dec_deg": -8.224422,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 305.688014,
+   "dec_deg": -8.502311,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 325.661581,
+   "dec_deg": -8.331005,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 265.222657,
+   "dec_deg": -9.968387,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 105.844826,
+   "dec_deg": -11.081442,
+   "name": "Monoceros",
+   "abbr": "Mon"
+  },
+  {
+   "ra_deg": 76.471975,
+   "dec_deg": -10.728498,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 83.342969,
+   "dec_deg": -10.810457,
+   "name": "Orion",
+   "abbr": "Ori"
+  },
+  {
+   "ra_deg": 124.86283,
+   "dec_deg": -11.29043,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 154.038532,
+   "dec_deg": -11.521668,
+   "name": "Sextans",
+   "abbr": "Sex"
+  },
+  {
+   "ra_deg": 186.61434,
+   "dec_deg": -11.592482,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 266.118169,
+   "dec_deg": -11.62438,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 293.23557,
+   "dec_deg": -11.668411,
+   "name": "Aquila",
+   "abbr": "Aql"
+  },
+  {
+   "ra_deg": 74.555383,
+   "dec_deg": -14.206275,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 315.729346,
+   "dec_deg": -14.408978,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 267.424277,
+   "dec_deg": -15.942192,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 280.171047,
+   "dec_deg": -15.787834,
+   "name": "Scutum",
+   "abbr": "Sct"
+  },
+  {
+   "ra_deg": 128.556587,
+   "dec_deg": -17.327012,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 246.623337,
+   "dec_deg": -18.436238,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 133.924285,
+   "dec_deg": -19.376591,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 163.403127,
+   "dec_deg": -19.564345,
+   "name": "Crater",
+   "abbr": "Crt"
+  },
+  {
+   "ra_deg": 246.635704,
+   "dec_deg": -19.43617,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 238.691674,
+   "dec_deg": -20.271082,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 192.281857,
+   "dec_deg": -22.582193,
+   "name": "Corvus",
+   "abbr": "Crv"
+  },
+  {
+   "ra_deg": 204.84115,
+   "dec_deg": -22.535962,
+   "name": "Virgo",
+   "abbr": "Vir"
+  },
+  {
+   "ra_deg": 142.658028,
+   "dec_deg": -24.448157,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 33.806951,
+   "dec_deg": -23.700142,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 49.367486,
+   "dec_deg": -23.823752,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 171.548905,
+   "dec_deg": -25.08705,
+   "name": "Crater",
+   "abbr": "Crt"
+  },
+  {
+   "ra_deg": 184.74736,
+   "dec_deg": -25.094412,
+   "name": "Corvus",
+   "abbr": "Crv"
+  },
+  {
+   "ra_deg": 220.555086,
+   "dec_deg": -24.935913,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 249.522888,
+   "dec_deg": -24.737569,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 14.02641,
+   "dec_deg": -24.722513,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 325.788478,
+   "dec_deg": -24.83056,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 344.442774,
+   "dec_deg": -24.732277,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 0.353133,
+   "dec_deg": -24.703968,
+   "name": "Cetus",
+   "abbr": "Cet"
+  },
+  {
+   "ra_deg": 151.429565,
+   "dec_deg": -27.007098,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 72.762403,
+   "dec_deg": -26.936421,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 83.372399,
+   "dec_deg": -27.062143,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 311.876318,
+   "dec_deg": -27.443911,
+   "name": "Capricornus",
+   "abbr": "Cap"
+  },
+  {
+   "ra_deg": 157.697252,
+   "dec_deg": -29.707297,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 208.032025,
+   "dec_deg": -30.01941,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 231.28097,
+   "dec_deg": -29.844356,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 239.437878,
+   "dec_deg": -29.764011,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 70.850693,
+   "dec_deg": -29.664649,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 259.619313,
+   "dec_deg": -30.037317,
+   "name": "Ophiucus",
+   "abbr": "Oph"
+  },
+  {
+   "ra_deg": 267.750515,
+   "dec_deg": -29.939459,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 162.089535,
+   "dec_deg": -31.726232,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 102.284204,
+   "dec_deg": -33.041213,
+   "name": "Canis Major",
+   "abbr": "CMa"
+  },
+  {
+   "ra_deg": 187.906812,
+   "dec_deg": -33.590749,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 174.673312,
+   "dec_deg": -35.592111,
+   "name": "Hydra",
+   "abbr": "Hya"
+  },
+  {
+   "ra_deg": 55.566262,
+   "dec_deg": -35.500463,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 134.223082,
+   "dec_deg": -37.130122,
+   "name": "Pyxis",
+   "abbr": "Pyx"
+  },
+  {
+   "ra_deg": 67.497368,
+   "dec_deg": -36.627313,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 279.616664,
+   "dec_deg": -36.796412,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 334.331828,
+   "dec_deg": -36.277532,
+   "name": "Pisces Austrinus",
+   "abbr": "PsA"
+  },
+  {
+   "ra_deg": 349.204797,
+   "dec_deg": -36.218279,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 49.919354,
+   "dec_deg": -39.029719,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 154.090109,
+   "dec_deg": -40.272493,
+   "name": "Antlia",
+   "abbr": "Ant"
+  },
+  {
+   "ra_deg": 13.969434,
+   "dec_deg": -39.222433,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 36.265407,
+   "dec_deg": -39.334267,
+   "name": "Fornax",
+   "abbr": "For"
+  },
+  {
+   "ra_deg": 62.09264,
+   "dec_deg": -39.568364,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 356.642476,
+   "dec_deg": -39.205797,
+   "name": "Sculptor",
+   "abbr": "Scl"
+  },
+  {
+   "ra_deg": 220.124183,
+   "dec_deg": -42.439984,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 239.637394,
+   "dec_deg": -42.26298,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 245.322305,
+   "dec_deg": -42.202521,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 74.730134,
+   "dec_deg": -42.710942,
+   "name": "Caelum",
+   "abbr": "Cae"
+  },
+  {
+   "ra_deg": 87.829816,
+   "dec_deg": -42.867846,
+   "name": "Columba",
+   "abbr": "Col"
+  },
+  {
+   "ra_deg": 123.806708,
+   "dec_deg": -43.281939,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 55.680419,
+   "dec_deg": -43.502277,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 259.198888,
+   "dec_deg": -45.544099,
+   "name": "Scorpius",
+   "abbr": "Sco"
+  },
+  {
+   "ra_deg": 279.79739,
+   "dec_deg": -45.295326,
+   "name": "Corona Australis",
+   "abbr": "CrA"
+  },
+  {
+   "ra_deg": 298.474226,
+   "dec_deg": -45.080076,
+   "name": "Sagittarius",
+   "abbr": "Sgr"
+  },
+  {
+   "ra_deg": 314.607623,
+   "dec_deg": -44.920388,
+   "name": "Microscopium",
+   "abbr": "Mic"
+  },
+  {
+   "ra_deg": 49.191123,
+   "dec_deg": -45.440215,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 70.914549,
+   "dec_deg": -46.167156,
+   "name": "Caelum",
+   "abbr": "Cae"
+  },
+  {
+   "ra_deg": 234.7255,
+   "dec_deg": -48.312935,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 18.861603,
+   "dec_deg": -47.405394,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 43.561451,
+   "dec_deg": -48.391187,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 63.518373,
+   "dec_deg": -48.584767,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 66.624699,
+   "dec_deg": -48.618964,
+   "name": "Caelum",
+   "abbr": "Cae"
+  },
+  {
+   "ra_deg": 327.057777,
+   "dec_deg": -49.322743,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 105.779664,
+   "dec_deg": -50.83473,
+   "name": "Puppis",
+   "abbr": "Pup"
+  },
+  {
+   "ra_deg": 122.124001,
+   "dec_deg": -51.015635,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 39.196421,
+   "dec_deg": -50.356475,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 60.239626,
+   "dec_deg": -50.549936,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 15.135716,
+   "dec_deg": -50.725942,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 91.947257,
+   "dec_deg": -52.419422,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 125.467105,
+   "dec_deg": -53.299712,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 55.843647,
+   "dec_deg": -52.671657,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 59.560732,
+   "dec_deg": -52.709813,
+   "name": "Dorado",
+   "abbr": "Dor"
+  },
+  {
+   "ra_deg": 13.274046,
+   "dec_deg": -52.720641,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 35.435797,
+   "dec_deg": -53.329162,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 71.948729,
+   "dec_deg": -53.680276,
+   "name": "Pictor",
+   "abbr": "Pic"
+  },
+  {
+   "ra_deg": 230.202476,
+   "dec_deg": -54.356309,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 130.475161,
+   "dec_deg": -54.847893,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 95.613745,
+   "dec_deg": -54.964384,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 186.70261,
+   "dec_deg": -55.592427,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 221.372342,
+   "dec_deg": -55.43127,
+   "name": "Lupus",
+   "abbr": "Lup"
+  },
+  {
+   "ra_deg": 230.230014,
+   "dec_deg": -55.356184,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 63.174048,
+   "dec_deg": -56.082222,
+   "name": "Dorado",
+   "abbr": "Dor"
+  },
+  {
+   "ra_deg": 149.809278,
+   "dec_deg": -56.998385,
+   "name": "Vela",
+   "abbr": "Vel"
+  },
+  {
+   "ra_deg": 168.247244,
+   "dec_deg": -57.079717,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 268.918257,
+   "dec_deg": -56.929341,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 290.107056,
+   "dec_deg": -56.675634,
+   "name": "Telescopium",
+   "abbr": "Tel"
+  },
+  {
+   "ra_deg": 341.944373,
+   "dec_deg": -56.241975,
+   "name": "Grus",
+   "abbr": "Gru"
+  },
+  {
+   "ra_deg": 51.016482,
+   "dec_deg": -56.958492,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 79.285071,
+   "dec_deg": -57.26739,
+   "name": "Pictor",
+   "abbr": "Pic"
+  },
+  {
+   "ra_deg": 100.506043,
+   "dec_deg": -58.023901,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 11.393363,
+   "dec_deg": -57.71604,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 27.346866,
+   "dec_deg": -57.778697,
+   "name": "Eridanus",
+   "abbr": "Eri"
+  },
+  {
+   "ra_deg": 356.681544,
+   "dec_deg": -57.705779,
+   "name": "Phoenix",
+   "abbr": "Phe"
+  },
+  {
+   "ra_deg": 67.417676,
+   "dec_deg": -58.629652,
+   "name": "Dorado",
+   "abbr": "Dor"
+  },
+  {
+   "ra_deg": 240.79837,
+   "dec_deg": -60.253531,
+   "name": "Norma",
+   "abbr": "Nor"
+  },
+  {
+   "ra_deg": 314.959694,
+   "dec_deg": -59.418831,
+   "name": "Indus",
+   "abbr": "Ind"
+  },
+  {
+   "ra_deg": 86.603777,
+   "dec_deg": -60.856619,
+   "name": "Pictor",
+   "abbr": "Pic"
+  },
+  {
+   "ra_deg": 231.318187,
+   "dec_deg": -61.347115,
+   "name": "Circinus",
+   "abbr": "Cir"
+  },
+  {
+   "ra_deg": 250.304499,
+   "dec_deg": -61.150392,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 228.256328,
+   "dec_deg": -63.958553,
+   "name": "Circinus",
+   "abbr": "Cir"
+  },
+  {
+   "ra_deg": 252.929737,
+   "dec_deg": -63.704583,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 96.436006,
+   "dec_deg": -63.976907,
+   "name": "Pictor",
+   "abbr": "Pic"
+  },
+  {
+   "ra_deg": 119.350372,
+   "dec_deg": -64.239335,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 174.570962,
+   "dec_deg": -64.592046,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 186.747995,
+   "dec_deg": -64.5924,
+   "name": "Crux",
+   "abbr": "Cru"
+  },
+  {
+   "ra_deg": 207.490219,
+   "dec_deg": -64.523637,
+   "name": "Centaurus",
+   "abbr": "Cen"
+  },
+  {
+   "ra_deg": 205.985033,
+   "dec_deg": -65.531527,
+   "name": "Circinus",
+   "abbr": "Cir"
+  },
+  {
+   "ra_deg": 254.906017,
+   "dec_deg": -65.098983,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 40.778736,
+   "dec_deg": -66.870806,
+   "name": "Horologium",
+   "abbr": "Hor"
+  },
+  {
+   "ra_deg": 58.562921,
+   "dec_deg": -67.035961,
+   "name": "Reticulum",
+   "abbr": "Ret"
+  },
+  {
+   "ra_deg": 225.274797,
+   "dec_deg": -67.901676,
+   "name": "Circinus",
+   "abbr": "Cir"
+  },
+  {
+   "ra_deg": 260.748109,
+   "dec_deg": -67.531349,
+   "name": "Ara",
+   "abbr": "Ara"
+  },
+  {
+   "ra_deg": 269.522995,
+   "dec_deg": -67.425672,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 342.134475,
+   "dec_deg": -66.741595,
+   "name": "Tucana",
+   "abbr": "Tuc"
+  },
+  {
+   "ra_deg": 83.463955,
+   "dec_deg": -69.822483,
+   "name": "Dorado",
+   "abbr": "Dor"
+  },
+  {
+   "ra_deg": 215.819639,
+   "dec_deg": -70.473853,
+   "name": "Circinus",
+   "abbr": "Cir"
+  },
+  {
+   "ra_deg": 241.384772,
+   "dec_deg": -70.250641,
+   "name": "Triangulum Australe",
+   "abbr": "TrA"
+  },
+  {
+   "ra_deg": 11.138397,
+   "dec_deg": -74.21575,
+   "name": "Tucana",
+   "abbr": "Tuc"
+  },
+  {
+   "ra_deg": 60.010737,
+   "dec_deg": -74.555255,
+   "name": "Hydrus",
+   "abbr": "Hyi"
+  },
+  {
+   "ra_deg": 116.396444,
+   "dec_deg": -75.213475,
+   "name": "Volans",
+   "abbr": "Vol"
+  },
+  {
+   "ra_deg": 152.500756,
+   "dec_deg": -75.516391,
+   "name": "Carina",
+   "abbr": "Car"
+  },
+  {
+   "ra_deg": 188.83734,
+   "dec_deg": -75.589524,
+   "name": "Musca",
+   "abbr": "Mus"
+  },
+  {
+   "ra_deg": 298.87564,
+   "dec_deg": -74.584607,
+   "name": "Pavo",
+   "abbr": "Pav"
+  },
+  {
+   "ra_deg": 337.614506,
+   "dec_deg": -74.262589,
+   "name": "Indus",
+   "abbr": "Ind"
+  },
+  {
+   "ra_deg": 356.781099,
+   "dec_deg": -74.205735,
+   "name": "Tucana",
+   "abbr": "Tuc"
+  },
+  {
+   "ra_deg": 16.477862,
+   "dec_deg": -75.231068,
+   "name": "Tucana",
+   "abbr": "Tuc"
+  },
+  {
+   "ra_deg": 25.658947,
+   "dec_deg": -81.774034,
+   "name": "Hydrus",
+   "abbr": "Hyi"
+  },
+  {
+   "ra_deg": 159.723601,
+   "dec_deg": -83.05359,
+   "name": "Chamaleon",
+   "abbr": "Cha"
+  },
+  {
+   "ra_deg": 243.754253,
+   "dec_deg": -82.741691,
+   "name": "Apus",
+   "abbr": "Aps"
+  },
+  {
+   "ra_deg": 77.732089,
+   "dec_deg": -84.787761,
+   "name": "Mensa",
+   "abbr": "Men"
+  },
+  {
+   "ra_deg": 0.66601,
+   "dec_deg": -89.403935,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 10.6847,
+   "dec_deg": 41.2688,
+   "name": "Andromeda",
+   "abbr": "And"
+  },
+  {
+   "ra_deg": 37.9546,
+   "dec_deg": 89.2641,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 317.1958,
+   "dec_deg": -88.9564,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 236.0667,
+   "dec_deg": 6.4258,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 275.3275,
+   "dec_deg": -2.8989,
+   "name": "Serpens",
+   "abbr": "Ser"
+  },
+  {
+   "ra_deg": 0.0,
+   "dec_deg": 90.0,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 180.0,
+   "dec_deg": 90.0,
+   "name": "Ursa Minor",
+   "abbr": "UMi"
+  },
+  {
+   "ra_deg": 0.0,
+   "dec_deg": -90.0,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 123.456,
+   "dec_deg": -90.0,
+   "name": "Octans",
+   "abbr": "Oct"
+  },
+  {
+   "ra_deg": 359.999583,
+   "dec_deg": 5.0,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 0.000417,
+   "dec_deg": 5.0,
+   "name": "Pisces",
+   "abbr": "Psc"
+  },
+  {
+   "ra_deg": 135.0,
+   "dec_deg": 65.0,
+   "name": "Ursa Major",
+   "abbr": "UMa"
+  },
+  {
+   "ra_deg": 352.5,
+   "dec_deg": -20.0,
+   "name": "Aquarius",
+   "abbr": "Aqr"
+  },
+  {
+   "ra_deg": 77.25,
+   "dec_deg": -11.0,
+   "name": "Lepus",
+   "abbr": "Lep"
+  },
+  {
+   "ra_deg": 141.8325,
+   "dec_deg": -30.0,
+   "name": "Pyxis",
+   "abbr": "Pyx"
+  },
+  {
+   "ra_deg": 193.332,
+   "dec_deg": 22.0,
+   "name": "Coma Berenices",
+   "abbr": "Com"
+  },
+  {
+   "ra_deg": 235.0305,
+   "dec_deg": -12.0,
+   "name": "Libra",
+   "abbr": "Lib"
+  },
+  {
+   "ra_deg": 285.0,
+   "dec_deg": -40.0,
+   "name": "Corona Australis",
+   "abbr": "CrA"
+  },
+  {
+   "ra_deg": 93.333,
+   "dec_deg": -81.1234,
+   "name": "Mensa",
+   "abbr": "Men"
+  }
+ ],
+ "constellation_of_date": [
+  {
+   "ra_deg": 11.04871534825342,
+   "dec_deg": 41.413678001541506,
+   "epoch_jyear": 2026.5,
+   "name": "Andromeda"
+  }
  ]
 }

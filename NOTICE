@@ -17,6 +17,14 @@ validated against published references; all AstroPy reference
 vectors are generated in-repo (scripts/gen_astropy_vectors.py).
 Per-file provenance is recorded in module documentation.
 
+This product includes the precomputed IAU constellation boundary
+table of Roman (1987), "Identification of a Constellation from a
+Position", PASP 99, 695 — ADC/CDS catalogue VI/42 (the IAU/Delporte
+1930 boundaries as declination-zone records at epoch B1875.0) —
+generated into src/constellation_data.rs by
+scripts/gen_constellation_table.py. Constellation names follow the
+official IAU list.
+
 Portions of this crate are extracted from the sibling crates
 target-match and fits-header (Copyright 2026 Sjors Robroek,
 Apache-2.0): the angle/equatorial coordinate core, sexagesimal

@@ -104,9 +104,14 @@ Polaris, σ Octantis, one point in each Serpens region, both celestial poles, an
 pair (23ʰ59ᵐ59.9ˢ / 0ʰ0ᵐ0.1ˢ), and the Roman-paper check positions (9ʰ +65° → UMa, etc.).
 Every sampled/witness point is kept only if AstroPy returns the same constellation for
 the point and four ±5″ offsets around it, so no vector sits within the R21 ambiguity
-band. Truth values are stored with `short_names=False`; abbreviations are validated
-crate-side against the official 88-entry list instead (avoids any oracle quirk for the
-split Serpens codes).
+band (curated probes are all deep-interior and skip the filter). Each case stores both
+AstroPy's short name (compared to `abbreviation()` — exact for all 88, including plain
+"Ser" for both Serpens regions) and its full name. *Implementation finding*: AstroPy's
+names file misspells three IAU names ("Chamaleon", "Ophiucus", "Pisces Austrinus") and
+carries a trailing space in "Crux "; skymath ships the official IAU spellings
+("Chamaeleon", "Ophiuchus", "Piscis Austrinus"), the generator strips whitespace, and
+the Rust test pins AstroPy's exact strings for the three misspellings — drift on either
+side (an AstroPy data fix, or a skymath typo) fails the vector run.
 
 **Rationale**: uniform sampling alone leaves small constellations (Crux 68 deg²,
 Sagitta, Equuleus) to chance; the per-record witnesses make all-88 coverage structural

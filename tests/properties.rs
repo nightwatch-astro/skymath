@@ -5,8 +5,8 @@
 
 use proptest::prelude::*;
 use skymath::{
-    apply_offset, format_dec, format_ra, parse_dec, parse_ra, precess, separation, tangent_offset,
-    Angle, Epoch, Equatorial, ParseMode, Separator, SexaStyle,
+    apply_offset, constellation, format_dec, format_ra, parse_dec, parse_ra, precess, separation,
+    tangent_offset, Angle, Constellation, Epoch, Equatorial, ParseMode, Separator, SexaStyle,
 };
 
 fn eq(ra: f64, dec: f64) -> Equatorial {
@@ -218,4 +218,61 @@ proptest! {
             "drift {}″ at {at}", separation(p, back).arcseconds()
         );
     }
+}
+
+proptest! {
+    /// Constellation identification is total (FR-C1): every valid coordinate
+    /// — poles included — resolves to one of the 88 typed values.
+    #[test]
+    fn constellation_total_over_sphere(ra in 0.0..360.0f64, dec in -90.0..=90.0f64) {
+        prop_assert!(Constellation::ALL.contains(&constellation(eq(ra, dec))));
+    }
+
+    /// Both sides of the 0ʰ/24ʰ RA seam always resolve (no wrap gap).
+    #[test]
+    fn constellation_defined_at_ra_seam(eps in 0.0..0.01f64, dec in -90.0..=90.0f64) {
+        let east = constellation(eq(eps, dec));
+        let west = constellation(eq(360.0 - eps.max(1e-9), dec));
+        prop_assert!(Constellation::ALL.contains(&east));
+        prop_assert!(Constellation::ALL.contains(&west));
+    }
+}
+
+/// SC-003: every constellation is reachable through the public API (no
+/// orphaned variant, no unreachable table region) — a 1.5° grid sweep,
+/// independent of the AstroPy vectors.
+#[test]
+fn constellation_all_88_reachable() {
+    use std::collections::HashSet;
+    let mut seen = HashSet::new();
+    let mut dec = -89.25;
+    while dec < 90.0 {
+        let mut ra = 0.0;
+        while ra < 360.0 {
+            seen.insert(constellation(eq(ra, dec)));
+            ra += 1.5;
+        }
+        dec += 1.5;
+    }
+    assert_eq!(seen.len(), 88);
+}
+
+/// FR-C2: abbreviation ↔ variant round-trip, case-insensitive parsing, and
+/// Display = full name, over all 88.
+#[test]
+fn constellation_abbreviation_round_trips() {
+    for c in Constellation::ALL {
+        let abbr = c.abbreviation();
+        assert_eq!(abbr.parse::<Constellation>().unwrap(), c);
+        assert_eq!(
+            abbr.to_ascii_lowercase().parse::<Constellation>().unwrap(),
+            c
+        );
+        assert_eq!(
+            abbr.to_ascii_uppercase().parse::<Constellation>().unwrap(),
+            c
+        );
+        assert_eq!(c.to_string(), c.name());
+    }
+    assert!("Foo".parse::<Constellation>().is_err());
 }
