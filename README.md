@@ -21,6 +21,37 @@ scheduling, and session planning, not for telescope pointing or astrometry.
 Apparent-place corrections (nutation, aberration, proper motion) are out of
 scope by design.
 
+## Usage
+
+```rust
+use skymath::{alt_az, altitude_crossings, separation, Angle, CrossingOutcome,
+              Equatorial, Location, ParseMode};
+use time::OffsetDateTime;
+
+fn main() -> skymath::Result<()> {
+    let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+    let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+
+    let now = OffsetDateTime::now_utc();
+    let h = alt_az(m31, now, &site);
+    println!("M31: alt {:.1}°, az {:.1}°", h.altitude.degrees(), h.azimuth.degrees());
+
+    match altitude_crossings(m31, Angle::from_degrees(30.0), now, &site) {
+        CrossingOutcome::Crosses { rise, set } => println!("above 30°: {rise} → {set}"),
+        outcome => println!("{outcome:?}"),
+    }
+    Ok(())
+}
+```
+
+`cargo run --example plan_night` walks the full planning flow (site + target
+parsing, precession to tonight, sidereal time, airmass, parallactic angle,
+transit and window). Enable the `serde` feature for `Serialize`/`Deserialize`
+derives on all public types.
+
+Instants are `time` crate types; functions taking an `OffsetDateTime` fold the
+offset in internally, so passing local civil time cannot skew results.
+
 ## License
 
 Licensed under the [Apache License, Version 2.0](LICENSE).

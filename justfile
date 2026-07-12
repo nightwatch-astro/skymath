@@ -1,4 +1,4 @@
-# target-match task runner. Run `just` to list recipes.
+# skymath task runner. Run `just` to list recipes.
 
 # Show available recipes
 default:

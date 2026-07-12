@@ -17,6 +17,9 @@ categories = ["science", "mathematics"]
 all-features = true
 
 [dependencies]
+serde = { version = "1.0.228", features = ["derive"], optional = true }
+thiserror = "2.0.18"
+time = { version = "0.3.41", features = ["formatting", "parsing", "macros"] }
 
 [lib]
 path = "src/lib.rs"
@@ -27,3 +30,11 @@ unsafe_code = "forbid"
 
 [lints.clippy]
 all = { level = "warn", priority = -1 }
+
+[features]
+serde = ["dep:serde", "time/serde-human-readable"]
+
+[dev-dependencies]
+anyhow = "1.0.103"
+proptest = "1.8.0"
+serde_json = "1.0.150"
