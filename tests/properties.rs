@@ -78,3 +78,37 @@ proptest! {
         );
     }
 }
+
+// ── US2: time properties ───────────────────────────────────────────────────────
+
+use skymath::{datetime_to_mjd, gmst, mjd_to_datetime};
+use time::macros::datetime;
+use time::{Date, Duration, Month, PrimitiveDateTime, Time, UtcOffset};
+
+proptest! {
+    /// Calendar → MJD → calendar is lossless to well below planning grade.
+    #[test]
+    fn calendar_mjd_round_trip(
+        year in 1859i32..2200, month in 1u8..=12, day in 1u8..=28,
+        hour in 0u8..24, minute in 0u8..60, second in 0u8..60, milli in 0u16..1000,
+    ) {
+        let dt = PrimitiveDateTime::new(
+            Date::from_calendar_date(year, Month::try_from(month).unwrap(), day).unwrap(),
+            Time::from_hms_milli(hour, minute, second, milli).unwrap(),
+        );
+        let back = mjd_to_datetime(datetime_to_mjd(dt)).unwrap();
+        prop_assert!((back - dt).abs() < Duration::microseconds(5), "{dt} -> {back}");
+    }
+
+    /// GMST depends on the instant, not the civil offset it is written in.
+    #[test]
+    fn gmst_offset_invariant(
+        secs in -1_000_000_000i64..1_000_000_000,
+        offset_minutes in -720i32..=840,
+    ) {
+        let instant = datetime!(2000-01-01 12:00 UTC) + Duration::seconds(secs);
+        let offset = UtcOffset::from_whole_seconds(offset_minutes * 60).unwrap();
+        let rewritten = instant.to_offset(offset);
+        prop_assert!((gmst(instant).hours() - gmst(rewritten).hours()).abs() < 1e-9);
+    }
+}

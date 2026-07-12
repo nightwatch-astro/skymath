@@ -9,13 +9,13 @@ with attribution, (fresh) = new code validated against published references.
 
 ## Phase 1: Setup
 
-- [ ] T001 Add dependencies via cargo CLI (`thiserror`, `time` w/ macros+formatting+parsing; optional `serde` w/ derive; dev: `proptest`, `serde_json`, `anyhow`) and declare the `serde` feature in `Cargo.toml`
-- [ ] T002 [P] Write `NOTICE` attributing ported modules/vectors to `gaker/astro-math` (MIT OR Apache-2.0)
+- [x] T001 Add dependencies via cargo CLI (`thiserror`, `time` w/ macros+formatting+parsing; optional `serde` w/ derive; dev: `proptest`, `serde_json`, `anyhow`) and declare the `serde` feature in `Cargo.toml`
+- [x] T002 [P] Write `NOTICE` attributing ported modules/vectors to `gaker/astro-math` (MIT OR Apache-2.0)
 
 ## Phase 2: Foundational (blocking)
 
-- [ ] T003 Implement `src/error.rs`: `Error { ParseCoord, ParseDate, OutOfRange }` (thiserror, non_exhaustive), `Result<T>` alias, display tests
-- [ ] T004 Wire `src/lib.rs`: module declarations, root re-exports per contract, crate docs skeleton (final docs in Polish)
+- [x] T003 Implement `src/error.rs`: `Error { ParseCoord, ParseDate, OutOfRange }` (thiserror, non_exhaustive), `Result<T>` alias, display tests
+- [x] T004 Wire `src/lib.rs`: module declarations, root re-exports per contract, crate docs skeleton (final docs in Polish)
 
 ## Phase 3: User Story 1 — Shared coordinate & angle primitives (P1) 🎯 MVP
 
@@ -24,14 +24,15 @@ modes/directions, separation/PA/offsets, precession.
 **Independent test**: migrated target-match suites + new parse-mode tests pass with only
 this phase implemented.
 
-- [ ] T005 [US1] (extract) `src/angle.rs`: `Angle` type + unit constructors/accessors + operators + exact constants from target-match `src/angle.rs`; add `normalized_0_360/pm_180/hours` (fresh)
-- [ ] T006 [US1] (fresh+extract) Sexagesimal core in `src/angle.rs`: one tokenizer, `ParseMode::{Strict,Lenient}` (lenient: flexible separators, missing-fields-default, sign-from-lead, **garbage always errors**), `parse_ra`/`parse_dec`; `format_ra`/`format_dec` with `SexaStyle`, rounding carry, sign preservation
-- [ ] T007 [US1] (extract) `src/coords.rs`: `Epoch`, `Equatorial` (constructors, `parse_j2000`/`parse_at_epoch` w/ mode, accessors, sexagesimal formatting delegating to angle)
-- [ ] T008 [US1] (extract+fresh) Geometry in `src/coords.rs`: `separation` (haversine), `position_angle`, `tangent_offset` (hoisted polar decomposition), `apply_offset` (fresh inverse, destination-point)
-- [ ] T009 [US1] (extract) `precess` IAU-1976 in `src/coords.rs`
-- [ ] T010 [P] [US1] (extract) Migrate target-match coordinate suites into `tests/coordinates_only.rs` + inline unit tests (SC-002)
-- [ ] T011 [P] [US1] (fresh) Proptest round-trips in `tests/properties.rs`: sexagesimal parse↔format, offset apply↔recover, precess to↔from (SC-004)
-- [ ] T012 [US1] (fresh) Known values in `tests/known_values.rs`: M31/M110 separation+PA, `-00 30 00` sign, `59.9996″` rounding carry, `"10 xx 30"` rejection in both modes (SC-005)
+- [x] T005 [US1] (extract) `src/angle.rs`: `Angle` type + unit constructors/accessors + operators + exact constants from target-match `src/angle.rs`; add `normalized_0_360/pm_180/hours` (fresh)
+- [x] T006 [US1] (fresh+extract) Sexagesimal core in `src/angle.rs`: one tokenizer, `ParseMode::{Strict,Lenient}` (lenient: flexible separators, missing-fields-default, sign-from-lead, **garbage always errors**), `parse_ra`/`parse_dec`; `format_ra`/`format_dec` with `SexaStyle`, rounding carry, sign preservation
+- [x] T007 [US1] (extract) `src/coords.rs`: `Epoch`, `Equatorial` (constructors, `parse_j2000`/`parse_at_epoch` w/ mode, accessors, sexagesimal formatting delegating to angle)
+- [x] T008 [US1] (extract+fresh) Geometry in `src/coords.rs`: `separation` (haversine), `position_angle`, `tangent_offset` (hoisted polar decomposition), `apply_offset` (fresh inverse, destination-point)
+- [x] T009 [US1] (extract) `precess` IAU-1976 in `src/coords.rs`
+- [x] T010 [P] [US1] (extract) Migrate target-match coordinate suites into `tests/coordinates_only.rs` + inline unit tests (SC-002)
+  — Deviation: no `tests/coordinates_only.rs`; the donor file of that name tests matcher behaviour (out of skymath scope). The coordinate suites landed as inline unit tests in `src/angle.rs`/`src/coords.rs` plus `tests/properties.rs`/`tests/known_values.rs`.
+- [x] T011 [P] [US1] (fresh) Proptest round-trips in `tests/properties.rs`: sexagesimal parse↔format, offset apply↔recover, precess to↔from (SC-004)
+- [x] T012 [US1] (fresh) Known values in `tests/known_values.rs`: M31/M110 separation+PA, `-00 30 00` sign, `59.9996″` rounding carry, `"10 xx 30"` rejection in both modes (SC-005)
 
 **Checkpoint**: US1 alone = adoptable by fits-header/simbad-resolver/target-match.
 
@@ -41,9 +42,9 @@ this phase implemented.
 **Independent test**: timestamp-only tests (Meeus GMST, MJD round-trips).
 **Depends on**: Foundational + `Epoch` from T007.
 
-- [ ] T013 [US2] (extract) `src/time.rs`: MJD↔datetime, JD↔MJD, `julian_date`, `parse_date_obs`/`format_date_obs` from fits-header `dates.rs` (time-crate types preserved)
-- [ ] T014 [US2] (fresh) `julian_epoch_of`, `gmst` (IAU-1982 polynomial, hours-normalized), `lst(at, longitude_east)` in `src/time.rs`; UTC-offset handling internal
-- [ ] T015 [P] [US2] (fresh) Time tests: Meeus 12.a/12.b GMST ±0.1 s, calendar↔MJD lossless round-trip proptest, epoch of 2026-07-11 = 2026.52 ± 0.01, offset-invariance (same instant, different offsets → same GMST) in `tests/known_values.rs` + `tests/properties.rs`
+- [x] T013 [US2] (extract) `src/time.rs`: MJD↔datetime, JD↔MJD, `julian_date`, `parse_date_obs`/`format_date_obs` from fits-header `dates.rs` (time-crate types preserved)
+- [x] T014 [US2] (fresh) `julian_epoch_of`, `gmst` (IAU-1982 polynomial, hours-normalized), `lst(at, longitude_east)` in `src/time.rs`; UTC-offset handling internal
+- [x] T015 [P] [US2] (fresh) Time tests: Meeus 12.a/12.b GMST ±0.1 s, calendar↔MJD lossless round-trip proptest, epoch of 2026-07-11 = 2026.52 ± 0.01, offset-invariance (same instant, different offsets → same GMST) in `tests/known_values.rs` + `tests/properties.rs`
 
 ## Phase 5: User Story 3 — Observer-local quantities (P3)
 

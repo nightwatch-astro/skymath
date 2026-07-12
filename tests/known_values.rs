@@ -4,8 +4,10 @@
 //! bounds; the public contract is ≤ 1 arcminute.
 
 use skymath::{
-    parse_dec, parse_ra, position_angle, separation, Angle, Equatorial, ParseMode, SexaStyle,
+    gmst, julian_epoch_of, lst, parse_dec, parse_ra, position_angle, separation, Angle, Epoch,
+    Equatorial, ParseMode, SexaStyle,
 };
+use time::macros::datetime;
 
 fn eq(ra: f64, dec: f64) -> Equatorial {
     Equatorial::j2000(Angle::from_degrees(ra), Angle::from_degrees(dec)).unwrap()
@@ -69,5 +71,58 @@ fn seconds_rounding_carries_into_minutes() {
         skymath::format_dec(a, SexaStyle::default()),
         "+11:00:00.00",
         "59.9996 s must roll the minute, never emit :60"
+    );
+}
+
+// ── US2: time scales & sidereal time ───────────────────────────────────────────
+
+#[test]
+fn gmst_matches_meeus_examples() {
+    // Meeus, Astronomical Algorithms 2nd ed., examples 12.a and 12.b
+    // (1987-04-10): mean sidereal time 13h10m46.3668s at 0h UT and
+    // 8h34m57.0896s at 19:21:00 UT.
+    let tol_hours = 0.1 / 3600.0; // ±0.1 s of time (SC-001 bound for GMST)
+    let a = gmst(datetime!(1987-04-10 00:00 UTC));
+    let expect_a = 13.0 + 10.0 / 60.0 + 46.3668 / 3600.0;
+    assert!(
+        (a.hours() - expect_a).abs() < tol_hours,
+        "12.a: got {} h, want {expect_a} h",
+        a.hours()
+    );
+    let b = gmst(datetime!(1987-04-10 19:21 UTC));
+    let expect_b = 8.0 + 34.0 / 60.0 + 57.0896 / 3600.0;
+    assert!(
+        (b.hours() - expect_b).abs() < tol_hours,
+        "12.b: got {} h, want {expect_b} h",
+        b.hours()
+    );
+}
+
+#[test]
+fn julian_epoch_of_mid_july_2026() {
+    let e = julian_epoch_of(datetime!(2026-07-11 00:00 UTC));
+    let Epoch::OfDate(year) = e else {
+        panic!("expected OfDate, got {e:?}")
+    };
+    assert!((year - 2026.52).abs() < 0.01, "epoch {year}");
+}
+
+#[test]
+fn gmst_is_offset_invariant() {
+    // The same instant written in two civil offsets.
+    let utc = gmst(datetime!(2026-07-11 18:00 UTC));
+    let dubai = gmst(datetime!(2026-07-11 22:00 +04:00));
+    assert!((utc.hours() - dubai.hours()).abs() < 1e-9);
+}
+
+#[test]
+fn lst_adds_east_longitude() {
+    let at = datetime!(2026-07-11 18:00 UTC);
+    let l = lst(at, Angle::from_degrees(60.0));
+    let expect = (gmst(at).hours() + 4.0) % 24.0;
+    assert!(
+        (l.hours() - expect).abs() < 1e-9,
+        "lst {} vs {expect}",
+        l.hours()
     );
 }

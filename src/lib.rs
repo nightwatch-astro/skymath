@@ -12,6 +12,7 @@
 pub mod angle;
 pub mod coords;
 pub mod error;
+pub mod time;
 
 pub use angle::{
     format_dec, format_ra, parse_dec, parse_ra, Angle, ParseMode, Separator, SexaStyle,
@@ -22,3 +23,7 @@ pub use coords::{
     TangentOffset,
 };
 pub use error::{Error, Result};
+pub use time::{
+    datetime_to_mjd, format_date_obs, gmst, jd_to_mjd, julian_date, julian_epoch_of, lst,
+    mjd_to_datetime, mjd_to_jd, parse_date_obs,
+};
