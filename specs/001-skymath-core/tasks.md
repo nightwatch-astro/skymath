@@ -63,8 +63,8 @@ this phase implemented.
 
 **Depends on**: US1 (+ obliquity needs Julian centuries from US2).
 
-- [ ] T023 [US4] (port+fresh) `src/frames.rs`: `to/from_galactic` (astro-math rotation, J2000 IAU constants) and `to/from_ecliptic` (fresh, mean obliquity ε(T) Meeus 22.2)
-- [ ] T024 [P] [US4] (fresh) Frames tests: galactic centre l≈0/b≈0 ± 1′, NGP, round-trips ± 1″ (proptest) in `tests/known_values.rs` + `tests/properties.rs`
+- [x] T023 [US4] (port+fresh) `src/frames.rs`: `to/from_galactic` (astro-math rotation, J2000 IAU constants) and `to/from_ecliptic` (fresh, mean obliquity ε(T) Meeus 22.2)
+- [x] T024 [P] [US4] (fresh) Frames tests: galactic centre l≈0/b≈0 ± 1′, NGP, round-trips ± 1″ (proptest) in `tests/known_values.rs` + `tests/properties.rs`
 
 ## Phase 7: Polish & cross-cutting
 

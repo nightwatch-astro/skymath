@@ -147,3 +147,34 @@ proptest! {
         }
     }
 }
+
+// ── US4: frame round-trips ─────────────────────────────────────────────────────
+
+use skymath::{from_ecliptic, from_galactic, to_ecliptic, to_galactic};
+
+proptest! {
+    /// Galactic is an exact rotation: round-trips to within an arcsecond.
+    #[test]
+    fn galactic_round_trip(ra in 0.0..360.0f64, dec in -89.9..89.9f64) {
+        let p = eq(ra, dec);
+        let back = from_galactic(to_galactic(p));
+        prop_assert!(
+            separation(p, back).arcseconds() < 1.0,
+            "drift {}″", separation(p, back).arcseconds()
+        );
+    }
+
+    /// Ecliptic-of-date round-trips to within an arcsecond at any instant.
+    #[test]
+    fn ecliptic_round_trip(
+        ra in 0.0..360.0f64, dec in -89.9..89.9f64, days in -18_000i64..18_000,
+    ) {
+        let at = datetime!(2000-01-01 12:00 UTC) + Duration::days(days);
+        let p = eq(ra, dec);
+        let back = from_ecliptic(to_ecliptic(p, at), at);
+        prop_assert!(
+            separation(p, back).arcseconds() < 1.0,
+            "drift {}″ at {at}", separation(p, back).arcseconds()
+        );
+    }
+}

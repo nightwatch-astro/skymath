@@ -12,6 +12,7 @@
 pub mod angle;
 pub mod coords;
 pub mod error;
+pub mod frames;
 pub mod observer;
 pub mod time;
 
@@ -24,6 +25,7 @@ pub use coords::{
     TangentOffset,
 };
 pub use error::{Error, Result};
+pub use frames::{from_ecliptic, from_galactic, to_ecliptic, to_galactic, Ecliptic, Galactic};
 pub use observer::{
     airmass, alt_az, altitude_crossings, hour_angle, parallactic_angle,
     refraction_apparent_to_true, refraction_true_to_apparent, transit, CrossingOutcome, Horizontal,

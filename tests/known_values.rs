@@ -222,3 +222,45 @@ fn transit_hour_angle_within_five_seconds_of_time() {
     let ha = hour_angle(m31, t, &site).degrees();
     assert!(ha.abs() < 0.021, "residual HA {ha}°");
 }
+
+// ── US4: frame conversions ─────────────────────────────────────────────────────
+
+#[test]
+fn galactic_centre_maps_to_the_origin() {
+    // Sgr A* / the galactic origin, J2000: 17h45m37.224s, −28°56′10.23″.
+    let centre =
+        Equatorial::parse_j2000("17:45:37.224", "-28:56:10.23", ParseMode::Strict).unwrap();
+    let g = skymath::to_galactic(centre);
+    let l = g.l.normalized_pm_180();
+    assert!(l.arcminutes().abs() < 1.0, "l = {}′", l.arcminutes());
+    assert!(g.b.arcminutes().abs() < 1.0, "b = {}′", g.b.arcminutes());
+}
+
+#[test]
+fn north_galactic_pole_has_latitude_90() {
+    let ngp = eq(192.85948, 27.12825);
+    let g = skymath::to_galactic(ngp);
+    assert!(
+        (g.b.degrees() - 90.0).abs() * 3600.0 < 1.0,
+        "b = {}°",
+        g.b.degrees()
+    );
+}
+
+#[test]
+fn pollux_ecliptic_matches_meeus_13a() {
+    // Meeus example 13.a: Pollux (β Gem) at α = 116.328942°, δ = +28.026183°
+    // with the J2000 mean obliquity → λ = 113.215630°, β = +6.684170°.
+    let pollux = eq(116.328942, 28.026183);
+    let e = skymath::to_ecliptic(pollux, datetime!(2000-01-01 12:00 UTC));
+    assert!(
+        (e.lambda.degrees() - 113.215630).abs() * 3600.0 < 1.0,
+        "λ = {}°",
+        e.lambda.degrees()
+    );
+    assert!(
+        (e.beta.degrees() - 6.684170).abs() * 3600.0 < 1.0,
+        "β = {}°",
+        e.beta.degrees()
+    );
+}
