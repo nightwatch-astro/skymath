@@ -15,6 +15,10 @@ Rust library of planning-grade astronomy math for astrophotography tooling.
 - **Observer-local quantities** — observer `Location` (with sexagesimal
   parsing), hour angle, alt-azimuth transforms, airmass, atmospheric
   refraction, parallactic angle, and transit / altitude-crossing times.
+- **Sun & Moon** — solar and lunar positions (geocentric and topocentric),
+  twilight times (civil / nautical / astronomical, with typed polar-night and
+  midnight-sun outcomes), moonrise/set, lunar separation from a target, Moon
+  illumination and phase angle, and the moon-avoidance Lorentzian criterion.
 
 Precision is planning-grade (≈1 arcminute) throughout: suitable for framing,
 scheduling, and session planning, not for telescope pointing or astrometry.

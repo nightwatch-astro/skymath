@@ -24,9 +24,10 @@
 use serde_json::Value;
 use skymath::{
     alt_az, altitude_crossings, apply_offset, datetime_to_mjd, gmst, hour_angle, julian_date,
-    julian_epoch_of, lst, parallactic_angle, parse_dec, parse_ra, position_angle, precess,
-    separation, tangent_offset, transit, Angle, CrossingOutcome, Epoch, Equatorial, Location,
-    ParseMode, TangentOffset,
+    julian_epoch_of, lst, moon_crossings, moon_distance_km, moon_illumination, moon_position,
+    moon_position_topocentric, parallactic_angle, parse_dec, parse_ra, position_angle, precess,
+    separation, sun_position, tangent_offset, transit, twilight, Angle, CrossingOutcome, Epoch,
+    Equatorial, Location, ParseMode, TangentOffset, Twilight, TwilightOutcome,
 };
 use time::format_description::well_known::Rfc3339;
 use time::OffsetDateTime;
@@ -314,6 +315,121 @@ fn transit_matches_astroplan_within_a_minute() {
         assert!(
             delta < time::Duration::seconds(60),
             "transit off by {delta}"
+        );
+    }
+}
+
+#[test]
+fn sun_position_matches_get_sun_within_a_minute() {
+    // AstroPy's `get_sun` reports GCRS (J2000-aligned axes); ours is equinox
+    // of date — precess back before comparing.
+    for v in vectors()["sun"].as_array().unwrap() {
+        let ours = precess(sun_position(instant(v, "at")), Epoch::J2000);
+        let expected = Equatorial::j2000(
+            Angle::from_degrees(f(v, "ra_deg")),
+            Angle::from_degrees(f(v, "dec_deg")),
+        )
+        .unwrap();
+        let drift = separation(ours, expected).arcseconds();
+        assert!(drift < 60.0, "sun drift {drift}″ at {}", v["at"]);
+    }
+}
+
+#[test]
+fn moon_position_matches_get_body_within_two_minutes() {
+    for v in vectors()["moon_geocentric"].as_array().unwrap() {
+        let at = instant(v, "at");
+        let ours = precess(moon_position(at), Epoch::J2000);
+        let expected = Equatorial::j2000(
+            Angle::from_degrees(f(v, "ra_deg")),
+            Angle::from_degrees(f(v, "dec_deg")),
+        )
+        .unwrap();
+        let drift = separation(ours, expected).arcminutes();
+        assert!(drift < 2.0, "moon drift {drift}′ at {}", v["at"]);
+        let dist = moon_distance_km(at);
+        assert!(
+            (dist - f(v, "distance_km")).abs() < 150.0,
+            "Δ {dist} vs {}",
+            f(v, "distance_km")
+        );
+    }
+    for v in vectors()["moon_topocentric"].as_array().unwrap() {
+        let ours = precess(
+            moon_position_topocentric(instant(v, "at"), &site(&v["site"])),
+            Epoch::J2000,
+        );
+        let expected = Equatorial::j2000(
+            Angle::from_degrees(f(v, "ra_deg")),
+            Angle::from_degrees(f(v, "dec_deg")),
+        )
+        .unwrap();
+        let drift = separation(ours, expected).arcminutes();
+        assert!(
+            drift < 2.0,
+            "topocentric moon drift {drift}′ at {}",
+            v["at"]
+        );
+    }
+}
+
+#[test]
+fn moon_illumination_matches_astroplan() {
+    for v in vectors()["moon_illumination"].as_array().unwrap() {
+        let k = moon_illumination(instant(v, "at"));
+        assert!(
+            (k - f(v, "k")).abs() < 0.01,
+            "k {k} vs {} at {}",
+            f(v, "k"),
+            v["at"]
+        );
+    }
+}
+
+#[test]
+fn twilight_matches_astroplan_within_a_minute() {
+    for v in vectors()["twilight"].as_array().unwrap() {
+        let outcome = twilight(
+            Twilight::Astronomical,
+            instant(v, "night"),
+            &site(&v["site"]),
+        );
+        let TwilightOutcome::Night { dusk, dawn } = outcome else {
+            panic!("expected Night, got {outcome:?}");
+        };
+        let dusk_delta = (dusk - instant(v, "dusk")).abs();
+        let dawn_delta = (dawn - instant(v, "dawn")).abs();
+        assert!(
+            dusk_delta < time::Duration::seconds(60),
+            "dusk off by {dusk_delta}"
+        );
+        assert!(
+            dawn_delta < time::Duration::seconds(60),
+            "dawn off by {dawn_delta}"
+        );
+    }
+}
+
+#[test]
+fn moon_crossings_match_astroplan_within_three_minutes() {
+    for v in vectors()["moon_crossings"].as_array().unwrap() {
+        let site = site(&v["site"]);
+        // Anchor inside the astroplan window so both solvers pick the same
+        // lunar pass.
+        let anchor = instant(v, "rise") + time::Duration::hours(3);
+        let outcome = moon_crossings(Angle::from_degrees(0.0), anchor, &site);
+        let CrossingOutcome::Crosses { rise, set } = outcome else {
+            panic!("expected Crosses, got {outcome:?}");
+        };
+        let rise_delta = (rise - instant(v, "rise")).abs();
+        let set_delta = (set - instant(v, "set")).abs();
+        assert!(
+            rise_delta < time::Duration::minutes(3),
+            "rise off by {rise_delta}"
+        );
+        assert!(
+            set_delta < time::Duration::minutes(3),
+            "set off by {set_delta}"
         );
     }
 }
