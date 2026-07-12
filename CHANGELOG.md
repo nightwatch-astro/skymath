@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/nightwatch-astro/skymath/compare/v0.2.0...v0.3.0) (2026-07-12)
+
+
+### Features
+
+* identify the IAU constellation containing any sky coordinate ([#6](https://github.com/nightwatch-astro/skymath/issues/6)) ([a3ba312](https://github.com/nightwatch-astro/skymath/commit/a3ba312e5e9c71272fc4f63525059cd055a09801))
+
 ## [0.2.0](https://github.com/nightwatch-astro/skymath/compare/v0.1.0...v0.2.0) (2026-07-12)
 
 
