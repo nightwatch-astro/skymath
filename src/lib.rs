@@ -8,6 +8,24 @@
 //! framing, scheduling, and session planning, not telescope pointing or
 //! astrometry. Apparent-place corrections (nutation, aberration, proper
 //! motion) are out of scope.
+//!
+//! Everything is re-exported from the crate root; instants use the [`time`]
+//! crate's types, and functions taking an `OffsetDateTime` fold the offset in
+//! internally, so local civil time cannot skew results.
+//!
+//! ```
+//! use skymath::{separation, Equatorial, ParseMode};
+//!
+//! let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+//! let m110 = Equatorial::parse_j2000("00:40:22.1", "+41:41:07", ParseMode::Lenient)?;
+//! let sep = separation(m31, m110);
+//! assert!((sep.arcminutes() - 36.5).abs() < 1.0);
+//! # Ok::<(), skymath::Error>(())
+//! ```
+//!
+//! Enable the `serde` feature for `Serialize`/`Deserialize` derives on all
+//! public types.
+#![warn(missing_docs)]
 
 pub mod angle;
 pub mod coords;

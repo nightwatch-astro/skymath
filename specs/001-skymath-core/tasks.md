@@ -68,11 +68,11 @@ this phase implemented.
 
 ## Phase 7: Polish & cross-cutting
 
-- [ ] T025 [P] Serde derives behind the feature on all public types + `tests/serde_feature.rs` round-trip (FR-X3)
-- [ ] T026 [P] `examples/plan_night.rs`: parse site + M31, precess to tonight, GMST/LST, alt-az/airmass/parallactic, transit + 30° window (quickstart contract)
-- [ ] T027 Final `src/lib.rs` crate docs + root doctest; module-header provenance docs on every module; README updated to the real API with usage snippet
-- [ ] T028 Accuracy-claim audit: every documented tolerance has a matching pinned test (SC-006); full gate `just verify` + `cargo test --all-features` + `cargo doc --no-deps` warning-free (SC-008)
-- [ ] T029 Update `docs/DECISIONS.md` (build-phase log complete); confirm spec artifacts consistent with implementation
+- [x] T025 [P] Serde derives behind the feature on all public types + `tests/serde_feature.rs` round-trip (FR-X3)
+- [x] T026 [P] `examples/plan_night.rs`: parse site + M31, precess to tonight, GMST/LST, alt-az/airmass/parallactic, transit + 30° window (quickstart contract)
+- [x] T027 Final `src/lib.rs` crate docs + root doctest; module-header provenance docs on every module; README updated to the real API with usage snippet
+- [x] T028 Accuracy-claim audit: every documented tolerance has a matching pinned test (SC-006); full gate `just verify` + `cargo test --all-features` + `cargo doc --no-deps` warning-free (SC-008)
+- [x] T029 Update `docs/DECISIONS.md` (build-phase log complete); confirm spec artifacts consistent with implementation
 
 ## Dependencies
 

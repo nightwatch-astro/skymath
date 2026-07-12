@@ -44,3 +44,17 @@ maintainer input.
   worktree.create): feature is clearly not tiny; repo is dedicated so no worktree needed.
 - **[ASSUMPTION] APM dependencies unpinned** (mirrors target-match's apm.yml exactly,
   which is also unpinned); pinning is a family-wide hygiene task, not a skymath concern.
+- **[DECISION] astro-math donor reality check**: `gaker/astro-math` 0.2.1 (latest
+  published) ships no `refraction`, `galactic`, or `rise_set` modules and no 30 KB
+  AstroPy vector file — only `transforms`/`sidereal`/`location`/`time`/`projection`.
+  The alt-az transform and its AstroPy cross-check vectors were ported as planned;
+  airmass (Kasten–Young 1989), refraction (Bennett/Sæmundsson), and the galactic
+  rotation were written fresh against published values. research.md carries the
+  correction note; NOTICE attribution stands for the ported parts.
+- **[DECISION] T010 file-name deviation**: no `tests/coordinates_only.rs` — the donor
+  file of that name tests matcher behaviour (target-match scope). The migrated
+  coordinate suites live inline in `src/angle.rs`/`src/coords.rs` and in the
+  properties/known-values suites.
+- **[DECISION] `serde` feature pulls `time/serde-human-readable`** so
+  `CrossingOutcome` (which embeds `OffsetDateTime`) serializes as RFC-3339 strings
+  in JSON rather than opaque tuples.

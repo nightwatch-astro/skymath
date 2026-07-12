@@ -20,16 +20,19 @@ fn site(lat: f64, lon: f64, elev: f64) -> Location {
 fn vega_from_kitt_peak_matches_astropy() {
     // astro-math `test_ra_dec_to_alt_az_astropy_crosscheck`: Vega (α Lyr)
     // from Kitt Peak, 2024-08-04T06:00 UTC → alt 77.775°, az 307.386°.
+    // Upstream asserted at ±0.1°; we pin at ±0.01° (36″) to back the ≤1′
+    // alt-az claim (SC-003) — headroom covers the donor's 0.001° value
+    // quantization plus mean-vs-apparent sidereal (~0.005°).
     let observer = site(31.9583, -111.6, 2120.0);
     let vega = eq(279.234_734_79, 38.783_688_96);
     let h = alt_az(vega, datetime!(2024-08-04 06:00 UTC), &observer);
     assert!(
-        (h.altitude.degrees() - 77.775).abs() < 0.1,
+        (h.altitude.degrees() - 77.775).abs() < 0.01,
         "alt {}",
         h.altitude.degrees()
     );
     assert!(
-        (h.azimuth.degrees() - 307.386).abs() < 0.1,
+        (h.azimuth.degrees() - 307.386).abs() < 0.01,
         "az {}",
         h.azimuth.degrees()
     );
