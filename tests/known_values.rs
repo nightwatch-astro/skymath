@@ -197,16 +197,16 @@ fn crossing_instants_sit_on_the_threshold() {
 #[test]
 fn grazing_threshold_yields_a_short_window() {
     // Threshold a hair below M31's maximum altitude from Leiden
-    // (90 − |φ − δ|): the window must exist and be short.
+    // (90 − |φ − δ| with the OF-DATE declination — the solver precesses
+    // internally): the window must exist and be short.
     let m31 = eq(10.6847, 41.2688);
     let site = leiden();
-    let max_alt = 90.0 - (52.155 - 41.2688);
-    let outcome = altitude_crossings(
-        m31,
-        Angle::from_degrees(max_alt - 0.001),
-        datetime!(2026-07-11 22:00 UTC),
-        &site,
-    );
+    let night = datetime!(2026-07-11 22:00 UTC);
+    let dec_of_date = skymath::precess(m31, skymath::julian_epoch_of(night))
+        .dec()
+        .degrees();
+    let max_alt = 90.0 - (52.155 - dec_of_date);
+    let outcome = altitude_crossings(m31, Angle::from_degrees(max_alt - 0.001), night, &site);
     let CrossingOutcome::Crosses { rise, set } = outcome else {
         panic!("expected a grazing Crosses, got {outcome:?}");
     };

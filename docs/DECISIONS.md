@@ -58,3 +58,17 @@ maintainer input.
 - **[DECISION] `serde` feature pulls `time/serde-human-readable`** so
   `CrossingOutcome` (which embeds `OffsetDateTime`) serializes as RFC-3339 strings
   in JSON rather than opaque tuples.
+- **[DECISION] AstroPy cross-validation via generated pinned vectors** (2026-07-12):
+  `scripts/gen_astropy_vectors.py` (run with `uv run --with astropy --with astroplan`)
+  bakes AstroPy 8.0.1 / astroplan 0.10.1 outputs into `tests/data/astropy_vectors.json`;
+  `tests/astropy_vectors.rs` validates the full public surface against it with no
+  Python at test time. Airmass (Kasten–Young) and refraction (Bennett/Sæmundsson)
+  have no AstroPy analogue and stay pinned to their published values.
+- **[BUG FOUND & FIXED by the AstroPy suite] Observer functions did not precess**:
+  hour_angle/alt_az/parallactic/transit/crossings compared J2000 RA against of-date
+  sidereal time (~2 s of RA per year, ≈13′ error for J2000 targets in 2026 — outside
+  the 1′ contract). All observer entry points now precess the target to the epoch of
+  the instant internally. The astro-math donor has the same defect: its "AstroPy
+  verified" Kitt Peak vector was actually its own unprecessed output (AstroPy
+  disagrees by ~10′); `tests/ported_vectors.rs` now pins genuine AstroPy values and
+  NOTICE no longer credits the vectors.

@@ -12,16 +12,18 @@
 //! values in the inline and integration tests.
 //!
 //! All instants are folded to UTC internally; hour-angle sign follows the
-//! usual convention (positive west of the meridian). Targets are used at
-//! their stored epoch — precess explicitly for of-date rigour; the ≈50″/yr
-//! drift is inside the planning-grade contract for current-decade epochs.
+//! usual convention (positive west of the meridian). Targets are precessed
+//! to the epoch of the observation instant internally before any comparison
+//! with sidereal time — passing J2000 catalogue coordinates directly is
+//! correct (comparing J2000 RA against of-date LST without precession would
+//! be off by ~2 s of RA per year, ≈13′ for J2000 targets in the mid-2020s).
 
 use ::time::{Duration, OffsetDateTime};
 
 use crate::angle::{parse_dec, Angle, ParseMode};
-use crate::coords::Equatorial;
+use crate::coords::{precess, Equatorial};
 use crate::error::{Error, Result};
-use crate::time::lst;
+use crate::time::{julian_epoch_of, lst};
 
 /// Degrees the hour angle advances per mean solar day (sidereal rate).
 const SIDEREAL_RATE_DEG_PER_DAY: f64 = 360.985_647_366_29;
@@ -146,15 +148,20 @@ pub struct Horizontal {
     pub azimuth: Angle,
 }
 
-/// Hour angle of `target` (LST − RA), normalized to `(-180°, +180°]`;
-/// positive west of the meridian.
+/// Hour angle of `target` (LST − of-date RA), normalized to `(-180°, +180°]`;
+/// positive west of the meridian. The target is precessed to the epoch of
+/// `at` first, so J2000 coordinates are compared against of-date sidereal
+/// time correctly.
 pub fn hour_angle(target: Equatorial, at: OffsetDateTime, site: &Location) -> Angle {
-    (lst(at, site.longitude()) - target.ra()).normalized_pm_180()
+    let of_date = precess(target, julian_epoch_of(at));
+    (lst(at, site.longitude()) - of_date.ra()).normalized_pm_180()
 }
 
 /// Horizontal position of `target` for an observer, ported from astro-math's
-/// spherical-triangle formulation (geometric altitude — no refraction).
+/// spherical-triangle formulation (geometric altitude — no refraction). The
+/// target is precessed to the epoch of `at` internally.
 pub fn alt_az(target: Equatorial, at: OffsetDateTime, site: &Location) -> Horizontal {
+    let target = precess(target, julian_epoch_of(at));
     let ha = hour_angle(target, at, site).radians();
     let dec = target.dec().radians();
     let lat = site.latitude().radians();
@@ -242,8 +249,9 @@ fn checked_altitude(altitude: Angle) -> Result<f64> {
 /// Parallactic angle `q = atan2(sin H, tan φ cos δ − sin δ cos H)` in
 /// `(-180°, +180°]`: 0 at transit (for δ < φ), negative east of the
 /// meridian, positive west — the position angle of the zenith measured at
-/// the target.
+/// the target. The target is precessed to the epoch of `at` internally.
 pub fn parallactic_angle(target: Equatorial, at: OffsetDateTime, site: &Location) -> Angle {
+    let target = precess(target, julian_epoch_of(at));
     let ha = hour_angle(target, at, site).radians();
     let dec = target.dec().radians();
     let lat = site.latitude().radians();
@@ -296,6 +304,7 @@ pub fn altitude_crossings(
     night_of: OffsetDateTime,
     site: &Location,
 ) -> CrossingOutcome {
+    let target = precess(target, julian_epoch_of(night_of));
     let phi = site.latitude().radians();
     let dec = target.dec().radians();
     let sin_h0 = threshold.radians().sin();

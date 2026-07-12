@@ -1,9 +1,13 @@
-//! Vectors lifted from `gaker/astro-math` 0.2.1 (`src/tests/transforms.rs`,
-//! see NOTICE), exercising the ported alt-azimuth transform (SC-003).
+//! Vectors exercising the alt-azimuth transform ported from `gaker/astro-math`
+//! 0.2.1 (`src/tests/transforms.rs`, see NOTICE) — SC-003.
 //!
-//! Each block cites the donor test it was lifted from. The Kitt Peak vector
-//! was recorded upstream as an AstroPy cross-check at ±0.1° (≈6′); the donor
-//! did not pin an AstroPy version.
+//! Each block cites the donor test it was lifted from. Provenance correction:
+//! the donor's Kitt Peak numbers claimed AstroPy verification but were in fact
+//! its own unprecessed geometric output (AstroPy disagrees by ~10′ because the
+//! donor compared J2000 RA against of-date sidereal time). The expected values
+//! below are genuine AstroPy 8.0.1 outputs (pressure=0), regenerable with
+//! `scripts/gen_astropy_vectors.py`; skymath matches them because its observer
+//! functions precess to the epoch of date internally.
 
 use skymath::{alt_az, Angle, Equatorial, Location};
 use time::macros::datetime;
@@ -18,21 +22,22 @@ fn site(lat: f64, lon: f64, elev: f64) -> Location {
 
 #[test]
 fn vega_from_kitt_peak_matches_astropy() {
-    // astro-math `test_ra_dec_to_alt_az_astropy_crosscheck`: Vega (α Lyr)
-    // from Kitt Peak, 2024-08-04T06:00 UTC → alt 77.775°, az 307.386°.
-    // Upstream asserted at ±0.1°; we pin at ±0.01° (36″) to back the ≤1′
-    // alt-az claim (SC-003) — headroom covers the donor's 0.001° value
-    // quantization plus mean-vs-apparent sidereal (~0.005°).
+    // Case from astro-math `test_ra_dec_to_alt_az_astropy_crosscheck`: Vega
+    // (α Lyr) from Kitt Peak, 2024-08-04T06:00 UTC. Expected values are
+    // AstroPy 8.0.1 (AltAz, pressure=0): alt 77.906675°, az 307.877201°.
+    // Tolerance 1′ on altitude (the SC-003 public claim; AstroPy's apparent
+    // place adds nutation ~17″ + aberration ~20″ we don't model) and the
+    // zenith-amplified equivalent on azimuth (1′ / cos 78° ≈ 0.08°).
     let observer = site(31.9583, -111.6, 2120.0);
     let vega = eq(279.234_734_79, 38.783_688_96);
     let h = alt_az(vega, datetime!(2024-08-04 06:00 UTC), &observer);
     assert!(
-        (h.altitude.degrees() - 77.775).abs() < 0.01,
+        (h.altitude.degrees() - 77.906_675).abs() < 1.0 / 60.0,
         "alt {}",
         h.altitude.degrees()
     );
     assert!(
-        (h.azimuth.degrees() - 307.386).abs() < 0.01,
+        (h.azimuth.degrees() - 307.877_201).abs() < 0.08,
         "az {}",
         h.azimuth.degrees()
     );

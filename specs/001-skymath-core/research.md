@@ -10,9 +10,14 @@ research behind each module.
 > and `rise_set.rs` modules cited below, the four-formula airmass surface, and the
 > "30 KB AstroPy test file"/25-format location parser do not exist in it. The
 > *decisions* stand unchanged; the provenance shifts: only the alt-azimuth
-> transform and its AstroPy cross-check vectors are ports (R2), while airmass (R3),
-> refraction (R4), and the galactic rotation (R5) are written fresh and validated
-> against published reference values.
+> transform is a port (R2), while airmass (R3), refraction (R4), and the galactic
+> rotation (R5) are written fresh and validated against published reference values.
+> A second correction (2026-07-12): the donor's "AstroPy verified" alt-az vector was
+> actually its own unprecessed geometric output — genuine AstroPy disagrees by ~10′
+> because the donor (and initially this crate) compared J2000 RA against of-date
+> sidereal time. Observer functions now precess internally, and all AstroPy
+> reference vectors are generated in-repo (`scripts/gen_astropy_vectors.py` →
+> `tests/data/astropy_vectors.json` → `tests/astropy_vectors.rs`).
 
 ## R1 — GMST/LST algorithm
 
