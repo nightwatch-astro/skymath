@@ -315,8 +315,8 @@ const NAMES: [&str; 88] = [
 ];
 
 impl Constellation {
-    /// All 88 constellations, ordered alphabetically by abbreviation (the
-    /// variant declaration order).
+    /// All 88 constellations in the official IAU list order (alphabetical by
+    /// full name — hence `Aps`, `Aqr`, `Aql`), the variant declaration order.
     pub const ALL: [Constellation; 88] = [
         Constellation::And,
         Constellation::Ant,

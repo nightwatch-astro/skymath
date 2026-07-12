@@ -33,7 +33,7 @@ IAU_SPELLING = {
 
 
 def names_table():
-    """[(abbr, full_name)] in file order (alphabetical by abbreviation)."""
+    """[(abbr, full_name)] in IAU list order (alphabetical by full name)."""
     import astropy.coordinates as ac
 
     path = Path(str(ac.__file__)).parent / "data" / "constellation_names.dat"
