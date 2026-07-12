@@ -12,6 +12,7 @@
 pub mod angle;
 pub mod coords;
 pub mod error;
+pub mod observer;
 pub mod time;
 
 pub use angle::{
@@ -23,6 +24,11 @@ pub use coords::{
     TangentOffset,
 };
 pub use error::{Error, Result};
+pub use observer::{
+    airmass, alt_az, altitude_crossings, hour_angle, parallactic_angle,
+    refraction_apparent_to_true, refraction_true_to_apparent, transit, CrossingOutcome, Horizontal,
+    Location,
+};
 pub use time::{
     datetime_to_mjd, format_date_obs, gmst, jd_to_mjd, julian_date, julian_epoch_of, lst,
     mjd_to_datetime, mjd_to_jd, parse_date_obs,

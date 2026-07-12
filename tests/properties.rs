@@ -112,3 +112,38 @@ proptest! {
         prop_assert!((gmst(instant).hours() - gmst(rewritten).hours()).abs() < 1e-9);
     }
 }
+
+// ── US3: observer properties ───────────────────────────────────────────────────
+
+use skymath::{hour_angle, parallactic_angle, Location};
+
+proptest! {
+    /// The parallactic angle is 0 at transit and carries the hour angle's
+    /// sign either side of the meridian (northern site, target south of the
+    /// zenith so the atan2 denominator stays positive).
+    #[test]
+    fn parallactic_angle_tracks_the_meridian(
+        ra in 0.0..360.0f64,
+        dec in -20.0..40.0f64,
+        minutes in -180i64..=180,
+    ) {
+        let site = Location::new(
+            Angle::from_degrees(52.0), Angle::from_degrees(4.5), 0.0,
+        ).unwrap();
+        let target = eq(ra, dec);
+        let t0 = skymath::transit(target, datetime!(2026-07-11 22:00 UTC), &site);
+
+        let q_transit = parallactic_angle(target, t0, &site).degrees();
+        prop_assert!(q_transit.abs() < 0.1, "q at transit: {q_transit}°");
+
+        let t = t0 + Duration::minutes(minutes);
+        let ha = hour_angle(target, t, &site).degrees();
+        let q = parallactic_angle(target, t, &site).degrees();
+        if ha.abs() > 0.5 {
+            prop_assert!(
+                q.signum() == ha.signum(),
+                "q {q}° vs HA {ha}° must share a sign"
+            );
+        }
+    }
+}

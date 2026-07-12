@@ -4,6 +4,16 @@ Phase 0 output. Every algorithm/porting choice with rationale and alternatives.
 No NEEDS CLARIFICATION markers existed in the spec; this consolidates the technical
 research behind each module.
 
+> **Implementation-phase correction (2026-07-12)**: `gaker/astro-math` 0.2.1 (the
+> latest published version) contains only `location`, `nutation`, `projection`,
+> `sidereal`, `time`, and `transforms` modules. The `refraction.rs`, `galactic.rs`,
+> and `rise_set.rs` modules cited below, the four-formula airmass surface, and the
+> "30 KB AstroPy test file"/25-format location parser do not exist in it. The
+> *decisions* stand unchanged; the provenance shifts: only the alt-azimuth
+> transform and its AstroPy cross-check vectors are ports (R2), while airmass (R3),
+> refraction (R4), and the galactic rotation (R5) are written fresh and validated
+> against published reference values.
+
 ## R1 — GMST/LST algorithm
 
 - **Decision**: IAU-1982 GMST polynomial (Meeus, *Astronomical Algorithms* 2nd ed.,

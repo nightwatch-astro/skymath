@@ -32,7 +32,7 @@ unsafe_code = "forbid"
 all = { level = "warn", priority = -1 }
 
 [features]
-serde = ["dep:serde"]
+serde = ["dep:serde", "time/serde-human-readable"]
 
 [dev-dependencies]
 anyhow = "1.0.103"

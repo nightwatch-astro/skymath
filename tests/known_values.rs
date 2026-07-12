@@ -4,8 +4,9 @@
 //! bounds; the public contract is ≤ 1 arcminute.
 
 use skymath::{
-    gmst, julian_epoch_of, lst, parse_dec, parse_ra, position_angle, separation, Angle, Epoch,
-    Equatorial, ParseMode, SexaStyle,
+    alt_az, altitude_crossings, gmst, hour_angle, julian_epoch_of, lst, parse_dec, parse_ra,
+    position_angle, separation, transit, Angle, CrossingOutcome, Epoch, Equatorial, Location,
+    ParseMode, SexaStyle,
 };
 use time::macros::datetime;
 
@@ -125,4 +126,99 @@ fn lst_adds_east_longitude() {
         "lst {} vs {expect}",
         l.hours()
     );
+}
+
+// ── US3: observer-local quantities ─────────────────────────────────────────────
+
+fn leiden() -> Location {
+    // ≈ Leiden Observatory; 52.155° N, 4.485° E.
+    Location::parse("+52 09 18", "+4 29 06", 6.0).unwrap()
+}
+
+#[test]
+fn site_parse_matches_decimal_to_a_tenth_arcsecond() {
+    let l = leiden();
+    assert!((l.latitude().degrees() - 52.155).abs() < 3e-5);
+    assert!((l.longitude().degrees() - 4.485).abs() < 3e-5);
+}
+
+#[test]
+fn circumpolar_target_is_always_above_the_horizon() {
+    // Polaris (δ ≈ +89.26°) from 52° N never sets: min altitude ≈ 51.4°.
+    let polaris = eq(37.9546, 89.2641);
+    let outcome = altitude_crossings(
+        polaris,
+        Angle::from_degrees(0.0),
+        datetime!(2026-07-11 22:00 UTC),
+        &leiden(),
+    );
+    assert_eq!(outcome, CrossingOutcome::AlwaysAbove);
+}
+
+#[test]
+fn far_southern_target_never_rises() {
+    // δ = −60° from 52° N: max altitude ≈ −22°.
+    let outcome = altitude_crossings(
+        eq(83.0, -60.0),
+        Angle::from_degrees(0.0),
+        datetime!(2026-07-11 22:00 UTC),
+        &leiden(),
+    );
+    assert_eq!(outcome, CrossingOutcome::NeverAbove);
+}
+
+#[test]
+fn crossing_instants_sit_on_the_threshold() {
+    // M31 from Leiden crosses a 30° window; the altitude at each crossing
+    // instant must equal the threshold to well under an arcminute.
+    let m31 = eq(10.6847, 41.2688);
+    let site = leiden();
+    let night = datetime!(2026-07-11 22:00 UTC);
+    let threshold = Angle::from_degrees(30.0);
+    let CrossingOutcome::Crosses { rise, set } = altitude_crossings(m31, threshold, night, &site)
+    else {
+        panic!("expected Crosses");
+    };
+    assert!(rise < set);
+    for instant in [rise, set] {
+        let alt = alt_az(m31, instant, &site).altitude;
+        assert!(
+            (alt.degrees() - 30.0).abs() * 60.0 < 0.5,
+            "altitude at crossing: {}°",
+            alt.degrees()
+        );
+    }
+    // And the transit between them is above the window.
+    let t = transit(m31, night, &site);
+    assert!(rise < t && t < set);
+    assert!(alt_az(m31, t, &site).altitude.degrees() > 30.0);
+}
+
+#[test]
+fn grazing_threshold_yields_a_short_window() {
+    // Threshold a hair below M31's maximum altitude from Leiden
+    // (90 − |φ − δ|): the window must exist and be short.
+    let m31 = eq(10.6847, 41.2688);
+    let site = leiden();
+    let max_alt = 90.0 - (52.155 - 41.2688);
+    let outcome = altitude_crossings(
+        m31,
+        Angle::from_degrees(max_alt - 0.001),
+        datetime!(2026-07-11 22:00 UTC),
+        &site,
+    );
+    let CrossingOutcome::Crosses { rise, set } = outcome else {
+        panic!("expected a grazing Crosses, got {outcome:?}");
+    };
+    assert!(set - rise < time::Duration::minutes(30), "{}", set - rise);
+}
+
+#[test]
+fn transit_hour_angle_within_five_seconds_of_time() {
+    // 5 s of time = 0.0209° of hour angle (SC-001 bound for transit).
+    let m31 = eq(10.6847, 41.2688);
+    let site = leiden();
+    let t = transit(m31, datetime!(2026-07-11 22:00 UTC), &site);
+    let ha = hour_angle(m31, t, &site).degrees();
+    assert!(ha.abs() < 0.021, "residual HA {ha}°");
 }

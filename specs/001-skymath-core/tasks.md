@@ -51,13 +51,13 @@ this phase implemented.
 **Goal**: Location, hour angle, alt-az, airmass, refraction, parallactic, transit/crossings.
 **Depends on**: US1 (types) + US2 (LST).
 
-- [ ] T016 [US3] (fresh, lenient-parser reuse) `Location` in `src/observer.rs`: `new` (domain-validated) + `parse` (decimal / sexagesimal SITELAT-SITELONG / hemisphere suffix)
-- [ ] T017 [US3] (port) `hour_angle`, `alt_az` → `Horizontal` (N=0/E=90) from astro-math `transforms.rs` (chrono→time swap, typed wrap)
-- [ ] T018 [P] [US3] (port) `airmass` (Kasten–Young 1989, domain error < −1°) and `refraction_apparent_to_true` (Bennett) / `refraction_true_to_apparent` (Sæmundsson) from astro-math
-- [ ] T019 [US3] (fresh) `parallactic_angle` (atan2 formula; q=0 at transit)
-- [ ] T020 [US3] (fresh) `transit` + `altitude_crossings` analytic solver → `CrossingOutcome::{AlwaysAbove,NeverAbove,Crosses}` in `src/observer.rs`
-- [ ] T021 [P] [US3] (port) Lift AstroPy-derived vectors (alt-az; airmass/refraction expectations) into `tests/ported_vectors.rs` with per-vector provenance comments (SC-003)
-- [ ] T022 [US3] (fresh) Observer known-values + edge cases in `tests/known_values.rs`: circumpolar → AlwaysAbove, never-rises → NeverAbove, grazing, transit hour-angle ≈ 0 ± 5 s, SITELAT/SITELONG parse ± 0.1″, zenith/pole azimuth convention; parallactic sign flip property in `tests/properties.rs`
+- [x] T016 [US3] (fresh, lenient-parser reuse) `Location` in `src/observer.rs`: `new` (domain-validated) + `parse` (decimal / sexagesimal SITELAT-SITELONG / hemisphere suffix)
+- [x] T017 [US3] (port) `hour_angle`, `alt_az` → `Horizontal` (N=0/E=90) from astro-math `transforms.rs` (chrono→time swap, typed wrap)
+- [x] T018 [P] [US3] (port) `airmass` (Kasten–Young 1989, domain error < −1°) and `refraction_apparent_to_true` (Bennett) / `refraction_true_to_apparent` (Sæmundsson) from astro-math
+- [x] T019 [US3] (fresh) `parallactic_angle` (atan2 formula; q=0 at transit)
+- [x] T020 [US3] (fresh) `transit` + `altitude_crossings` analytic solver → `CrossingOutcome::{AlwaysAbove,NeverAbove,Crosses}` in `src/observer.rs`
+- [x] T021 [P] [US3] (port) Lift AstroPy-derived vectors (alt-az; airmass/refraction expectations) into `tests/ported_vectors.rs` with per-vector provenance comments (SC-003)
+- [x] T022 [US3] (fresh) Observer known-values + edge cases in `tests/known_values.rs`: circumpolar → AlwaysAbove, never-rises → NeverAbove, grazing, transit hour-angle ≈ 0 ± 5 s, SITELAT/SITELONG parse ± 0.1″, zenith/pole azimuth convention; parallactic sign flip property in `tests/properties.rs`
 
 ## Phase 6: User Story 4 — Sky frame conversions (P4)
 
