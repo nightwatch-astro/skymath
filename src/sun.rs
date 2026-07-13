@@ -6,7 +6,7 @@
 //! (36″), inside the crate's 1′ contract. Twilight solves the Sun's altitude
 //! crossings with the moving-body iteration of the analytic solver. UTC is
 //! used where Meeus specifies dynamical time — ΔT ≈ 70 s shifts the solar
-//! longitude by ~3″, i.e. twilight instants by ~3 s (see research R18).
+//! longitude by ~3″, i.e. twilight instants by ~3 s.
 
 use ::time::OffsetDateTime;
 
@@ -47,10 +47,21 @@ pub(crate) fn solar_coords(at: OffsetDateTime) -> (f64, f64, f64) {
     (lambda, r, eps)
 }
 
-/// Apparent geocentric solar position (equatorial, epoch of date).
+/// Apparent geocentric solar position (equatorial, epoch of date). Feeds
+/// [`twilight`] and [`crate::moon_phase_angle`] internally.
 ///
 /// Meeus ch. 25 low-accuracy method: ~0.01° (36″), inside the crate's ≤1′
 /// contract (pinned against AstroPy `get_sun`).
+///
+/// ```
+/// use skymath::sun_position;
+/// use time::macros::datetime;
+///
+/// // Meeus example 25.a.
+/// let sun = sun_position(datetime!(1992-10-13 00:00 UTC));
+/// assert!((sun.ra().degrees() - 198.38083).abs() < 5e-3);
+/// assert!((sun.dec().degrees() + 7.78507).abs() < 5e-3);
+/// ```
 pub fn sun_position(at: OffsetDateTime) -> Equatorial {
     let (lambda, _, eps) = solar_coords(at);
     let lambda = lambda.to_radians();
@@ -116,6 +127,19 @@ pub enum TwilightOutcome {
 /// Matches astroplan's twilight instants within ±60 s (the Sun's altitude
 /// changes ~1° per 4 minutes at mid-latitudes; the 0.01° solar-position
 /// accuracy contributes only a few seconds).
+///
+/// ```
+/// use skymath::{twilight, Location, Twilight, TwilightOutcome};
+/// use time::OffsetDateTime;
+///
+/// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+/// match twilight(Twilight::Astronomical, OffsetDateTime::now_utc(), &site) {
+///     TwilightOutcome::Night { dusk, dawn } => println!("dark {dusk} to {dawn}"),
+///     TwilightOutcome::NeverDark => println!("never astronomically dark tonight"),
+///     TwilightOutcome::AlwaysDark => println!("dark around the clock"),
+/// }
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn twilight(kind: Twilight, night_of: OffsetDateTime, site: &Location) -> TwilightOutcome {
     match moving_body_crossings(sun_position, kind.threshold(), night_of, site, 180.0) {
         CrossingOutcome::AlwaysAbove => TwilightOutcome::NeverDark,

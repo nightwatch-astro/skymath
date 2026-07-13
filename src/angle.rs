@@ -12,6 +12,16 @@
 //!   error in every mode** — no input is ever silently dropped.
 //! - [`format_ra`] / [`format_dec`] — sexagesimal formatting with rounding
 //!   carry (never emits `60` in a minutes or seconds field).
+//!
+//! ```
+//! use skymath::{format_dec, format_ra, parse_dec, parse_ra, ParseMode, SexaStyle};
+//!
+//! // M31's canonical J2000 position.
+//! let ra = parse_ra("00:42:44.3", ParseMode::Strict).unwrap();
+//! let dec = parse_dec("+41:16:09", ParseMode::Strict).unwrap();
+//! assert_eq!(format_ra(ra, SexaStyle::default()), "00:42:44.30");
+//! assert_eq!(format_dec(dec, SexaStyle::default()), "+41:16:09.00");
+//! ```
 
 use core::f64::consts::PI;
 use core::ops::{Add, Div, Mul, Neg, Sub};
@@ -30,6 +40,15 @@ pub const ARCSEC_PER_RADIAN: f64 = 206_264.806_247_096_36;
 /// Construction and read-out are available in degrees, radians, arcminutes,
 /// arcseconds, and hours (1 hour = 15°). Normalization is explicit — an `Angle`
 /// holds whatever finite value it was given until you ask for a normalized form.
+///
+/// ```
+/// use skymath::Angle;
+///
+/// // M31's right ascension, 00:42:44.3, expressed in hours then read out in degrees.
+/// let ra = Angle::from_hours(42.0 / 60.0 + 44.3 / 3600.0);
+/// assert!((ra.degrees() - 10.685).abs() < 1e-3);
+/// assert!((Angle::from_degrees(370.0).normalized_0_360().degrees() - 10.0).abs() < 1e-9);
+/// ```
 #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Angle {

@@ -46,6 +46,15 @@ impl Epoch {
 
 /// An equatorial sky position (right ascension, declination) tagged with an
 /// [`Epoch`]. After construction, `ra ∈ [0, 360)`° and `dec ∈ [-90, 90]`°.
+///
+/// ```
+/// use skymath::{Equatorial, ParseMode, SexaStyle};
+///
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// assert_eq!(m31.ra_sexagesimal(SexaStyle::default()), "00:42:44.30");
+/// assert_eq!(m31.dec_sexagesimal(SexaStyle::default()), "+41:16:09.00");
+/// # Ok::<(), skymath::Error>(())
+/// ```
 #[derive(Debug, Clone, Copy, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Equatorial {
@@ -165,6 +174,15 @@ impl Equatorial {
 /// The result is in `[0, 180]`°, symmetric in its arguments, and numerically
 /// stable for small separations. Epochs are not reconciled here — this is a
 /// purely geometric operation on the given numbers.
+///
+/// ```
+/// use skymath::{separation, Equatorial, ParseMode};
+///
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let m110 = Equatorial::parse_j2000("00:40:22.1", "+41:41:07", ParseMode::Lenient)?;
+/// assert!((separation(m31, m110).arcminutes() - 36.5).abs() < 1.0);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 #[must_use]
 pub fn separation(a: Equatorial, b: Equatorial) -> Angle {
     let (ra1, dec1) = (a.ra.radians(), a.dec.radians());
@@ -182,6 +200,16 @@ pub fn separation(a: Equatorial, b: Equatorial) -> Angle {
 ///
 /// At the celestial poles every direction is "south"/"north"; the atan2
 /// convention there yields a defined (if arbitrary) angle rather than NaN.
+///
+/// ```
+/// use skymath::{position_angle, Equatorial, ParseMode};
+///
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let m110 = Equatorial::parse_j2000("00:40:22.1", "+41:41:07", ParseMode::Lenient)?;
+/// // M110 sits west and slightly north of M31.
+/// assert!((180.0..360.0).contains(&position_angle(m31, m110).degrees()));
+/// # Ok::<(), skymath::Error>(())
+/// ```
 #[must_use]
 pub fn position_angle(from: Equatorial, to: Equatorial) -> Angle {
     let (a0, d0) = (from.ra.radians(), from.dec.radians());
@@ -206,7 +234,18 @@ pub struct TangentOffset {
 
 /// Decompose the great-circle arc from `from` to `to` into East/North
 /// components via separation and position angle (robust polar form — never
-/// divides by the cosine of the separation).
+/// divides by the cosine of the separation). Inverse of [`apply_offset`].
+///
+/// ```
+/// use skymath::{apply_offset, separation, tangent_offset, Equatorial, ParseMode};
+///
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let m110 = Equatorial::parse_j2000("00:40:22.1", "+41:41:07", ParseMode::Lenient)?;
+/// let offset = tangent_offset(m31, m110);
+/// let back = apply_offset(m31, offset);
+/// assert!(separation(m110, back).arcseconds() < 1e-3);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 #[must_use]
 pub fn tangent_offset(from: Equatorial, to: Equatorial) -> TangentOffset {
     let sep = separation(from, to).radians();
@@ -253,6 +292,18 @@ pub fn apply_offset(from: Equatorial, offset: TangentOffset) -> Equatorial {
 /// Handles J2000 → epoch-of-date, epoch-of-date → J2000, and date → date (via
 /// J2000). Accurate to ≤ ~1 arcsecond over several centuries — well inside
 /// planning grade. Precessing to the same epoch is the identity.
+///
+/// ```
+/// use skymath::{julian_epoch_of, precess, Epoch, Equatorial, ParseMode};
+/// use time::OffsetDateTime;
+///
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let tonight = julian_epoch_of(OffsetDateTime::now_utc());
+/// let of_date = precess(m31, tonight);
+/// assert_eq!(of_date.epoch(), tonight);
+/// assert_eq!(precess(m31, Epoch::J2000), m31);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 #[must_use]
 pub fn precess(pos: Equatorial, to: Epoch) -> Equatorial {
     if pos.epoch == to {

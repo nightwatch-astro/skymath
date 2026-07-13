@@ -43,6 +43,18 @@ pub struct Ecliptic {
 
 /// Galactic coordinates of an equatorial position. Positions at another
 /// epoch are precessed to J2000 first (the rotation constants are J2000).
+/// Inverse of [`from_galactic`].
+///
+/// ```
+/// use skymath::{to_galactic, Equatorial, ParseMode};
+///
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let gal = to_galactic(m31);
+/// // M31 sits well below the galactic plane, in Andromeda's direction.
+/// assert!((115.0..125.0).contains(&gal.l.degrees()));
+/// assert!((-25.0..-18.0).contains(&gal.b.degrees()));
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn to_galactic(eq: Equatorial) -> Galactic {
     let eq = precess(eq, Epoch::J2000);
     let (a, d) = (eq.ra().radians(), eq.dec().radians());
@@ -60,7 +72,17 @@ pub fn to_galactic(eq: Equatorial) -> Galactic {
     }
 }
 
-/// Equatorial (J2000) position of galactic coordinates.
+/// Equatorial (J2000) position of galactic coordinates. Inverse of
+/// [`to_galactic`].
+///
+/// ```
+/// use skymath::{from_galactic, separation, to_galactic, Equatorial, ParseMode};
+///
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let round_tripped = from_galactic(to_galactic(m31));
+/// assert!(separation(m31, round_tripped).arcseconds() < 1e-6);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn from_galactic(g: Galactic) -> Equatorial {
     let (l, b) = (g.l.radians(), g.b.radians());
     let (a_g, d_g) = (NGP_RA_DEG.to_radians(), NGP_DEC_DEG.to_radians());
@@ -92,6 +114,18 @@ pub(crate) fn mean_obliquity(at: OffsetDateTime) -> f64 {
 
 /// Ecliptic coordinates (mean ecliptic of date) of an equatorial position at
 /// instant `at`. The position is precessed to the epoch of date first.
+/// Inverse of [`from_ecliptic`].
+///
+/// ```
+/// use skymath::{to_ecliptic, Equatorial, ParseMode};
+/// use time::OffsetDateTime;
+///
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let ecl = to_ecliptic(m31, OffsetDateTime::now_utc());
+/// // M31 sits well off the ecliptic plane.
+/// assert!(ecl.beta.degrees().abs() > 20.0);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn to_ecliptic(eq: Equatorial, at: OffsetDateTime) -> Ecliptic {
     let eq = precess(eq, julian_epoch_of(at));
     let (a, d) = (eq.ra().radians(), eq.dec().radians());
@@ -108,7 +142,18 @@ pub fn to_ecliptic(eq: Equatorial, at: OffsetDateTime) -> Ecliptic {
 }
 
 /// Equatorial (J2000) position of mean-ecliptic-of-date coordinates at
-/// instant `at`.
+/// instant `at`. Inverse of [`to_ecliptic`].
+///
+/// ```
+/// use skymath::{from_ecliptic, separation, to_ecliptic, Equatorial, ParseMode};
+/// use time::OffsetDateTime;
+///
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let now = OffsetDateTime::now_utc();
+/// let round_tripped = from_ecliptic(to_ecliptic(m31, now), now);
+/// assert!(separation(m31, round_tripped).arcseconds() < 1e-6);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn from_ecliptic(e: Ecliptic, at: OffsetDateTime) -> Equatorial {
     let (l, b) = (e.lambda.radians(), e.beta.radians());
     let eps = mean_obliquity(at);

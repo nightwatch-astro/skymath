@@ -172,18 +172,48 @@ fn ecliptic_to_equatorial(lambda_deg: f64, beta_deg: f64, at: OffsetDateTime) ->
 /// theory; treating UTC as dynamical time contributes ≤ ~40″). For anything
 /// site-relative use [`moon_position_topocentric`] — lunar parallax reaches
 /// ~61′.
+///
+/// ```
+/// use skymath::moon_position;
+/// use time::OffsetDateTime;
+///
+/// let geocentric = moon_position(OffsetDateTime::now_utc());
+/// assert!(geocentric.dec().degrees().abs() <= 90.0);
+/// ```
 pub fn moon_position(at: OffsetDateTime) -> Equatorial {
     let (lambda, beta, _) = lunar_coords(at);
     ecliptic_to_equatorial(lambda, beta, at)
 }
 
 /// Moon–Earth centre distance in kilometres.
+///
+/// ```
+/// use skymath::moon_distance_km;
+/// use time::macros::datetime;
+///
+/// // Meeus example 47.a.
+/// let km = moon_distance_km(datetime!(1992-04-12 00:00 UTC));
+/// assert!((km - 368_409.7).abs() < 1.0);
+/// ```
 pub fn moon_distance_km(at: OffsetDateTime) -> f64 {
     lunar_coords(at).2
 }
 
 /// Topocentric lunar position for an observer (equatorial, epoch of date) —
 /// Meeus ch. 40 parallax correction with WGS-84-flattened site coordinates.
+/// The shift from [`moon_position`] (geocentric) can reach ~61′ (the Moon's
+/// horizontal parallax).
+///
+/// ```
+/// use skymath::{moon_position, moon_position_topocentric, separation, Location};
+/// use time::OffsetDateTime;
+///
+/// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+/// let now = OffsetDateTime::now_utc();
+/// let parallax_shift = separation(moon_position(now), moon_position_topocentric(now, &site));
+/// assert!(parallax_shift.arcminutes() <= 62.0);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn moon_position_topocentric(at: OffsetDateTime, site: &Location) -> Equatorial {
     let (lambda, beta, delta_km) = lunar_coords(at);
     let geocentric = ecliptic_to_equatorial(lambda, beta, at);
@@ -218,6 +248,17 @@ pub fn moon_position_topocentric(at: OffsetDateTime, site: &Location) -> Equator
 /// Great-circle separation between the topocentric Moon and `target` at an
 /// instant. The target is precessed to the epoch of date internally, matching
 /// the observer-module semantics.
+///
+/// ```
+/// use skymath::{lunar_separation, Equatorial, Location, ParseMode};
+/// use time::OffsetDateTime;
+///
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+/// let sep = lunar_separation(m31, OffsetDateTime::now_utc(), &site);
+/// assert!((0.0..=180.0).contains(&sep.degrees()));
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn lunar_separation(target: Equatorial, at: OffsetDateTime, site: &Location) -> Angle {
     let target = precess(target, julian_epoch_of(at));
     separation(moon_position_topocentric(at, site), target)
@@ -226,6 +267,18 @@ pub fn lunar_separation(target: Equatorial, at: OffsetDateTime, site: &Location)
 /// When the topocentric Moon rises above and sets below `threshold` altitude,
 /// around the lunar transit nearest `night_of` (moving-body iteration of the
 /// analytic solver; the Moon moves ~13°/day). Matches astroplan within ±3 min.
+///
+/// ```
+/// use skymath::{moon_crossings, Angle, CrossingOutcome, Location};
+/// use time::OffsetDateTime;
+///
+/// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+/// match moon_crossings(Angle::from_degrees(0.0), OffsetDateTime::now_utc(), &site) {
+///     CrossingOutcome::Crosses { rise, set } => println!("Moon: {rise} -> {set}"),
+///     outcome => println!("{outcome:?}"),
+/// }
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn moon_crossings(
     threshold: Angle,
     night_of: OffsetDateTime,
@@ -241,7 +294,17 @@ pub fn moon_crossings(
 }
 
 /// The Moon's phase angle `i` (Sun–Moon–Earth angle, Meeus ch. 48 exact
-/// form): 0° at full Moon, 180° at new.
+/// form): 0° at full Moon, 180° at new. Feeds [`moon_illumination`] and
+/// [`moon_avoidance_lorentzian`].
+///
+/// ```
+/// use skymath::moon_phase_angle;
+/// use time::macros::datetime;
+///
+/// // Meeus example 48.a.
+/// let i = moon_phase_angle(datetime!(1992-04-12 00:00 UTC)).degrees();
+/// assert!((i - 69.0756).abs() < 0.05);
+/// ```
 pub fn moon_phase_angle(at: OffsetDateTime) -> Angle {
     let (_, sun_r_au, _) = solar_coords(at);
     let r = sun_r_au * KM_PER_AU;
@@ -255,7 +318,17 @@ pub fn moon_phase_angle(at: OffsetDateTime) -> Angle {
     Angle::from_radians((r * psi.sin()).atan2(delta - r * psi.cos()))
 }
 
-/// Illuminated fraction of the Moon's disk, `k = (1 + cos i) / 2` ∈ [0, 1].
+/// Illuminated fraction of the Moon's disk, `k = (1 + cos i) / 2` ∈ [0, 1],
+/// derived from [`moon_phase_angle`].
+///
+/// ```
+/// use skymath::moon_illumination;
+/// use time::macros::datetime;
+///
+/// // Meeus example 48.a.
+/// let k = moon_illumination(datetime!(1992-04-12 00:00 UTC));
+/// assert!((k - 0.6786).abs() < 0.005);
+/// ```
 pub fn moon_illumination(at: OffsetDateTime) -> f64 {
     (1.0 + moon_phase_angle(at).radians().cos()) / 2.0
 }
@@ -269,6 +342,15 @@ pub fn moon_illumination(at: OffsetDateTime) -> f64 {
 /// where `d` is the time from full Moon in days, derived from the phase angle
 /// via the mean synodic rate. At full Moon it returns `separation_at_full`;
 /// `half_width_days` from full it returns half of it.
+///
+/// ```
+/// use skymath::{moon_avoidance_lorentzian, Angle};
+/// use time::OffsetDateTime;
+///
+/// let min_separation =
+///     moon_avoidance_lorentzian(Angle::from_degrees(60.0), 7.0, OffsetDateTime::now_utc());
+/// assert!((0.0..=60.0).contains(&min_separation.degrees()));
+/// ```
 pub fn moon_avoidance_lorentzian(
     separation_at_full: Angle,
     half_width_days: f64,
