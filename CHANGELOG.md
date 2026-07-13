@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/nightwatch-astro/skymath/compare/v0.3.0...v0.3.1) (2026-07-13)
+
+
+### Bug Fixes
+
+* crate-root docs.rs links now resolve ([#8](https://github.com/nightwatch-astro/skymath/issues/8)) ([9e8873c](https://github.com/nightwatch-astro/skymath/commit/9e8873cde63e56764fc8f9d8fbf0716085f6b422))
+
 ## [0.3.0](https://github.com/nightwatch-astro/skymath/compare/v0.2.0...v0.3.0) (2026-07-12)
 
 
