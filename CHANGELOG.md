@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/nightwatch-astro/skymath/compare/v0.3.2...v0.3.3) (2026-07-13)
+
+
+### Documentation
+
+* add status badges and link the guide on docs.rs ([#12](https://github.com/nightwatch-astro/skymath/issues/12)) ([7cc02a5](https://github.com/nightwatch-astro/skymath/commit/7cc02a5498dbe1ec6414188b78ef4b2f87c1424e))
+
 ## [0.3.2](https://github.com/nightwatch-astro/skymath/compare/v0.3.1...v0.3.2) (2026-07-13)
 
 
