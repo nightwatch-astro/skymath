@@ -1,8 +1,12 @@
 # skymath
 
+[![CI](https://github.com/nightwatch-astro/skymath/actions/workflows/ci.yml/badge.svg)](https://github.com/nightwatch-astro/skymath/actions/workflows/ci.yml)
+[![crates.io](https://img.shields.io/crates/v/skymath.svg)](https://crates.io/crates/skymath)
+[![docs.rs](https://img.shields.io/docsrs/skymath)](https://docs.rs/skymath)
+
 Rust library of planning-grade astronomy math for astrophotography tooling.
 
-[docs.rs](https://docs.rs/skymath) · [Guide](docs/guide.md)
+[docs.rs](https://docs.rs/skymath) · [Guide](https://docs.rs/skymath/latest/skymath/guide/index.html)
 
 - **Angles** — typed [`Angle`](https://docs.rs/skymath/latest/skymath/struct.Angle.html)
   (degrees, radians, hours, arcminutes, arcseconds), normalization helpers,
