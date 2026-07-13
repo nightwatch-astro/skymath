@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/nightwatch-astro/skymath/compare/v0.3.1...v0.3.2) (2026-07-13)
+
+
+### Documentation
+
+* make the crate root render the README and surface the guide ([#10](https://github.com/nightwatch-astro/skymath/issues/10)) ([5e3be82](https://github.com/nightwatch-astro/skymath/commit/5e3be82b1894280934218e115f04eee696c87d80))
+
 ## [0.3.1](https://github.com/nightwatch-astro/skymath/compare/v0.3.0...v0.3.1) (2026-07-13)
 
 
