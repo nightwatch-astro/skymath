@@ -33,6 +33,13 @@ pub enum Epoch {
 
 impl Epoch {
     /// Julian centuries of this epoch measured from J2000 (`J2000` → 0).
+    ///
+    /// ```
+    /// use skymath::Epoch;
+    ///
+    /// assert_eq!(Epoch::J2000.julian_centuries_from_j2000(), 0.0);
+    /// assert!((Epoch::OfDate(2100.0).julian_centuries_from_j2000() - 1.0).abs() < 1e-9);
+    /// ```
     #[must_use]
     pub fn julian_centuries_from_j2000(self) -> f64 {
         match self {
@@ -69,6 +76,18 @@ impl Equatorial {
     /// # Errors
     /// [`Error::OutOfRange`] if RA ∉ [0, 360), Dec ∉ [-90, 90], or the epoch
     /// year is non-finite.
+    ///
+    /// ```
+    /// use skymath::{Angle, Epoch, Equatorial};
+    ///
+    /// let m31 = Equatorial::at_epoch(
+    ///     Angle::from_degrees(10.6847),
+    ///     Angle::from_degrees(41.2688),
+    ///     Epoch::J2000,
+    /// )?;
+    /// assert_eq!(m31.epoch(), Epoch::J2000);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     pub fn at_epoch(ra: Angle, dec: Angle, epoch: Epoch) -> Result<Self> {
         let ra_deg = ra.degrees();
         let dec_deg = dec.degrees();
@@ -99,6 +118,14 @@ impl Equatorial {
     ///
     /// # Errors
     /// See [`Equatorial::at_epoch`].
+    ///
+    /// ```
+    /// use skymath::{Angle, Equatorial};
+    ///
+    /// let m31 = Equatorial::j2000(Angle::from_degrees(10.6847), Angle::from_degrees(41.2688))?;
+    /// assert!((m31.ra().degrees() - 10.6847).abs() < 1e-9);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     pub fn j2000(ra: Angle, dec: Angle) -> Result<Self> {
         Self::at_epoch(ra, dec, Epoch::J2000)
     }
@@ -108,6 +135,14 @@ impl Equatorial {
     ///
     /// # Errors
     /// [`Error::ParseCoord`] on malformed input; [`Error::OutOfRange`] on domain.
+    ///
+    /// ```
+    /// use skymath::{Epoch, Equatorial, ParseMode};
+    ///
+    /// let m31 = Equatorial::parse_at_epoch("00:42:44.3", "+41:16:09", Epoch::J2000, ParseMode::Strict)?;
+    /// assert_eq!(m31.epoch(), Epoch::J2000);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     pub fn parse_at_epoch(ra: &str, dec: &str, epoch: Epoch, mode: ParseMode) -> Result<Self> {
         Self::at_epoch(parse_ra(ra, mode)?, parse_dec(dec, mode)?, epoch)
     }
@@ -116,37 +151,95 @@ impl Equatorial {
     ///
     /// # Errors
     /// See [`Equatorial::parse_at_epoch`].
+    ///
+    /// ```
+    /// use skymath::{Equatorial, ParseMode};
+    ///
+    /// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+    /// assert!((m31.dec().degrees() - 41.269_17).abs() < 1e-3);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     pub fn parse_j2000(ra: &str, dec: &str, mode: ParseMode) -> Result<Self> {
         Self::parse_at_epoch(ra, dec, Epoch::J2000, mode)
     }
 
     /// Right ascension.
+    ///
+    /// ```
+    /// use skymath::{Equatorial, ParseMode};
+    ///
+    /// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+    /// assert!((m31.ra().hours() - 0.7123).abs() < 1e-3);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     #[must_use]
     pub fn ra(self) -> Angle {
         self.ra
     }
     /// Declination.
+    ///
+    /// ```
+    /// use skymath::{Equatorial, ParseMode};
+    ///
+    /// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+    /// assert!((m31.dec().degrees() - 41.269_17).abs() < 1e-3);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     #[must_use]
     pub fn dec(self) -> Angle {
         self.dec
     }
     /// Reference epoch.
+    ///
+    /// ```
+    /// use skymath::{Epoch, Equatorial, ParseMode};
+    ///
+    /// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+    /// assert_eq!(m31.epoch(), Epoch::J2000);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     #[must_use]
     pub fn epoch(self) -> Epoch {
         self.epoch
     }
     /// `(ra_degrees, dec_degrees)`.
+    ///
+    /// ```
+    /// use skymath::{Equatorial, ParseMode};
+    ///
+    /// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+    /// let (ra_deg, dec_deg) = m31.to_degrees();
+    /// assert!((ra_deg - 10.6846).abs() < 1e-3);
+    /// assert!((dec_deg - 41.2692).abs() < 1e-3);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     #[must_use]
     pub fn to_degrees(self) -> (f64, f64) {
         (self.ra.degrees(), self.dec.degrees())
     }
 
     /// Format RA as sexagesimal hours in the given style.
+    ///
+    /// ```
+    /// use skymath::{Equatorial, ParseMode, SexaStyle};
+    ///
+    /// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+    /// assert_eq!(m31.ra_sexagesimal(SexaStyle::default()), "00:42:44.30");
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     #[must_use]
     pub fn ra_sexagesimal(self, style: SexaStyle) -> String {
         format_ra(self.ra, style)
     }
     /// Format Dec as signed sexagesimal degrees in the given style.
+    ///
+    /// ```
+    /// use skymath::{Equatorial, ParseMode, SexaStyle};
+    ///
+    /// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+    /// assert_eq!(m31.dec_sexagesimal(SexaStyle::default()), "+41:16:09.00");
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     #[must_use]
     pub fn dec_sexagesimal(self, style: SexaStyle) -> String {
         format_dec(self.dec, style)
@@ -262,6 +355,19 @@ pub fn tangent_offset(from: Equatorial, to: Equatorial) -> TangentOffset {
 ///
 /// The result keeps `from`'s epoch. Declination is clamped to the valid domain
 /// against floating-point drift at the poles.
+///
+/// ```
+/// use skymath::{apply_offset, Angle, Equatorial, ParseMode, TangentOffset};
+///
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let offset = TangentOffset {
+///     east: Angle::from_arcminutes(10.0),
+///     north: Angle::from_arcminutes(0.0),
+/// };
+/// let shifted = apply_offset(m31, offset);
+/// assert!(shifted.ra().degrees() > m31.ra().degrees());
+/// # Ok::<(), skymath::Error>(())
+/// ```
 #[must_use]
 pub fn apply_offset(from: Equatorial, offset: TangentOffset) -> Equatorial {
     let (e, n) = (offset.east.radians(), offset.north.radians());

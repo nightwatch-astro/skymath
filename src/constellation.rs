@@ -409,6 +409,12 @@ impl Constellation {
     ];
 
     /// The official IAU 3-letter abbreviation (e.g. `"UMi"`).
+    ///
+    /// ```
+    /// use skymath::Constellation;
+    ///
+    /// assert_eq!(Constellation::UMi.abbreviation(), "UMi");
+    /// ```
     #[must_use]
     pub fn abbreviation(self) -> &'static str {
         ABBREVIATIONS[self as usize]
@@ -416,6 +422,12 @@ impl Constellation {
 
     /// The full Latin name with official IAU spelling (e.g. `"Ursa Minor"`,
     /// `"Boötes"`).
+    ///
+    /// ```
+    /// use skymath::Constellation;
+    ///
+    /// assert_eq!(Constellation::UMi.name(), "Ursa Minor");
+    /// ```
     #[must_use]
     pub fn name(self) -> &'static str {
         NAMES[self as usize]
@@ -437,6 +449,14 @@ impl FromStr for Constellation {
     /// # Errors
     /// [`Error::UnknownConstellation`] if the input is not one of the 88
     /// official abbreviations.
+    ///
+    /// ```
+    /// use skymath::Constellation;
+    ///
+    /// let c: Constellation = "umi".parse()?;
+    /// assert_eq!(c, Constellation::UMi);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     fn from_str(s: &str) -> Result<Self, Error> {
         Constellation::ALL
             .into_iter()

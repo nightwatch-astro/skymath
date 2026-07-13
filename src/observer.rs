@@ -56,6 +56,14 @@ impl Location {
     /// # Errors
     /// [`Error::OutOfRange`] unless latitude ∈ `[-90°, +90°]`, longitude ∈
     /// `[-180°, +180°]`, and elevation is finite.
+    ///
+    /// ```
+    /// use skymath::{Angle, Location};
+    ///
+    /// let site = Location::new(Angle::from_degrees(52.0922), Angle::from_degrees(4.3075), 6.0)?;
+    /// assert_eq!(site.elevation_m(), 6.0);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     pub fn new(latitude: Angle, longitude: Angle, elevation_m: f64) -> Result<Self> {
         let lat = latitude.degrees();
         if !lat.is_finite() || !(-90.0..=90.0).contains(&lat) {
@@ -95,6 +103,14 @@ impl Location {
     /// contradicting an explicit sign; [`Error::OutOfRange`] as in [`new`].
     ///
     /// [`new`]: Location::new
+    ///
+    /// ```
+    /// use skymath::Location;
+    ///
+    /// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+    /// assert!((site.latitude().degrees() - 52.0922).abs() < 1e-3);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     pub fn parse(lat: &str, lon: &str, elevation_m: f64) -> Result<Self> {
         let latitude = parse_site_angle(lat, ['N', 'S'])?;
         let longitude = parse_site_angle(lon, ['E', 'W'])?;
@@ -102,16 +118,40 @@ impl Location {
     }
 
     /// Geodetic latitude (north-positive).
+    ///
+    /// ```
+    /// use skymath::Location;
+    ///
+    /// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+    /// assert!((site.latitude().degrees() - 52.0922).abs() < 1e-3);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     pub fn latitude(self) -> Angle {
         self.latitude
     }
 
     /// Longitude, east-positive.
+    ///
+    /// ```
+    /// use skymath::Location;
+    ///
+    /// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+    /// assert!((site.longitude().degrees() - 4.3075).abs() < 1e-3);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     pub fn longitude(self) -> Angle {
         self.longitude
     }
 
     /// Elevation above sea level, in metres.
+    ///
+    /// ```
+    /// use skymath::Location;
+    ///
+    /// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+    /// assert_eq!(site.elevation_m(), 6.0);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
     pub fn elevation_m(self) -> f64 {
         self.elevation_m
     }
@@ -150,6 +190,13 @@ fn parse_site_angle(s: &str, hemis: [char; 2]) -> Result<Angle> {
 
 /// A horizontal (alt-azimuth) position. Azimuth is measured from North
 /// through East (N = 0°, E = 90°), normalized to `[0°, 360°)`.
+///
+/// ```
+/// use skymath::{Angle, Horizontal};
+///
+/// let h = Horizontal { altitude: Angle::from_degrees(45.0), azimuth: Angle::from_degrees(180.0) };
+/// assert_eq!(h.azimuth.degrees(), 180.0);
+/// ```
 #[derive(Debug, Clone, Copy, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Horizontal {

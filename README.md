@@ -124,4 +124,4 @@ offset in internally, so passing local civil time cannot skew results.
 
 ## License
 
-Licensed under the [Apache License, Version 2.0](LICENSE).
+Licensed under the [Apache License, Version 2.0](https://github.com/nightwatch-astro/skymath/blob/main/LICENSE).

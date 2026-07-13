@@ -91,6 +91,12 @@ pub enum Twilight {
 
 impl Twilight {
     /// The solar altitude threshold this definition uses.
+    ///
+    /// ```
+    /// use skymath::Twilight;
+    ///
+    /// assert_eq!(Twilight::Astronomical.threshold().degrees(), -18.0);
+    /// ```
     #[must_use]
     pub fn threshold(self) -> Angle {
         Angle::from_degrees(match self {
