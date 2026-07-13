@@ -163,6 +163,17 @@ pub struct Horizontal {
 /// positive west of the meridian. The target is precessed to the epoch of
 /// `at` first, so J2000 coordinates are compared against of-date sidereal
 /// time correctly.
+///
+/// ```
+/// use skymath::{hour_angle, Equatorial, Location, ParseMode};
+/// use time::OffsetDateTime;
+///
+/// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let ha = hour_angle(m31, OffsetDateTime::now_utc(), &site);
+/// assert!((-180.0..=180.0).contains(&ha.degrees()));
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn hour_angle(target: Equatorial, at: OffsetDateTime, site: &Location) -> Angle {
     let of_date = precess(target, julian_epoch_of(at));
     (lst(at, site.longitude()) - of_date.ra()).normalized_pm_180()
@@ -171,6 +182,18 @@ pub fn hour_angle(target: Equatorial, at: OffsetDateTime, site: &Location) -> An
 /// Horizontal position of `target` for an observer, ported from astro-math's
 /// spherical-triangle formulation (geometric altitude — no refraction). The
 /// target is precessed to the epoch of `at` internally.
+///
+/// ```
+/// use skymath::{alt_az, Equatorial, Location, ParseMode};
+/// use time::OffsetDateTime;
+///
+/// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let h = alt_az(m31, OffsetDateTime::now_utc(), &site);
+/// assert!((-90.0..=90.0).contains(&h.altitude.degrees()));
+/// assert!((0.0..360.0).contains(&h.azimuth.degrees()));
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn alt_az(target: Equatorial, at: OffsetDateTime, site: &Location) -> Horizontal {
     let target = precess(target, julian_epoch_of(at));
     let ha = hour_angle(target, at, site).radians();
@@ -290,6 +313,19 @@ fn checked_altitude(altitude: Angle) -> Result<f64> {
 /// `(-180°, +180°]`: 0 at transit (for δ < φ), negative east of the
 /// meridian, positive west — the position angle of the zenith measured at
 /// the target. The target is precessed to the epoch of `at` internally.
+///
+/// ```
+/// use skymath::{parallactic_angle, transit, Equatorial, Location, ParseMode};
+/// use time::OffsetDateTime;
+///
+/// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// // M31's declination is below the site latitude, so the zenith lies due
+/// // south at transit: q ≈ 0.
+/// let t = transit(m31, OffsetDateTime::now_utc(), &site);
+/// assert!(parallactic_angle(m31, t, &site).degrees().abs() < 1.0);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn parallactic_angle(target: Equatorial, at: OffsetDateTime, site: &Location) -> Angle {
     let target = precess(target, julian_epoch_of(at));
     let ha = hour_angle(target, at, site).radians();
@@ -302,6 +338,18 @@ pub fn parallactic_angle(target: Equatorial, at: OffsetDateTime, site: &Location
 
 /// The meridian transit of `target` nearest to `near` (upper culmination,
 /// hour angle 0), found analytically from the sidereal rate.
+///
+/// ```
+/// use skymath::{hour_angle, transit, Equatorial, Location, ParseMode};
+/// use time::OffsetDateTime;
+///
+/// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// let t = transit(m31, OffsetDateTime::now_utc(), &site);
+/// // The hour angle at transit is (near) zero.
+/// assert!(hour_angle(m31, t, &site).degrees().abs() < 0.03);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn transit(target: Equatorial, near: OffsetDateTime, site: &Location) -> OffsetDateTime {
     culmination(target, near, site, 0.0)
 }
@@ -351,6 +399,19 @@ pub enum CrossingOutcome {
 /// `cos H₀ = (sin h₀ − sin φ sin δ) / (cos φ cos δ)` (geometric altitude, no
 /// refraction; apply [`refraction_true_to_apparent`]'s inverse to the
 /// threshold first if apparent-altitude semantics are wanted).
+///
+/// ```
+/// use skymath::{altitude_crossings, Angle, CrossingOutcome, Equatorial, Location, ParseMode};
+/// use time::OffsetDateTime;
+///
+/// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+/// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+/// match altitude_crossings(m31, Angle::from_degrees(30.0), OffsetDateTime::now_utc(), &site) {
+///     CrossingOutcome::Crosses { rise, set } => println!("above 30°: {rise} -> {set}"),
+///     outcome => println!("{outcome:?}"),
+/// }
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn altitude_crossings(
     target: Equatorial,
     threshold: Angle,

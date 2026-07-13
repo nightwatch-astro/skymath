@@ -31,6 +31,8 @@ Rust library of planning-grade astronomy math for astrophotography tooling.
 - **Time** — MJD/JD ↔ calendar conversions
   ([`datetime_to_mjd`](https://docs.rs/skymath/latest/skymath/fn.datetime_to_mjd.html),
   [`mjd_to_datetime`](https://docs.rs/skymath/latest/skymath/fn.mjd_to_datetime.html)),
+  MJD ↔ JD ([`jd_to_mjd`](https://docs.rs/skymath/latest/skymath/fn.jd_to_mjd.html),
+  [`mjd_to_jd`](https://docs.rs/skymath/latest/skymath/fn.mjd_to_jd.html)),
   FITS `DATE-OBS` parsing and formatting
   ([`parse_date_obs`](https://docs.rs/skymath/latest/skymath/fn.parse_date_obs.html),
   [`format_date_obs`](https://docs.rs/skymath/latest/skymath/fn.format_date_obs.html)),
@@ -52,7 +54,8 @@ Rust library of planning-grade astronomy math for astrophotography tooling.
 - **Sun & Moon** — solar
   ([`sun_position`](https://docs.rs/skymath/latest/skymath/fn.sun_position.html)) and lunar
   positions ([`moon_position`](https://docs.rs/skymath/latest/skymath/fn.moon_position.html),
-  geocentric and [topocentric](https://docs.rs/skymath/latest/skymath/fn.moon_position_topocentric.html)),
+  geocentric and [topocentric](https://docs.rs/skymath/latest/skymath/fn.moon_position_topocentric.html);
+  [`moon_distance_km`](https://docs.rs/skymath/latest/skymath/fn.moon_distance_km.html)),
   [twilight](https://docs.rs/skymath/latest/skymath/fn.twilight.html) times (civil / nautical /
   astronomical, with typed polar-night and midnight-sun outcomes in
   [`TwilightOutcome`](https://docs.rs/skymath/latest/skymath/enum.TwilightOutcome.html)),
