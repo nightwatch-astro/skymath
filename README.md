@@ -114,7 +114,7 @@ fn main() -> skymath::Result<()> {
 `cargo run --example plan_night` walks the full planning flow (site + target
 parsing, constellation lookup, precession to tonight, sidereal time, airmass,
 parallactic angle, transit and window, twilight, and Moon separation and
-illumination). See the [guide](docs/guide.md) for a task-by-task walkthrough,
+illumination). See the [guide](https://docs.rs/skymath/latest/skymath/guide/index.html) for a task-by-task walkthrough,
 or [docs.rs](https://docs.rs/skymath) for the full API reference.
 
 Instants are `time` crate types; functions taking an `OffsetDateTime` fold the

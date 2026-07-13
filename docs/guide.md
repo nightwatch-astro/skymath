@@ -3,7 +3,7 @@
 A task-by-task walkthrough of `skymath`, planning a night on M31 (RA
 `00:42:44.3`, Dec `+41:16:09`) from a site at 52°N, 4°E. Each snippet below is
 copy-paste runnable on its own. The full sequence — assembled into one
-program — is [`examples/plan_night.rs`](../examples/plan_night.rs); run
+program — is [`examples/plan_night.rs`](https://github.com/nightwatch-astro/skymath/blob/main/examples/plan_night.rs); run
 `cargo run --example plan_night` to see it end to end.
 
 Add the crate first:
