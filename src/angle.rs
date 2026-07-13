@@ -57,11 +57,24 @@ pub struct Angle {
 
 impl Angle {
     /// Construct from radians.
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// let right_angle = Angle::from_radians(std::f64::consts::FRAC_PI_2);
+    /// assert!((right_angle.degrees() - 90.0).abs() < 1e-9);
+    /// ```
     #[must_use]
     pub const fn from_radians(radians: f64) -> Self {
         Self { radians }
     }
     /// Construct from decimal degrees.
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_degrees(180.0).radians() - std::f64::consts::PI).abs() < 1e-12);
+    /// ```
     #[must_use]
     pub fn from_degrees(degrees: f64) -> Self {
         Self {
@@ -69,48 +82,102 @@ impl Angle {
         }
     }
     /// Construct from arcminutes (1/60 degree).
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_arcminutes(30.0).degrees() - 0.5).abs() < 1e-12);
+    /// ```
     #[must_use]
     pub fn from_arcminutes(arcmin: f64) -> Self {
         Self::from_degrees(arcmin / 60.0)
     }
     /// Construct from arcseconds (1/3600 degree).
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_arcseconds(3600.0).degrees() - 1.0).abs() < 1e-9);
+    /// ```
     #[must_use]
     pub fn from_arcseconds(arcsec: f64) -> Self {
         Self::from_degrees(arcsec / 3600.0)
     }
     /// Construct from hours of right ascension (1 hour = 15°).
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_hours(6.0).degrees() - 90.0).abs() < 1e-9);
+    /// ```
     #[must_use]
     pub fn from_hours(hours: f64) -> Self {
         Self::from_degrees(hours * 15.0)
     }
 
     /// Value in radians.
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_degrees(90.0).radians() - std::f64::consts::FRAC_PI_2).abs() < 1e-12);
+    /// ```
     #[must_use]
     pub const fn radians(self) -> f64 {
         self.radians
     }
     /// Value in decimal degrees.
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_radians(std::f64::consts::PI).degrees() - 180.0).abs() < 1e-9);
+    /// ```
     #[must_use]
     pub fn degrees(self) -> f64 {
         self.radians * DEG_PER_RAD
     }
     /// Value in arcminutes.
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_degrees(1.0).arcminutes() - 60.0).abs() < 1e-9);
+    /// ```
     #[must_use]
     pub fn arcminutes(self) -> f64 {
         self.degrees() * 60.0
     }
     /// Value in arcseconds.
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_degrees(1.0).arcseconds() - 3600.0).abs() < 1e-6);
+    /// ```
     #[must_use]
     pub fn arcseconds(self) -> f64 {
         self.degrees() * 3600.0
     }
     /// Value in hours (degrees / 15).
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_degrees(90.0).hours() - 6.0).abs() < 1e-9);
+    /// ```
     #[must_use]
     pub fn hours(self) -> f64 {
         self.degrees() / 15.0
     }
 
     /// Return an equivalent angle wrapped into `[0, 360)` degrees.
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_degrees(-10.0).normalized_0_360().degrees() - 350.0).abs() < 1e-9);
+    /// ```
     #[must_use]
     pub fn normalized_0_360(self) -> Self {
         let mut d = self.degrees() % 360.0;
@@ -120,6 +187,12 @@ impl Angle {
         Self::from_degrees(d)
     }
     /// Return an equivalent angle wrapped into `(-180, 180]` degrees.
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_degrees(350.0).normalized_pm_180().degrees() + 10.0).abs() < 1e-9);
+    /// ```
     #[must_use]
     pub fn normalized_pm_180(self) -> Self {
         let mut d = self.normalized_0_360().degrees();
@@ -129,6 +202,12 @@ impl Angle {
         Self::from_degrees(d)
     }
     /// Return an equivalent angle wrapped into `[0, 24)` hours.
+    ///
+    /// ```
+    /// use skymath::Angle;
+    ///
+    /// assert!((Angle::from_hours(25.0).normalized_hours().hours() - 1.0).abs() < 1e-9);
+    /// ```
     #[must_use]
     pub fn normalized_hours(self) -> Self {
         self.normalized_0_360()
@@ -197,6 +276,13 @@ pub enum Separator {
 }
 
 /// Formatting control for sexagesimal output.
+///
+/// ```
+/// use skymath::{Separator, SexaStyle};
+///
+/// let fits_style = SexaStyle { separator: Separator::Spaces, seconds_places: 0 };
+/// assert_eq!(fits_style.seconds_places, 0);
+/// ```
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct SexaStyle {
@@ -208,6 +294,14 @@ pub struct SexaStyle {
 
 impl Default for SexaStyle {
     /// Colon-separated with 2 fractional seconds digits.
+    ///
+    /// ```
+    /// use skymath::{Separator, SexaStyle};
+    ///
+    /// let style = SexaStyle::default();
+    /// assert_eq!(style.separator, Separator::Colons);
+    /// assert_eq!(style.seconds_places, 2);
+    /// ```
     fn default() -> Self {
         Self {
             separator: Separator::Colons,
@@ -226,6 +320,14 @@ impl Default for SexaStyle {
 ///
 /// # Errors
 /// [`Error::ParseCoord`] on malformed input (any mode).
+///
+/// ```
+/// use skymath::{parse_ra, ParseMode};
+///
+/// let ra = parse_ra("00:42:44.3", ParseMode::Strict)?;
+/// assert!((ra.hours() - 0.7123).abs() < 1e-3);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn parse_ra(s: &str, mode: ParseMode) -> Result<Angle> {
     if looks_sexagesimal(s) {
         Ok(Angle::from_hours(parse_sexagesimal(s, mode)?))
@@ -241,6 +343,14 @@ pub fn parse_ra(s: &str, mode: ParseMode) -> Result<Angle> {
 ///
 /// # Errors
 /// [`Error::ParseCoord`] on malformed input (any mode).
+///
+/// ```
+/// use skymath::{parse_dec, ParseMode};
+///
+/// let dec = parse_dec("+41:16:09", ParseMode::Strict)?;
+/// assert!((dec.degrees() - 41.269_17).abs() < 1e-3);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn parse_dec(s: &str, mode: ParseMode) -> Result<Angle> {
     if looks_sexagesimal(s) {
         Ok(Angle::from_degrees(parse_sexagesimal(s, mode)?))
@@ -332,6 +442,14 @@ fn next_field<'a>(
 
 /// Format an angle as sexagesimal right ascension (hours), wrapped to
 /// `[0h, 24h)`, e.g. `06:30:00.00`.
+///
+/// ```
+/// use skymath::{format_ra, parse_ra, ParseMode, SexaStyle};
+///
+/// let ra = parse_ra("00:42:44.3", ParseMode::Strict)?;
+/// assert_eq!(format_ra(ra, SexaStyle::default()), "00:42:44.30");
+/// # Ok::<(), skymath::Error>(())
+/// ```
 #[must_use]
 pub fn format_ra(a: Angle, style: SexaStyle) -> String {
     let hours = a.normalized_0_360().degrees() / 15.0;
@@ -346,6 +464,14 @@ pub fn format_ra(a: Angle, style: SexaStyle) -> String {
 
 /// Format an angle as signed sexagesimal degrees (declination/latitude), e.g.
 /// `+41:16:09.00`. The sign is always present; `-0°` keeps its minus sign.
+///
+/// ```
+/// use skymath::{format_dec, parse_dec, ParseMode, SexaStyle};
+///
+/// let dec = parse_dec("+41:16:09", ParseMode::Strict)?;
+/// assert_eq!(format_dec(dec, SexaStyle::default()), "+41:16:09.00");
+/// # Ok::<(), skymath::Error>(())
+/// ```
 #[must_use]
 pub fn format_dec(a: Angle, style: SexaStyle) -> String {
     format_sexagesimal(a.degrees(), true, style)
