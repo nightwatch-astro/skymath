@@ -31,7 +31,16 @@ const NANOS_PER_DAY: i64 = 86_400 * 1_000_000_000;
 
 // ── Julian / Modified Julian dates ─────────────────────────────────────────────
 
-/// Modified Julian Date of a timezone-naive instant (taken as UTC).
+/// Modified Julian Date of a timezone-naive instant (taken as UTC). Inverse
+/// of [`mjd_to_datetime`].
+///
+/// ```
+/// use skymath::datetime_to_mjd;
+/// use time::macros::datetime;
+///
+/// // J2000.0 = MJD 51544.5.
+/// assert_eq!(datetime_to_mjd(datetime!(2000-01-01 12:00)), 51_544.5);
+/// ```
 pub fn datetime_to_mjd(dt: PrimitiveDateTime) -> f64 {
     let days = (i64::from(dt.date().to_julian_day()) - MJD_EPOCH_JDN) as f64;
     let t = dt.time();
@@ -42,10 +51,19 @@ pub fn datetime_to_mjd(dt: PrimitiveDateTime) -> f64 {
     days + day_seconds / SECONDS_PER_DAY
 }
 
-/// Timezone-naive UTC instant of a Modified Julian Date.
+/// Timezone-naive UTC instant of a Modified Julian Date. Inverse of
+/// [`datetime_to_mjd`].
 ///
 /// Errors with [`Error::OutOfRange`] when `mjd` is not finite or falls
 /// outside the `time` crate's representable calendar range.
+///
+/// ```
+/// use skymath::mjd_to_datetime;
+/// use time::macros::datetime;
+///
+/// assert_eq!(mjd_to_datetime(51_544.5).unwrap(), datetime!(2000-01-01 12:00));
+/// assert!(mjd_to_datetime(f64::NAN).is_err());
+/// ```
 pub fn mjd_to_datetime(mjd: f64) -> Result<PrimitiveDateTime> {
     let out_of_range = || Error::OutOfRange {
         what: "mjd",
@@ -77,17 +95,36 @@ pub fn mjd_to_datetime(mjd: f64) -> Result<PrimitiveDateTime> {
     Ok(PrimitiveDateTime::new(date, time))
 }
 
-/// Convert a Julian Date to a Modified Julian Date.
+/// Convert a Julian Date to a Modified Julian Date. Inverse of [`mjd_to_jd`].
+///
+/// ```
+/// use skymath::jd_to_mjd;
+///
+/// assert_eq!(jd_to_mjd(2_451_545.0), 51_544.5); // J2000.0
+/// ```
 pub fn jd_to_mjd(jd: f64) -> f64 {
     jd - MJD_JD_OFFSET
 }
 
-/// Convert a Modified Julian Date to a Julian Date.
+/// Convert a Modified Julian Date to a Julian Date. Inverse of [`jd_to_mjd`].
+///
+/// ```
+/// use skymath::mjd_to_jd;
+///
+/// assert_eq!(mjd_to_jd(51_544.5), 2_451_545.0); // J2000.0
+/// ```
 pub fn mjd_to_jd(mjd: f64) -> f64 {
     mjd + MJD_JD_OFFSET
 }
 
 /// Julian Date of an instant; the offset is folded in (UTC internally).
+///
+/// ```
+/// use skymath::julian_date;
+/// use time::macros::datetime;
+///
+/// assert_eq!(julian_date(datetime!(2000-01-01 12:00 UTC)), 2_451_545.0);
+/// ```
 pub fn julian_date(at: OffsetDateTime) -> f64 {
     // The Unix epoch (1970-01-01T00:00 UTC) is JD 2 440 587.5.
     2_440_587.5 + at.unix_timestamp_nanos() as f64 / (SECONDS_PER_DAY * 1e9)
@@ -98,7 +135,17 @@ pub fn julian_date(at: OffsetDateTime) -> f64 {
 /// Parse a FITS civil date/time (`YYYY-MM-DD[Thh:mm:ss[.fff]]`),
 /// timezone-naive; a date-only value means midnight. Quoted card values and
 /// surrounding whitespace are tolerated. FITS strings carry no offset — bridge
-/// to [`OffsetDateTime`] with `parse_date_obs(s)?.assume_utc()`.
+/// to [`OffsetDateTime`] with `parse_date_obs(s)?.assume_utc()`. Inverse of
+/// [`format_date_obs`].
+///
+/// ```
+/// use skymath::parse_date_obs;
+/// use time::macros::datetime;
+///
+/// assert_eq!(parse_date_obs("2026-07-11T22:15:03.25")?, datetime!(2026-07-11 22:15:03.25));
+/// assert_eq!(parse_date_obs("2026-07-11")?, datetime!(2026-07-11 00:00));
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn parse_date_obs(s: &str) -> Result<PrimitiveDateTime> {
     parse_date_obs_opt(s).ok_or_else(|| Error::ParseDate(s.trim().to_string()))
 }
@@ -157,7 +204,15 @@ fn parse_date_obs_opt(s: &str) -> Option<PrimitiveDateTime> {
 }
 
 /// Format a date/time back to the FITS civil form
-/// (`YYYY-MM-DDThh:mm:ss[.fff]`), dropping a zero sub-second part.
+/// (`YYYY-MM-DDThh:mm:ss[.fff]`), dropping a zero sub-second part. Inverse of
+/// [`parse_date_obs`].
+///
+/// ```
+/// use skymath::format_date_obs;
+/// use time::macros::datetime;
+///
+/// assert_eq!(format_date_obs(datetime!(2026-07-11 22:15:00)), "2026-07-11T22:15:00");
+/// ```
 pub fn format_date_obs(dt: PrimitiveDateTime) -> String {
     let (d, t) = (dt.date(), dt.time());
     let base = format!(
@@ -181,15 +236,36 @@ pub fn format_date_obs(dt: PrimitiveDateTime) -> String {
 // ── Julian epoch & sidereal time ───────────────────────────────────────────────
 
 /// The Julian epoch of an instant, e.g. `Epoch::OfDate(2026.52…)` for
-/// mid-July 2026.
+/// mid-July 2026. Feeds [`precess`](crate::precess) when moving an
+/// [`Equatorial`](crate::Equatorial) position to "tonight".
+///
+/// ```
+/// use skymath::julian_epoch_of;
+/// use skymath::Epoch;
+/// use time::macros::datetime;
+///
+/// assert_eq!(
+///     julian_epoch_of(datetime!(2000-01-01 12:00 UTC)),
+///     Epoch::OfDate(2000.0)
+/// );
+/// ```
 pub fn julian_epoch_of(at: OffsetDateTime) -> Epoch {
     Epoch::OfDate(2_000.0 + (julian_date(at) - J2000_JD) / 365.25)
 }
 
-/// Greenwich Mean Sidereal Time, normalized to `[0h, 24h)`.
+/// Greenwich Mean Sidereal Time, normalized to `[0h, 24h)`. Feeds [`lst`] at
+/// an observer's longitude.
 ///
 /// IAU-1982 polynomial (Meeus eq. 12.4) on UT1 ≈ UTC: accurate to ~0.1 s of
 /// time over ±1 century around J2000.
+///
+/// ```
+/// use skymath::gmst;
+/// use time::OffsetDateTime;
+///
+/// let hours = gmst(OffsetDateTime::now_utc()).hours();
+/// assert!((0.0..24.0).contains(&hours));
+/// ```
 pub fn gmst(at: OffsetDateTime) -> Angle {
     let d = julian_date(at) - J2000_JD;
     let t = d / 36_525.0;
@@ -199,7 +275,18 @@ pub fn gmst(at: OffsetDateTime) -> Angle {
 }
 
 /// Local Sidereal Time at an east-positive longitude, normalized to
-/// `[0h, 24h)`.
+/// `[0h, 24h)`. `lst(at, lon) == gmst(at) + lon` (wrapped).
+///
+/// ```
+/// use skymath::{gmst, lst, Location};
+/// use time::OffsetDateTime;
+///
+/// let site = Location::parse("+52 05 32", "+004 18 27", 6.0)?;
+/// let now = OffsetDateTime::now_utc();
+/// let expected = (gmst(now) + site.longitude()).normalized_hours();
+/// assert!((lst(now, site.longitude()).hours() - expected.hours()).abs() < 1e-9);
+/// # Ok::<(), skymath::Error>(())
+/// ```
 pub fn lst(at: OffsetDateTime, longitude_east: Angle) -> Angle {
     (gmst(at) + longitude_east).normalized_hours()
 }
