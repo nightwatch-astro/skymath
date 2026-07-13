@@ -6,7 +6,7 @@
 //! (36″), inside the crate's 1′ contract. Twilight solves the Sun's altitude
 //! crossings with the moving-body iteration of the analytic solver. UTC is
 //! used where Meeus specifies dynamical time — ΔT ≈ 70 s shifts the solar
-//! longitude by ~3″, i.e. twilight instants by ~3 s (see research R18).
+//! longitude by ~3″, i.e. twilight instants by ~3 s.
 
 use ::time::OffsetDateTime;
 

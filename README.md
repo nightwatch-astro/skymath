@@ -78,8 +78,11 @@ scope by design.
 ## Install
 
 ```sh
-cargo add skymath
+cargo add skymath time
 ```
+
+The `time` crate supplies the `OffsetDateTime` instants every ephemeris
+function takes.
 
 ## Usage
 
@@ -105,9 +108,10 @@ fn main() -> skymath::Result<()> {
 ```
 
 `cargo run --example plan_night` walks the full planning flow (site + target
-parsing, precession to tonight, sidereal time, airmass, parallactic angle,
-transit and window). See the [guide](docs/guide.md) for a task-by-task
-walkthrough, or [docs.rs](https://docs.rs/skymath) for the full API reference.
+parsing, constellation lookup, precession to tonight, sidereal time, airmass,
+parallactic angle, transit and window, twilight, and Moon separation and
+illumination). See the [guide](docs/guide.md) for a task-by-task walkthrough,
+or [docs.rs](https://docs.rs/skymath) for the full API reference.
 
 Instants are `time` crate types; functions taking an `OffsetDateTime` fold the
 offset in internally, so passing local civil time cannot skew results.

@@ -109,7 +109,8 @@ fn main() -> skymath::Result<()> {
 
 [`alt_az`](https://docs.rs/skymath/latest/skymath/fn.alt_az.html) gives the
 target's horizontal position; [`airmass`](https://docs.rs/skymath/latest/skymath/fn.airmass.html)
-errors below the horizon rather than returning a nonsensical number.
+errors once the target is well below the horizon (< −1°) rather than returning
+a nonsensical number.
 [`parallactic_angle`](https://docs.rs/skymath/latest/skymath/fn.parallactic_angle.html)
 is the position angle of the zenith, useful for planning field rotation.
 
