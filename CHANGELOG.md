@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.4](https://github.com/nightwatch-astro/skymath/compare/v0.3.3...v0.3.4) (2026-07-13)
+
+
+### Documentation
+
+* use absolute URLs for guide and example links so they resolve on docs.rs ([#14](https://github.com/nightwatch-astro/skymath/issues/14)) ([8802637](https://github.com/nightwatch-astro/skymath/commit/8802637b6722caf6f89de5cf633484164f6332b8))
+
 ## [0.3.3](https://github.com/nightwatch-astro/skymath/compare/v0.3.2...v0.3.3) (2026-07-13)
 
 
