@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 """Generate src/constellation_data.rs from the Roman (1987) boundary table.
 
 Data source: ADC/CDS catalogue VI/42 (Roman 1987, PASP 99, 695) — fetched from

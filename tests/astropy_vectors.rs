@@ -1,3 +1,7 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 //! Cross-validation of the public API against AstroPy-generated reference
 //! vectors (SC-001/SC-003: the ≤1′ planning-grade contract, checked against
 //! the professional reference implementation).
