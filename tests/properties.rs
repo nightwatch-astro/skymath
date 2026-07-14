@@ -1,3 +1,7 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 //! Property-based tests of the geometric invariants (SC-004).
 //!
 //! The separation/sexagesimal/precession properties are migrated from

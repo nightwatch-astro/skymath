@@ -1,3 +1,7 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 //! Vectors exercising the alt-azimuth transform ported from `gaker/astro-math`
 //! 0.2.1 (`src/tests/transforms.rs`, see NOTICE) — SC-003.
 //!

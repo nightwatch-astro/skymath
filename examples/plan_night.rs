@@ -1,3 +1,7 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 //! End-to-end session-planning walkthrough (the quickstart contract):
 //! parse a site and M31, precess to tonight's epoch, print sidereal time,
 //! alt-azimuth, airmass, parallactic angle, transit, and the 30° window.

@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 """Generate AstroPy reference vectors for skymath's cross-validation suite.
 
 Writes tests/data/astropy_vectors.json, consumed by tests/astropy_vectors.rs.
