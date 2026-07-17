@@ -374,6 +374,20 @@ pub enum Separator {
     Colons,
     /// `HH MM SS.sss` (FITS keyword convention).
     Spaces,
+    /// Unicode astronomy glyphs: `HHhMMmSSs` for right ascension,
+    /// `±DD°MM′SS″` for declination. Negative declination uses U+2212 (minus
+    /// sign), not the ASCII hyphen `-`.
+    ///
+    /// ```
+    /// use skymath::{format_dec, format_ra, parse_dec, parse_ra, ParseMode, Separator, SexaStyle};
+    ///
+    /// let style = SexaStyle { separator: Separator::Unicode, seconds_places: 0 };
+    /// let ra = parse_ra("00:42:44.3", ParseMode::Strict).unwrap();
+    /// assert_eq!(format_ra(ra, style), "00h42m44s");
+    /// let dec = parse_dec("-05:30:00", ParseMode::Strict).unwrap();
+    /// assert_eq!(format_dec(dec, style), "\u{2212}05\u{b0}30\u{2032}00\u{2033}");
+    /// ```
+    Unicode,
 }
 
 /// Formatting control for sexagesimal output.
@@ -554,10 +568,10 @@ fn next_field<'a>(
 #[must_use]
 pub fn format_ra(a: Angle, style: SexaStyle) -> String {
     let hours = a.normalized_0_360().degrees() / 15.0;
-    let s = format_sexagesimal(hours, false, style);
+    let s = format_sexagesimal(hours, false, style, true);
     // Rounding carry can reach 24:00:00 — wrap to 00.
-    if s.starts_with("24:") || s.starts_with("24 ") {
-        format_sexagesimal(0.0, false, style)
+    if s.starts_with("24:") || s.starts_with("24 ") || s.starts_with("24h") {
+        format_sexagesimal(0.0, false, style, true)
     } else {
         s
     }
@@ -575,38 +589,66 @@ pub fn format_ra(a: Angle, style: SexaStyle) -> String {
 /// ```
 #[must_use]
 pub fn format_dec(a: Angle, style: SexaStyle) -> String {
-    format_sexagesimal(a.degrees(), true, style)
+    format_sexagesimal(a.degrees(), true, style, false)
 }
 
 /// Format a signed decimal value as sexagesimal, with rounding performed at the
 /// seconds precision *before* field splitting so `59.9996″` carries into the
-/// minute (never emitting a `60` field).
-fn format_sexagesimal(value: f64, signed: bool, style: SexaStyle) -> String {
+/// minute (never emitting a `60` field). `is_ra` selects the RA (`h`/`m`/`s`)
+/// vs Dec (`°`/`′`/`″`) glyph set when `style.separator` is
+/// [`Separator::Unicode`].
+fn format_sexagesimal(value: f64, signed: bool, style: SexaStyle, is_ra: bool) -> String {
     let neg = value.is_sign_negative() && value != 0.0;
     let decimals = usize::from(style.seconds_places);
     let sec_scale = 3600.0 * 10f64.powi(i32::from(style.seconds_places));
-    let v = (value.abs() * sec_scale).round() / sec_scale;
+    let rounded = (value.abs() * sec_scale).round() / sec_scale;
+    let (a, b, c) = decompose_magnitude(rounded);
+    let width = if decimals > 0 { decimals + 3 } else { 2 };
+    match style.separator {
+        Separator::Colons | Separator::Spaces => {
+            let sign = if neg {
+                "-"
+            } else if signed {
+                "+"
+            } else {
+                ""
+            };
+            let sep = match style.separator {
+                Separator::Colons => ':',
+                Separator::Spaces => ' ',
+                Separator::Unicode => unreachable!(),
+            };
+            format!("{sign}{a:02}{sep}{b:02}{sep}{c:0width$.decimals$}")
+        }
+        Separator::Unicode => {
+            let sign = if neg {
+                "\u{2212}"
+            } else if signed {
+                "+"
+            } else {
+                ""
+            };
+            let (u1, u2, u3) = if is_ra {
+                ("h", "m", "s")
+            } else {
+                ("\u{b0}", "\u{2032}", "\u{2033}")
+            };
+            format!("{sign}{a:02}{u1}{b:02}{u2}{c:0width$.decimals$}{u3}")
+        }
+    }
+}
+
+/// Split a non-negative decimal value into `(whole, minutes, seconds)`
+/// sexagesimal components. Shared by `format_sexagesimal` (after
+/// display-precision rounding) and the raw component accessors on
+/// `Equatorial` (no rounding there — callers own their own display
+/// precision).
+pub(crate) fn decompose_magnitude(v: f64) -> (u32, u32, f64) {
     let a = v.trunc();
     let rem_min = (v - a) * 60.0;
     let b = rem_min.trunc();
     let c = (rem_min - b) * 60.0;
-    let sign = if neg {
-        "-"
-    } else if signed {
-        "+"
-    } else {
-        ""
-    };
-    let sep = match style.separator {
-        Separator::Colons => ':',
-        Separator::Spaces => ' ',
-    };
-    let width = if decimals > 0 { decimals + 3 } else { 2 };
-    format!(
-        "{sign}{a:02}{sep}{b:02.0}{sep}{c:0width$.decimals$}",
-        a = a as i64,
-        b = b
-    )
+    (a as u32, b as u32, c)
 }
 
 #[cfg(test)]
@@ -726,6 +768,37 @@ mod tests {
         let ra = Angle::from_hours(23.0 + 59.0 / 60.0 + 59.9996 / 3600.0);
         let r = format_ra(ra, SexaStyle::default());
         assert_eq!(r, "00:00:00.00");
+    }
+
+    #[test]
+    fn format_unicode_glyphs() {
+        let style = SexaStyle {
+            separator: Separator::Unicode,
+            seconds_places: 0,
+        };
+        let ra = Angle::from_hours(0.712_306);
+        assert_eq!(format_ra(ra, style), "00h42m44s");
+        let dec = Angle::from_degrees(41.269_167);
+        assert_eq!(format_dec(dec, style), "+41\u{b0}16\u{2032}09\u{2033}");
+        let neg_dec = Angle::from_degrees(-5.5);
+        assert_eq!(
+            format_dec(neg_dec, style),
+            "\u{2212}05\u{b0}30\u{2032}00\u{2033}"
+        );
+        assert!(
+            !format_dec(neg_dec, style).starts_with('-'),
+            "must use U+2212, not ASCII hyphen"
+        );
+    }
+
+    #[test]
+    fn format_unicode_ra_carries_across_24h() {
+        let style = SexaStyle {
+            separator: Separator::Unicode,
+            seconds_places: 2,
+        };
+        let ra = Angle::from_hours(23.0 + 59.0 / 60.0 + 59.9996 / 3600.0);
+        assert_eq!(format_ra(ra, style), "00h00m00.00s");
     }
 
     #[test]

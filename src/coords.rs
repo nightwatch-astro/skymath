@@ -13,7 +13,9 @@
 //! several centuries. Apparent-place terms (nutation, aberration, proper
 //! motion) are out of scope by design.
 
-use crate::angle::{format_dec, format_ra, parse_dec, parse_ra, Angle, ParseMode, SexaStyle};
+use crate::angle::{
+    decompose_magnitude, format_dec, format_ra, parse_dec, parse_ra, Angle, ParseMode, SexaStyle,
+};
 use crate::error::{Error, Result};
 
 const RAD_PER_DEG: f64 = core::f64::consts::PI / 180.0;
@@ -285,6 +287,50 @@ impl Equatorial {
     #[must_use]
     pub fn dec_sexagesimal(self, style: SexaStyle) -> String {
         format_dec(self.dec, style)
+    }
+
+    /// Right ascension as raw sexagesimal components: `(hours, minutes,
+    /// seconds)`. Hours are wrapped into `[0, 24)` (RA has no sign). `seconds`
+    /// is not rounded to a display precision — carries (e.g. `59.9996s`
+    /// rolling into the next minute) are the caller's responsibility if they
+    /// build a display string themselves; use [`Equatorial::ra_sexagesimal`]
+    /// for carry-safe formatted output.
+    ///
+    /// ```
+    /// use skymath::{Equatorial, ParseMode};
+    ///
+    /// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+    /// let (h, m, s) = m31.ra_hms();
+    /// assert_eq!((h, m), (0, 42));
+    /// assert!((s - 44.3).abs() < 1e-2);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
+    #[must_use]
+    pub fn ra_hms(self) -> (u32, u32, f64) {
+        let hours = self.ra.normalized_0_360().degrees() / 15.0;
+        decompose_magnitude(hours)
+    }
+
+    /// Declination as raw sexagesimal components: `(negative, degrees,
+    /// minutes, seconds)`. `seconds` is not rounded to a display precision —
+    /// see [`Equatorial::ra_hms`].
+    ///
+    /// ```
+    /// use skymath::{Equatorial, ParseMode};
+    ///
+    /// let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict)?;
+    /// let (neg, d, m, s) = m31.dec_dms();
+    /// assert!(!neg);
+    /// assert_eq!((d, m), (41, 16));
+    /// assert!((s - 9.0).abs() < 1e-2);
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
+    #[must_use]
+    pub fn dec_dms(self) -> (bool, u32, u32, f64) {
+        let deg = self.dec.degrees();
+        let neg = deg.is_sign_negative() && deg != 0.0;
+        let (d, m, s) = decompose_magnitude(deg.abs());
+        (neg, d, m, s)
     }
 
     /// Unit direction vector `(x, y, z)` on the celestial sphere.
@@ -593,6 +639,40 @@ mod tests {
                 ..
             })
         ));
+    }
+
+    #[test]
+    fn ra_hms_and_dec_dms_components() {
+        let m31 = Equatorial::parse_j2000("00:42:44.3", "+41:16:09", ParseMode::Strict).unwrap();
+        let (h, m, s) = m31.ra_hms();
+        assert_eq!((h, m), (0, 42));
+        assert!(approx(s, 44.3, 1e-2));
+
+        let (neg, d, m, s) = m31.dec_dms();
+        assert!(!neg);
+        assert_eq!((d, m), (41, 16));
+        assert!(approx(s, 9.0, 1e-2));
+    }
+
+    #[test]
+    fn dec_dms_negative_sign_and_zero_edge() {
+        let south = Equatorial::parse_j2000("10:00:00", "-05:30:00", ParseMode::Strict).unwrap();
+        let (neg, d, m, _) = south.dec_dms();
+        assert!(neg);
+        assert_eq!((d, m), (5, 30));
+
+        let zero = Equatorial::parse_j2000("00:00:00", "00:00:00", ParseMode::Strict).unwrap();
+        let (neg, d, m, s) = zero.dec_dms();
+        assert!(!neg);
+        assert_eq!((d, m), (0, 0));
+        assert!(approx(s, 0.0, 1e-9));
+    }
+
+    #[test]
+    fn ra_hms_wraps_into_0_24() {
+        let p = eq(360.0 - 1e-9, 0.0);
+        let (h, _, _) = p.ra_hms();
+        assert!(h < 24);
     }
 
     #[test]
