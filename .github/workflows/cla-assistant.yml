@@ -34,4 +34,8 @@ jobs:
           path-to-document: "https://github.com/${{ github.repository }}/blob/main/CLA.md"
           branch: "cla-signatures"
           allowlist: "srobroek,bot*,dependabot*,renovate*,*[bot]*,sjorsr-release-bot*,nightwatch-astro-ci*"
+          # release-please comments on its release PR's issue after merge; a
+          # locked conversation makes that comment call fail and aborts the
+          # job before the crates.io publish steps run (broke the v0.4.0 release).
+          lock-pullrequest-aftermerge: "false"
 
