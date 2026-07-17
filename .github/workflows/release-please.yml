@@ -3,15 +3,6 @@ name: release-please
 on:
   push:
     branches: [main]
-  workflow_dispatch:
-    inputs:
-      publish_tag:
-        description: >-
-          Recovery-only: re-run the crates.io publish for a tag whose GitHub
-          release already exists but whose publish step never ran (e.g. the
-          job failed after tagging, before publish). Leave empty for normal use.
-        required: false
-        type: string
 
 permissions:
   contents: write
@@ -44,55 +35,31 @@ jobs:
 
       - uses: googleapis/release-please-action@v5
         id: release
-        if: ${{ github.event_name != 'workflow_dispatch' }}
         with:
           token: ${{ steps.app-token.outputs.token }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-      # Validate the manual recovery input strictly before it ever reaches a
-      # `ref:` field — it's maintainer-supplied (workflow_dispatch requires
-      # write access) but still must not be trusted as a well-formed tag.
-      - name: Resolve publish tag
-        id: resolve
-        env:
-          MANUAL_TAG: ${{ github.event.inputs.publish_tag }}
-          AUTO_TAG: ${{ steps.release.outputs.tag_name }}
-          AUTO_RELEASE_CREATED: ${{ steps.release.outputs.release_created }}
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            if ! [[ "$MANUAL_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-              echo "::error::publish_tag must match vX.Y.Z, got: $MANUAL_TAG"
-              exit 1
-            fi
-            echo "tag=$MANUAL_TAG" >> "$GITHUB_OUTPUT"
-            echo "should_publish=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "tag=$AUTO_TAG" >> "$GITHUB_OUTPUT"
-            echo "should_publish=$AUTO_RELEASE_CREATED" >> "$GITHUB_OUTPUT"
-          fi
-
       # Everything below runs only when merging the release PR actually cut a
-      # release, or a maintainer manually requested a recovery publish.
-      # Publishing lives in this same job because events created with
+      # release. Publishing lives in this same job because events created with
       # GITHUB_TOKEN never trigger separate `on: release` workflows.
       - uses: actions/checkout@v4
-        if: ${{ steps.resolve.outputs.should_publish == 'true' }}
+        if: ${{ steps.release.outputs.release_created }}
         with:
-          ref: ${{ steps.resolve.outputs.tag }} # build the released tag, not the branch tip
+          ref: ${{ steps.release.outputs.tag_name }} # build the released tag, not the branch tip
 
       - name: Install Rust toolchain
-        if: ${{ steps.resolve.outputs.should_publish == 'true' }}
+        if: ${{ steps.release.outputs.release_created }}
         uses: dtolnay/rust-toolchain@stable
 
       # Trusted publishing: exchange this workflow's OIDC identity for a
       # short-lived crates.io token. No long-lived secret is stored.
       - uses: rust-lang/crates-io-auth-action@v1
         id: auth
-        if: ${{ steps.resolve.outputs.should_publish == 'true' }}
+        if: ${{ steps.release.outputs.release_created }}
 
       - name: Publish to crates.io
-        if: ${{ steps.resolve.outputs.should_publish == 'true' }}
+        if: ${{ steps.release.outputs.release_created }}
         run: cargo publish
         env:
           CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
