@@ -23,8 +23,8 @@ pub mod time;
 // without it the canonical page lives at the submodule path instead.
 #[doc(inline)]
 pub use angle::{
-    format_dec, format_ra, parse_dec, parse_ra, Angle, ParseMode, Separator, SexaStyle,
-    ARCSEC_PER_RADIAN,
+    circular_distance, circular_mean, format_dec, format_ra, parse_dec, parse_ra, Angle,
+    CircularMean, ParseMode, Separator, SexaStyle, ARCSEC_PER_RADIAN,
 };
 #[doc(inline)]
 pub use constellation::{constellation, Constellation};
