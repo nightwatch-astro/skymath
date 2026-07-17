@@ -274,14 +274,56 @@ impl Div<f64> for Angle {
 /// assert!(mean.normalized_pm_180().degrees().abs() < 1e-9);
 /// ```
 pub fn circular_mean(angles: impl IntoIterator<Item = Angle>) -> Option<Angle> {
-    let (mut sin_sum, mut cos_sum) = (0.0_f64, 0.0_f64);
-    let mut seen = false;
+    let mut acc = CircularMean::new();
     for a in angles {
-        sin_sum += a.radians.sin();
-        cos_sum += a.radians.cos();
-        seen = true;
+        acc.push(a);
     }
-    seen.then(|| Angle::from_radians(sin_sum.atan2(cos_sum)).normalized_0_360())
+    acc.mean()
+}
+
+/// Running circular-mean accumulator: [`circular_mean`] for angles that
+/// arrive incrementally (e.g. while clustering), without buffering them.
+///
+/// Maintains running unit-vector sums, so the result is exact for the pushed
+/// set — no incremental-update approximation — and (up to float rounding
+/// order) independent of push order. The same antipodal caution as
+/// [`circular_mean`] applies.
+///
+/// ```
+/// use skymath::{Angle, CircularMean};
+///
+/// let mut acc = CircularMean::new();
+/// assert!(acc.mean().is_none());
+/// acc.push(Angle::from_degrees(359.0));
+/// acc.push(Angle::from_degrees(1.0));
+/// assert!(acc.mean().unwrap().normalized_pm_180().degrees().abs() < 1e-9);
+/// ```
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct CircularMean {
+    sin_sum: f64,
+    cos_sum: f64,
+    count: u64,
+}
+
+impl CircularMean {
+    /// An empty accumulator ([`mean`](Self::mean) is `None`).
+    #[must_use]
+    pub fn new() -> Self {
+        Self::default()
+    }
+    /// Fold one angle into the running mean.
+    pub fn push(&mut self, angle: Angle) {
+        self.sin_sum += angle.radians.sin();
+        self.cos_sum += angle.radians.cos();
+        self.count += 1;
+    }
+    /// Circular mean of everything pushed so far, normalized to
+    /// `[0°, 360°)`; `None` when nothing has been pushed.
+    #[must_use]
+    pub fn mean(&self) -> Option<Angle> {
+        (self.count > 0)
+            .then(|| Angle::from_radians(self.sin_sum.atan2(self.cos_sum)).normalized_0_360())
+    }
 }
 
 /// Shortest arc between two angles on the full circle, in `[0°, 180°]`.
@@ -727,6 +769,30 @@ mod tests {
         let deg = mean.degrees();
         assert!(deg.is_finite());
         assert!((0.0..360.0).contains(&deg));
+    }
+
+    #[test]
+    fn circular_mean_accumulator_matches_batch() {
+        let degs = [340.0, 355.0, 5.0, 20.0, 180.0];
+        let batch = circular_mean(degs.map(Angle::from_degrees)).unwrap();
+        let mut acc = CircularMean::new();
+        for d in degs {
+            acc.push(Angle::from_degrees(d));
+        }
+        assert!((acc.mean().unwrap().degrees() - batch.degrees()).abs() < 1e-12);
+
+        // Push order only reorders float additions; results agree tightly.
+        let mut rev = CircularMean::new();
+        for d in degs.iter().rev() {
+            rev.push(Angle::from_degrees(*d));
+        }
+        assert!((rev.mean().unwrap().degrees() - batch.degrees()).abs() < 1e-9);
+    }
+
+    #[test]
+    fn circular_mean_accumulator_empty_is_none() {
+        assert!(CircularMean::new().mean().is_none());
+        assert!(CircularMean::default().mean().is_none());
     }
 
     #[test]
