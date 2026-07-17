@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.4.0](https://github.com/nightwatch-astro/skymath/compare/v0.3.4...v0.4.0) (2026-07-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* relicense from Apache-2.0 to MPL-2.0 ([#16](https://github.com/nightwatch-astro/skymath/issues/16))
+
+### Features
+
+* circular mean and circular distance for angles ([#20](https://github.com/nightwatch-astro/skymath/issues/20)) ([8ecccd2](https://github.com/nightwatch-astro/skymath/commit/8ecccd2931bd48c98c47eb260ec0524cea27be11))
+
+
+### Bug Fixes
+
+* accept trailing Z UTC designator in parse_date_obs ([#19](https://github.com/nightwatch-astro/skymath/issues/19)) ([38feda5](https://github.com/nightwatch-astro/skymath/commit/38feda5c77cdf75c96f037e93181ff68a4b4500f))
+* store CLA signatures on unprotected branch, allowlist owner ([#23](https://github.com/nightwatch-astro/skymath/issues/23)) ([4167be1](https://github.com/nightwatch-astro/skymath/commit/4167be1461e70f6466de8890133d2137314e22b1))
+* use GitHub App token for CLA bot instead of PAT ([#18](https://github.com/nightwatch-astro/skymath/issues/18)) ([076efe5](https://github.com/nightwatch-astro/skymath/commit/076efe5be37273d2fef37a73d5f75566122613a3))
+
+
+### Miscellaneous Chores
+
+* relicense from Apache-2.0 to MPL-2.0 ([#16](https://github.com/nightwatch-astro/skymath/issues/16)) ([943747a](https://github.com/nightwatch-astro/skymath/commit/943747ad4995448100ccdec0f2e8848d1765095d))
+
 ## [0.3.4](https://github.com/nightwatch-astro/skymath/compare/v0.3.3...v0.3.4) (2026-07-13)
 
 
