@@ -16,6 +16,8 @@
 //!   error in every mode** — no input is ever silently dropped.
 //! - [`format_ra`] / [`format_dec`] — sexagesimal formatting with rounding
 //!   carry (never emits `60` in a minutes or seconds field).
+//! - [`circular_mean`] / [`circular_distance`] — circular statistics over
+//!   full-turn angles (vector-sum mean, shortest-arc distance).
 //!
 //! ```
 //! use skymath::{format_dec, format_ra, parse_dec, parse_ra, ParseMode, SexaStyle};
@@ -247,6 +249,59 @@ impl Div<f64> for Angle {
     fn div(self, rhs: f64) -> Angle {
         Angle::from_radians(self.radians / rhs)
     }
+}
+
+// ── Circular statistics ────────────────────────────────────────────────────────
+
+/// Circular (vector-sum) mean of a set of angles, normalized to
+/// `[0°, 360°)`; `None` for an empty input.
+///
+/// Each angle contributes a unit vector; the mean is the direction of the
+/// resultant, so wraparound is handled correctly — the mean of 359° and 1°
+/// is 0°, not 180°. Useful for averaging right ascensions or camera rotation
+/// angles, where an arithmetic mean is wrong across the 0°/360° seam.
+///
+/// Caution: a near-antipodal set (e.g. `[0°, 180°]`) has a near-zero
+/// resultant, so while the result is always a finite angle, its direction is
+/// numerically meaningless — floating-point residue decides it, not a
+/// meaningful "center" of opposite points.
+///
+/// ```
+/// use skymath::{circular_mean, Angle};
+///
+/// let mean = circular_mean([359.0, 1.0].map(Angle::from_degrees)).unwrap();
+/// assert!(circular_mean(std::iter::empty()).is_none());
+/// assert!(mean.normalized_pm_180().degrees().abs() < 1e-9);
+/// ```
+pub fn circular_mean(angles: impl IntoIterator<Item = Angle>) -> Option<Angle> {
+    let (mut sin_sum, mut cos_sum) = (0.0_f64, 0.0_f64);
+    let mut seen = false;
+    for a in angles {
+        sin_sum += a.radians.sin();
+        cos_sum += a.radians.cos();
+        seen = true;
+    }
+    seen.then(|| Angle::from_radians(sin_sum.atan2(cos_sum)).normalized_0_360())
+}
+
+/// Shortest arc between two angles on the full circle, in `[0°, 180°]`.
+///
+/// Symmetric and wraparound-safe: 350° and 10° are 20° apart, not 340°.
+/// Treats the full turn as the period — two directions 180° apart are
+/// maximally distant. For axially symmetric quantities where θ and θ+180°
+/// are equivalent (e.g. a rotator ignoring image parity), halve the period
+/// yourself: `circular_distance(a * 2.0, b * 2.0) / 2.0`.
+///
+/// ```
+/// use skymath::{circular_distance, Angle};
+///
+/// let d = circular_distance(Angle::from_degrees(350.0), Angle::from_degrees(10.0));
+/// assert!((d.degrees() - 20.0).abs() < 1e-9);
+/// ```
+#[must_use]
+pub fn circular_distance(a: Angle, b: Angle) -> Angle {
+    let diff = (a.radians - b.radians).rem_euclid(2.0 * PI);
+    Angle::from_radians(diff.min(2.0 * PI - diff))
 }
 
 // ── Parse modes and styles ─────────────────────────────────────────────────────
@@ -645,5 +700,44 @@ mod tests {
             "06 30 00"
         );
         assert_eq!(format_ra(a, SexaStyle::default()), "06:30:00.00");
+    }
+
+    #[test]
+    fn circular_mean_handles_wraparound() {
+        let mean = circular_mean([359.0, 1.0].map(Angle::from_degrees)).unwrap();
+        // 0° and 360° are the same direction; compare on the signed branch.
+        assert!(mean.normalized_pm_180().degrees().abs() < 1e-9);
+        let mean = circular_mean([10.0, 20.0, 30.0].map(Angle::from_degrees)).unwrap();
+        assert!((mean.degrees() - 20.0).abs() < 1e-9);
+        // Result is normalized even for out-of-range inputs.
+        let mean = circular_mean([Angle::from_degrees(-90.0)]).unwrap();
+        assert!((mean.degrees() - 270.0).abs() < 1e-9);
+    }
+
+    #[test]
+    fn circular_mean_empty_is_none() {
+        assert!(circular_mean(std::iter::empty()).is_none());
+    }
+
+    #[test]
+    fn circular_mean_antipodal_is_degenerate_but_finite() {
+        // Cancelling resultant: direction is float residue, but never NaN
+        // and always normalized.
+        let mean = circular_mean([0.0, 180.0].map(Angle::from_degrees)).unwrap();
+        let deg = mean.degrees();
+        assert!(deg.is_finite());
+        assert!((0.0..360.0).contains(&deg));
+    }
+
+    #[test]
+    fn circular_distance_shortest_arc() {
+        let d = |a: f64, b: f64| {
+            circular_distance(Angle::from_degrees(a), Angle::from_degrees(b)).degrees()
+        };
+        assert!((d(350.0, 10.0) - 20.0).abs() < 1e-9); // across the seam
+        assert!((d(10.0, 350.0) - 20.0).abs() < 1e-9); // symmetric
+        assert!((d(0.0, 180.0) - 180.0).abs() < 1e-9); // antipodal maximum
+        assert!(d(42.0, 42.0).abs() < 1e-9);
+        assert!((d(-10.0, 10.0) - 20.0).abs() < 1e-9); // unnormalized inputs
     }
 }
