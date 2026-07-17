@@ -134,6 +134,44 @@ impl Equatorial {
         Self::at_epoch(ra, dec, Epoch::J2000)
     }
 
+    /// Construct a J2000 position from RA/Dec in decimal degrees, normalizing
+    /// out-of-range-but-finite values instead of rejecting them: RA wraps into
+    /// `[0, 360)` and Dec clamps into `[-90, 90]`. Useful for catalog or
+    /// user-entered values that may drift outside domain (e.g. RA of `370.0`
+    /// or Dec of `91.0`) but are still meaningful positions once normalized.
+    ///
+    /// # Errors
+    /// [`Error::OutOfRange`] if `ra_deg` or `dec_deg` is non-finite (NaN/±inf)
+    /// — normalization cannot recover a position from those.
+    ///
+    /// ```
+    /// use skymath::Equatorial;
+    ///
+    /// let wrapped = Equatorial::j2000_lenient(370.0, 91.0)?;
+    /// assert!((wrapped.ra().degrees() - 10.0).abs() < 1e-9);
+    /// assert!((wrapped.dec().degrees() - 90.0).abs() < 1e-9);
+    ///
+    /// assert!(Equatorial::j2000_lenient(f64::NAN, 0.0).is_err());
+    /// # Ok::<(), skymath::Error>(())
+    /// ```
+    pub fn j2000_lenient(ra_deg: f64, dec_deg: f64) -> Result<Self> {
+        if !ra_deg.is_finite() {
+            return Err(Error::OutOfRange {
+                what: "right ascension",
+                value: ra_deg,
+            });
+        }
+        if !dec_deg.is_finite() {
+            return Err(Error::OutOfRange {
+                what: "declination",
+                value: dec_deg,
+            });
+        }
+        let ra = Angle::from_degrees(ra_deg).normalized_0_360();
+        let dec = Angle::from_degrees(dec_deg.clamp(-90.0, 90.0));
+        Self::j2000(ra, dec)
+    }
+
     /// Parse RA and Dec strings (sexagesimal, or decimal in lenient mode) at an
     /// epoch. Sexagesimal RA is hours (×15); Dec is degrees.
     ///
@@ -519,6 +557,39 @@ mod tests {
             ),
             Err(Error::OutOfRange {
                 what: "epoch year",
+                ..
+            })
+        ));
+    }
+
+    #[test]
+    fn j2000_lenient_wraps_ra_and_clamps_dec() {
+        let p = Equatorial::j2000_lenient(370.0, 91.0).unwrap();
+        assert!(approx(p.ra().degrees(), 10.0, 1e-9));
+        assert!(approx(p.dec().degrees(), 90.0, 1e-9));
+
+        let n = Equatorial::j2000_lenient(-10.0, -91.0).unwrap();
+        assert!(approx(n.ra().degrees(), 350.0, 1e-9));
+        assert!(approx(n.dec().degrees(), -90.0, 1e-9));
+
+        let unchanged = Equatorial::j2000_lenient(10.6847, 41.2688).unwrap();
+        assert!(approx(unchanged.ra().degrees(), 10.6847, 1e-9));
+        assert!(approx(unchanged.dec().degrees(), 41.2688, 1e-9));
+    }
+
+    #[test]
+    fn j2000_lenient_rejects_non_finite() {
+        assert!(matches!(
+            Equatorial::j2000_lenient(f64::NAN, 0.0),
+            Err(Error::OutOfRange {
+                what: "right ascension",
+                ..
+            })
+        ));
+        assert!(matches!(
+            Equatorial::j2000_lenient(0.0, f64::INFINITY),
+            Err(Error::OutOfRange {
+                what: "declination",
                 ..
             })
         ));
