@@ -137,10 +137,12 @@ pub fn julian_date(at: OffsetDateTime) -> f64 {
 // ── FITS DATE-OBS ──────────────────────────────────────────────────────────────
 
 /// Parse a FITS civil date/time (`YYYY-MM-DD[Thh:mm:ss[.fff]]`),
-/// timezone-naive; a date-only value means midnight. Quoted card values and
-/// surrounding whitespace are tolerated. FITS strings carry no offset — bridge
-/// to [`OffsetDateTime`] with `parse_date_obs(s)?.assume_utc()`. Inverse of
-/// [`format_date_obs`].
+/// timezone-naive; a date-only value means midnight. Quoted card values,
+/// surrounding whitespace, and a trailing `Z` UTC designator (common in
+/// real-world FITS/XISF data, uppercase only — matching the strict uppercase
+/// `T` separator) are tolerated. FITS strings carry no offset — bridge to
+/// [`OffsetDateTime`] with `parse_date_obs(s)?.assume_utc()`. Inverse of
+/// [`format_date_obs`], which never emits `Z`.
 ///
 /// ```
 /// use skymath::parse_date_obs;
@@ -173,6 +175,7 @@ fn parse_date_obs_opt(s: &str) -> Option<PrimitiveDateTime> {
     let time = match time_part {
         None => Time::MIDNIGHT,
         Some(tp) => {
+            let tp = tp.strip_suffix('Z').unwrap_or(tp);
             let mut parts = tp.split(':');
             let hour: u8 = parts.next()?.parse().ok()?;
             let minute: u8 = parts.next()?.parse().ok()?;
@@ -329,6 +332,23 @@ mod tests {
     fn quoted_input_is_tolerated() {
         assert!(parse_date_obs("'2026-07-11T01:02:03'").is_ok());
         assert!(parse_date_obs("  2026-07-11  ").is_ok());
+    }
+
+    #[test]
+    fn trailing_z_designator_is_tolerated() {
+        assert_eq!(
+            parse_date_obs("2026-07-11T22:15:03.25Z").unwrap(),
+            parse_date_obs("2026-07-11T22:15:03.25").unwrap()
+        );
+        assert_eq!(
+            parse_date_obs("2026-07-11T22:15Z").unwrap(),
+            parse_date_obs("2026-07-11T22:15").unwrap()
+        );
+        // Formatting stays Z-free: round-tripping drops the designator.
+        assert_eq!(
+            format_date_obs(parse_date_obs("2026-07-11T22:15:03Z").unwrap()),
+            "2026-07-11T22:15:03"
+        );
     }
 
     #[test]
