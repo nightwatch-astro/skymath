@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0](https://github.com/nightwatch-astro/skymath/compare/v0.4.0...v0.5.0) (2026-07-17)
+
+
+### Features
+
+* lenient J2000 constructor that normalizes out-of-range coordinates ([#27](https://github.com/nightwatch-astro/skymath/issues/27)) ([b1cbe17](https://github.com/nightwatch-astro/skymath/commit/b1cbe17b40cad38a8eb18c4875783af41b779216)), closes [#21](https://github.com/nightwatch-astro/skymath/issues/21)
+* sexagesimal HMS/DMS component accessors ([#28](https://github.com/nightwatch-astro/skymath/issues/28)) ([850be3f](https://github.com/nightwatch-astro/skymath/commit/850be3f9dc1e328ac179a19cb0080ecbfc3ddef3)), closes [#22](https://github.com/nightwatch-astro/skymath/issues/22)
+
+
+### Bug Fixes
+
+* stop CLA lock from breaking release-please, add recovery publish path ([#24](https://github.com/nightwatch-astro/skymath/issues/24)) ([c2674a9](https://github.com/nightwatch-astro/skymath/commit/c2674a9ee8a8dd1dc5a2fbddf0b86b94a7b95ffa))
+
 ## [0.4.0](https://github.com/nightwatch-astro/skymath/compare/v0.3.4...v0.4.0) (2026-07-17)
 
 
