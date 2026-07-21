@@ -20,9 +20,9 @@ Add spherical primitives that let image-matching consumers express sky orientati
 ## Requirements
 
 1. `transport_position_angle` parallel-transports an east-of-north position angle along the unique shortest great-circle arc and returns a normalized angle.
-2. Transport preserves the input angle at identical positions and returns `None` for antipodal or numerically near-antipodal positions.
+2. Transport preserves the physical tangent direction at identical positions, including RA-dependent coordinate bases at the celestial poles, and returns `None` for antipodal or numerically near-antipodal positions.
 3. `GnomonicPoint` stores dimensionless east and north tangent-plane coordinates.
-4. `gnomonic_project` projects positions in the open hemisphere centred on the tangent point and returns `None` at or beyond its horizon.
+4. `gnomonic_project` projects positions in the open hemisphere centred on the tangent point and returns `None` when its denominator is at most `16 × f64::EPSILON`.
 5. `gnomonic_unproject` maps finite tangent-plane coordinates back to the centre's epoch and rejects non-finite coordinates.
 6. Unit, property, and documentation tests cover identity, equatorial transport, tangent arrival, reverse transport, RA wrap, high declination, poles, antipodes, projection origin, round trips, horizon rejection, and near-horizon stability.
 7. The change adds no image-footprint, WCS, parity, mount, session, mosaic, or threshold policy.

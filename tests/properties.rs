@@ -105,6 +105,22 @@ proptest! {
         prop_assert!((0.0..360.0).contains(&at_to.degrees()));
     }
 
+    /// Pole aliases with different right ascensions preserve the physical
+    /// tangent direction when transported in both directions.
+    #[test]
+    fn pole_alias_transport_round_trip(
+        from_ra in 0.0..360.0f64, to_ra in 0.0..360.0f64,
+        angle in -720.0..720.0f64, north in any::<bool>(),
+    ) {
+        let dec = if north { 90.0 } else { -90.0 };
+        let (from, to) = (eq(from_ra, dec), eq(to_ra, dec));
+        let initial = Angle::from_degrees(angle);
+        let at_to = transport_position_angle(from, to, initial).unwrap();
+        let restored = transport_position_angle(to, from, at_to).unwrap();
+        prop_assert!(circular_distance(initial, restored).degrees() < 1e-8);
+        prop_assert!((0.0..360.0).contains(&at_to.degrees()));
+    }
+
     /// Gnomonic projection and inverse projection recover every point inside
     /// an 80-degree radius of the tangent centre.
     #[test]

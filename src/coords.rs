@@ -410,7 +410,9 @@ pub fn position_angle(from: Equatorial, to: Equatorial) -> Angle {
 ///
 /// Returns `None` when the positions are antipodal or numerically close enough
 /// to antipodal that the shortest path is not unique. Identical positions
-/// preserve the input direction.
+/// preserve the physical tangent direction. At a celestial pole, different
+/// right ascensions select different local bases, so aliases of the same pole
+/// can produce different numeric angles.
 ///
 /// ```
 /// use skymath::{transport_position_angle, Angle, Equatorial};
@@ -425,25 +427,70 @@ pub fn position_angle(from: Equatorial, to: Equatorial) -> Angle {
 pub fn transport_position_angle(from: Equatorial, to: Equatorial, angle: Angle) -> Option<Angle> {
     let from_vector = from.to_unit_vector();
     let to_vector = to.to_unit_vector();
-    let dot = from_vector
-        .iter()
-        .zip(to_vector)
-        .map(|(a, b)| a * b)
-        .sum::<f64>()
-        .clamp(-1.0, 1.0);
+    let dot = dot_product(from_vector, to_vector).clamp(-1.0, 1.0);
 
     // Within roughly 0.3 arcseconds of the antipode, the transport path is
     // too ill-conditioned to select a meaningful orientation.
     if dot <= -1.0 + 1e-12 {
         return None;
     }
-    if dot >= 1.0 - f64::EPSILON {
-        return Some(angle.normalized_0_360());
-    }
 
-    let departure = position_angle(from, to);
-    let arrival = position_angle(to, from) + Angle::from_degrees(180.0);
-    Some((angle + arrival - departure).normalized_0_360())
+    let (from_east, from_north) = local_tangent_basis(from);
+    let tangent = add_vectors(
+        scale_vector(from_east, angle.radians().sin()),
+        scale_vector(from_north, angle.radians().cos()),
+    );
+    let axis = cross_product(from_vector, to_vector);
+    let axis_length = dot_product(axis, axis).sqrt();
+    let transported = if axis_length <= f64::EPSILON {
+        // Coincident sky vectors still need to be expressed in `to`'s local
+        // basis: pole coordinates with different RA values are such aliases.
+        tangent
+    } else {
+        let unit_axis = scale_vector(axis, 1.0 / axis_length);
+        add_vectors(
+            add_vectors(
+                scale_vector(tangent, dot),
+                scale_vector(cross_product(unit_axis, tangent), axis_length),
+            ),
+            scale_vector(unit_axis, dot_product(unit_axis, tangent) * (1.0 - dot)),
+        )
+    };
+
+    let (to_east, to_north) = local_tangent_basis(to);
+    Some(
+        Angle::from_radians(
+            dot_product(transported, to_east).atan2(dot_product(transported, to_north)),
+        )
+        .normalized_0_360(),
+    )
+}
+
+fn local_tangent_basis(position: Equatorial) -> ([f64; 3], [f64; 3]) {
+    let (ra, dec) = (position.ra.radians(), position.dec.radians());
+    let east = [-ra.sin(), ra.cos(), 0.0];
+    let north = [-dec.sin() * ra.cos(), -dec.sin() * ra.sin(), dec.cos()];
+    (east, north)
+}
+
+fn dot_product(a: [f64; 3], b: [f64; 3]) -> f64 {
+    a[0].mul_add(b[0], a[1].mul_add(b[1], a[2] * b[2]))
+}
+
+fn cross_product(a: [f64; 3], b: [f64; 3]) -> [f64; 3] {
+    [
+        a[1] * b[2] - a[2] * b[1],
+        a[2] * b[0] - a[0] * b[2],
+        a[0] * b[1] - a[1] * b[0],
+    ]
+}
+
+fn scale_vector(vector: [f64; 3], scale: f64) -> [f64; 3] {
+    [vector[0] * scale, vector[1] * scale, vector[2] * scale]
+}
+
+fn add_vectors(a: [f64; 3], b: [f64; 3]) -> [f64; 3] {
+    [a[0] + b[0], a[1] + b[1], a[2] + b[2]]
 }
 
 // ── Gnomonic projection ───────────────────────────────────────────────────────
@@ -464,7 +511,9 @@ pub struct GnomonicPoint {
 /// Project a sky position onto a gnomonic plane tangent at `center`.
 ///
 /// Returns `None` for positions at or beyond the tangent horizon, where the
-/// projection is undefined. Epochs are not reconciled.
+/// projection is undefined. To avoid unstable plane coordinates, values whose
+/// projection denominator is at most `16 × f64::EPSILON` are treated as being
+/// on the horizon. Epochs are not reconciled.
 ///
 /// ```
 /// use skymath::{gnomonic_project, Angle, Equatorial, GnomonicPoint};
@@ -911,6 +960,28 @@ mod tests {
             .unwrap()
             .degrees()
             .is_finite());
+    }
+
+    #[test]
+    fn transport_reexpresses_north_pole_ra_aliases() {
+        let from = eq(0.0, 90.0);
+        let to = eq(90.0, 90.0);
+        let transported = transport_position_angle(from, to, Angle::from_degrees(0.0)).unwrap();
+        assert!(
+            crate::angle::circular_distance(transported, Angle::from_degrees(90.0)).degrees()
+                < 1e-10
+        );
+    }
+
+    #[test]
+    fn transport_reexpresses_south_pole_ra_aliases() {
+        let from = eq(0.0, -90.0);
+        let to = eq(90.0, -90.0);
+        let transported = transport_position_angle(from, to, Angle::from_degrees(0.0)).unwrap();
+        assert!(
+            crate::angle::circular_distance(transported, Angle::from_degrees(270.0)).degrees()
+                < 1e-10
+        );
     }
 
     #[test]
