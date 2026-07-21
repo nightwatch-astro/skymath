@@ -401,6 +401,146 @@ pub fn position_angle(from: Equatorial, to: Equatorial) -> Angle {
     Angle::from_radians(y.atan2(x)).normalized_0_360()
 }
 
+/// Parallel-transport a sky position angle along the shortest great-circle
+/// path from one position to another.
+///
+/// The input and result are measured East of North in their respective local
+/// tangent bases. The result is normalized to `[0, 360)`°. Epochs are not
+/// reconciled; this is a geometric operation on the supplied coordinates.
+///
+/// Returns `None` when the positions are antipodal or numerically close enough
+/// to antipodal that the shortest path is not unique. Identical positions
+/// preserve the input direction.
+///
+/// ```
+/// use skymath::{transport_position_angle, Angle, Equatorial};
+///
+/// let from = Equatorial::j2000(Angle::from_degrees(10.0), Angle::from_degrees(0.0))?;
+/// let to = Equatorial::j2000(Angle::from_degrees(20.0), Angle::from_degrees(0.0))?;
+/// let transported = transport_position_angle(from, to, Angle::from_degrees(0.0)).unwrap();
+/// assert!(transported.degrees().abs() < 1e-12);
+/// # Ok::<(), skymath::Error>(())
+/// ```
+#[must_use]
+pub fn transport_position_angle(from: Equatorial, to: Equatorial, angle: Angle) -> Option<Angle> {
+    let from_vector = from.to_unit_vector();
+    let to_vector = to.to_unit_vector();
+    let dot = from_vector
+        .iter()
+        .zip(to_vector)
+        .map(|(a, b)| a * b)
+        .sum::<f64>()
+        .clamp(-1.0, 1.0);
+
+    // Within roughly 0.3 arcseconds of the antipode, the transport path is
+    // too ill-conditioned to select a meaningful orientation.
+    if dot <= -1.0 + 1e-12 {
+        return None;
+    }
+    if dot >= 1.0 - f64::EPSILON {
+        return Some(angle.normalized_0_360());
+    }
+
+    let departure = position_angle(from, to);
+    let arrival = position_angle(to, from) + Angle::from_degrees(180.0);
+    Some((angle + arrival - departure).normalized_0_360())
+}
+
+// ── Gnomonic projection ───────────────────────────────────────────────────────
+
+/// A position in a gnomonic tangent plane.
+///
+/// Both coordinates are dimensionless ratios on the projection plane. For
+/// small offsets, their numeric values approximate angular offsets in radians.
+#[derive(Debug, Clone, Copy, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+pub struct GnomonicPoint {
+    /// Coordinate toward increasing right ascension (East).
+    pub east: f64,
+    /// Coordinate toward the North celestial pole.
+    pub north: f64,
+}
+
+/// Project a sky position onto a gnomonic plane tangent at `center`.
+///
+/// Returns `None` for positions at or beyond the tangent horizon, where the
+/// projection is undefined. Epochs are not reconciled.
+///
+/// ```
+/// use skymath::{gnomonic_project, Angle, Equatorial, GnomonicPoint};
+///
+/// let center = Equatorial::j2000(Angle::from_degrees(10.0), Angle::from_degrees(20.0))?;
+/// assert_eq!(
+///     gnomonic_project(center, center),
+///     Some(GnomonicPoint { east: 0.0, north: 0.0 }),
+/// );
+/// # Ok::<(), skymath::Error>(())
+/// ```
+#[must_use]
+pub fn gnomonic_project(center: Equatorial, point: Equatorial) -> Option<GnomonicPoint> {
+    let (ra0, dec0) = (center.ra.radians(), center.dec.radians());
+    let (ra, dec) = (point.ra.radians(), point.dec.radians());
+    let delta_ra = ra - ra0;
+    let denominator = dec0.sin() * dec.sin() + dec0.cos() * dec.cos() * delta_ra.cos();
+
+    // Values at this scale are numerically indistinguishable from the horizon
+    // and would amplify rounding into unusably large plane coordinates.
+    if denominator <= 16.0 * f64::EPSILON {
+        return None;
+    }
+
+    Some(GnomonicPoint {
+        east: dec.cos() * delta_ra.sin() / denominator,
+        north: (dec0.cos() * dec.sin() - dec0.sin() * dec.cos() * delta_ra.cos()) / denominator,
+    })
+}
+
+/// Convert a finite gnomonic tangent-plane position back to the sky.
+///
+/// The result uses `center`'s epoch. Returns `None` when either coordinate is
+/// non-finite or their magnitude cannot be represented by `f64`.
+///
+/// ```
+/// use skymath::{gnomonic_project, gnomonic_unproject, separation, Angle, Equatorial};
+///
+/// let center = Equatorial::j2000(Angle::from_degrees(359.0), Angle::from_degrees(40.0))?;
+/// let point = Equatorial::j2000(Angle::from_degrees(1.0), Angle::from_degrees(41.0))?;
+/// let projected = gnomonic_project(center, point).unwrap();
+/// let restored = gnomonic_unproject(center, projected).unwrap();
+/// assert!(separation(point, restored).arcseconds() < 1e-6);
+/// # Ok::<(), skymath::Error>(())
+/// ```
+#[must_use]
+pub fn gnomonic_unproject(center: Equatorial, point: GnomonicPoint) -> Option<Equatorial> {
+    if !point.east.is_finite() || !point.north.is_finite() {
+        return None;
+    }
+
+    let radius = point.east.hypot(point.north);
+    if !radius.is_finite() {
+        return None;
+    }
+    if radius == 0.0 {
+        return Some(center);
+    }
+
+    let angular_distance = radius.atan();
+    let (sin_distance, cos_distance) = angular_distance.sin_cos();
+    let (ra0, dec0) = (center.ra.radians(), center.dec.radians());
+    let dec = (cos_distance * dec0.sin() + point.north * sin_distance * dec0.cos() / radius)
+        .clamp(-1.0, 1.0)
+        .asin();
+    let ra = ra0
+        + (point.east * sin_distance)
+            .atan2(radius * dec0.cos() * cos_distance - point.north * dec0.sin() * sin_distance);
+
+    Some(Equatorial {
+        ra: Angle::from_radians(ra).normalized_0_360(),
+        dec: Angle::from_radians(dec),
+        epoch: center.epoch,
+    })
+}
+
 // ── Tangent-plane offsets ──────────────────────────────────────────────────────
 
 /// A sky-tangent offset decomposed into East and North components.
@@ -718,6 +858,117 @@ mod tests {
             270.0,
             1e-6
         ));
+    }
+
+    #[test]
+    fn transport_identity_and_equator() {
+        let from = eq(10.0, 0.0);
+        assert!(approx(
+            transport_position_angle(from, from, Angle::from_degrees(370.0))
+                .unwrap()
+                .degrees(),
+            10.0,
+            1e-12
+        ));
+
+        let to = eq(80.0, 0.0);
+        assert!(approx(
+            transport_position_angle(from, to, Angle::from_degrees(0.0))
+                .unwrap()
+                .degrees(),
+            0.0,
+            1e-12
+        ));
+    }
+
+    #[test]
+    fn transport_tangent_arrives_on_same_geodesic() {
+        let from = eq(12.0, 34.0);
+        let to = eq(123.0, 56.0);
+        let departure = position_angle(from, to);
+        let expected_arrival =
+            (position_angle(to, from) + Angle::from_degrees(180.0)).normalized_0_360();
+        let transported = transport_position_angle(from, to, departure).unwrap();
+        assert!(approx(
+            crate::angle::circular_distance(transported, expected_arrival).degrees(),
+            0.0,
+            1e-10
+        ));
+    }
+
+    #[test]
+    fn transport_round_trips_across_ra_wrap_and_high_declination() {
+        let from = eq(359.8, 82.0);
+        let to = eq(0.3, 84.0);
+        let initial = Angle::from_degrees(217.0);
+        let at_to = transport_position_angle(from, to, initial).unwrap();
+        let restored = transport_position_angle(to, from, at_to).unwrap();
+        assert!(crate::angle::circular_distance(initial, restored).degrees() < 1e-10);
+
+        let pole = eq(45.0, 90.0);
+        let near_pole = eq(180.0, 89.0);
+        assert!(transport_position_angle(pole, near_pole, initial)
+            .unwrap()
+            .degrees()
+            .is_finite());
+    }
+
+    #[test]
+    fn transport_rejects_antipodal_ambiguity() {
+        let from = eq(0.0, 0.0);
+        assert!(
+            transport_position_angle(from, eq(180.0, 0.0), Angle::from_degrees(10.0)).is_none()
+        );
+        assert!(
+            transport_position_angle(from, eq(180.0 - 1e-7, 0.0), Angle::from_degrees(10.0))
+                .is_none()
+        );
+    }
+
+    #[test]
+    fn gnomonic_origin_known_offset_and_ra_wrap_round_trip() {
+        let center = eq(0.0, 0.0);
+        assert_eq!(
+            gnomonic_project(center, center),
+            Some(GnomonicPoint {
+                east: 0.0,
+                north: 0.0
+            })
+        );
+        let east_45 = gnomonic_project(center, eq(45.0, 0.0)).unwrap();
+        assert!(approx(east_45.east, 1.0, 1e-12));
+        assert!(approx(east_45.north, 0.0, 1e-12));
+
+        let wrap_center = eq(359.5, 70.0);
+        let point = eq(0.5, 71.0);
+        let projected = gnomonic_project(wrap_center, point).unwrap();
+        let restored = gnomonic_unproject(wrap_center, projected).unwrap();
+        assert!(separation(point, restored).arcseconds() < 1e-6);
+    }
+
+    #[test]
+    fn gnomonic_rejects_horizon_and_non_finite_plane_points() {
+        let center = eq(0.0, 0.0);
+        assert!(gnomonic_project(center, eq(90.0, 0.0)).is_none());
+        assert!(gnomonic_project(center, eq(100.0, 0.0)).is_none());
+        assert!(gnomonic_unproject(
+            center,
+            GnomonicPoint {
+                east: f64::NAN,
+                north: 0.0
+            }
+        )
+        .is_none());
+    }
+
+    #[test]
+    fn gnomonic_remains_finite_near_horizon() {
+        let center = eq(0.0, 0.0);
+        let projected = gnomonic_project(center, eq(89.999, 0.0)).unwrap();
+        assert!(projected.east.is_finite());
+        assert!(projected.east > 50_000.0);
+        let restored = gnomonic_unproject(center, projected).unwrap();
+        assert!(separation(restored, eq(89.999, 0.0)).arcseconds() < 1e-5);
     }
 
     #[test]

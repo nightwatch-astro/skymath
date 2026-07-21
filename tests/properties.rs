@@ -9,8 +9,10 @@
 
 use proptest::prelude::*;
 use skymath::{
-    apply_offset, constellation, format_dec, format_ra, parse_dec, parse_ra, precess, separation,
-    tangent_offset, Angle, Constellation, Epoch, Equatorial, ParseMode, Separator, SexaStyle,
+    apply_offset, circular_distance, constellation, format_dec, format_ra, gnomonic_project,
+    gnomonic_unproject, parse_dec, parse_ra, precess, separation, tangent_offset,
+    transport_position_angle, Angle, Constellation, Epoch, Equatorial, ParseMode, Separator,
+    SexaStyle,
 };
 
 fn eq(ra: f64, dec: f64) -> Equatorial {
@@ -80,6 +82,51 @@ proptest! {
             separation(to, back).arcseconds() < 1e-3,
             "drift {} arcsec", separation(to, back).arcseconds()
         );
+    }
+
+    /// Parallel transport along a unique shortest arc and back preserves the
+    /// local direction.
+    #[test]
+    fn position_angle_transport_round_trip(
+        ra1 in 0.0..360.0f64, dec1 in -89.9..89.9f64,
+        ra2 in 0.0..360.0f64, dec2 in -89.9..89.9f64,
+        angle in -720.0..720.0f64,
+    ) {
+        let (from, to) = (eq(ra1, dec1), eq(ra2, dec2));
+        prop_assume!(separation(from, to).degrees() < 179.999);
+        let initial = Angle::from_degrees(angle);
+        let at_to = transport_position_angle(from, to, initial).unwrap();
+        let restored = transport_position_angle(to, from, at_to).unwrap();
+        prop_assert!(
+            circular_distance(initial, restored).degrees() < 1e-8,
+            "from=({ra1},{dec1}) to=({ra2},{dec2}) angle={angle} restored={}",
+            restored.degrees()
+        );
+        prop_assert!((0.0..360.0).contains(&at_to.degrees()));
+    }
+
+    /// Gnomonic projection and inverse projection recover every point inside
+    /// an 80-degree radius of the tangent centre.
+    #[test]
+    fn gnomonic_round_trip(
+        center_ra in 0.0..360.0f64, center_dec in -90.0..=90.0f64,
+        separation_deg in 0.0..80.0f64, bearing_deg in 0.0..360.0f64,
+    ) {
+        let center = eq(center_ra, center_dec);
+        let radial_offset = Angle::from_degrees(separation_deg);
+        let bearing = Angle::from_degrees(bearing_deg);
+        let point = apply_offset(center, skymath::TangentOffset {
+            east: Angle::from_radians(radial_offset.radians() * bearing.radians().sin()),
+            north: Angle::from_radians(radial_offset.radians() * bearing.radians().cos()),
+        });
+        let plane = gnomonic_project(center, point).unwrap();
+        let restored = gnomonic_unproject(center, plane).unwrap();
+        prop_assert!(
+            separation(point, restored).arcseconds() < 1e-5,
+            "center=({center_ra},{center_dec}) sep={separation_deg} bearing={bearing_deg} drift={}",
+            separation(point, restored).arcseconds()
+        );
+        prop_assert!(plane.east.is_finite() && plane.north.is_finite());
     }
 }
 
