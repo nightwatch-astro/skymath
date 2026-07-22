@@ -30,8 +30,8 @@ pub use angle::{
 pub use constellation::{constellation, Constellation};
 #[doc(inline)]
 pub use coords::{
-    apply_offset, position_angle, precess, separation, tangent_offset, Epoch, Equatorial,
-    TangentOffset,
+    apply_offset, gnomonic_project, gnomonic_unproject, position_angle, precess, separation,
+    tangent_offset, transport_position_angle, Epoch, Equatorial, GnomonicPoint, TangentOffset,
 };
 #[doc(inline)]
 pub use error::{Error, Result};
