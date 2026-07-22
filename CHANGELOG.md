@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/nightwatch-astro/skymath/compare/v0.5.0...v0.6.0) (2026-07-22)
+
+
+### Features
+
+* **coords:** add spherical image geometry primitives ([#29](https://github.com/nightwatch-astro/skymath/issues/29)) ([d51d9eb](https://github.com/nightwatch-astro/skymath/commit/d51d9eb5b77e24166f20b8d3c1fe89aa0c16f4d0))
+
 ## [0.5.0](https://github.com/nightwatch-astro/skymath/compare/v0.4.0...v0.5.0) (2026-07-17)
 
 
