@@ -18,6 +18,8 @@
 //!   carry (never emits `60` in a minutes or seconds field).
 //! - [`circular_mean`] / [`circular_distance`] — circular statistics over
 //!   full-turn angles (vector-sum mean, shortest-arc distance).
+//! - [`axial_mean`] / [`axial_distance`] — the same statistics for axial
+//!   quantities (θ ≡ θ+180°), via the double-angle transform.
 //!
 //! ```
 //! use skymath::{format_dec, format_ra, parse_dec, parse_ra, ParseMode, SexaStyle};
@@ -331,8 +333,7 @@ impl CircularMean {
 /// Symmetric and wraparound-safe: 350° and 10° are 20° apart, not 340°.
 /// Treats the full turn as the period — two directions 180° apart are
 /// maximally distant. For axially symmetric quantities where θ and θ+180°
-/// are equivalent (e.g. a rotator ignoring image parity), halve the period
-/// yourself: `circular_distance(a * 2.0, b * 2.0) / 2.0`.
+/// are equivalent, use [`axial_distance`] instead.
 ///
 /// ```
 /// use skymath::{circular_distance, Angle};
@@ -344,6 +345,100 @@ impl CircularMean {
 pub fn circular_distance(a: Angle, b: Angle) -> Angle {
     let diff = (a.radians - b.radians).rem_euclid(2.0 * PI);
     Angle::from_radians(diff.min(2.0 * PI - diff))
+}
+
+/// Shortest arc between two *axial* angles — quantities where θ and θ+180°
+/// name the same axis — in `[0°, 90°]`.
+///
+/// Axial quantities have a half-turn period: an undirected image axis, the
+/// position angle of an elongated galaxy, a rectangular sensor's footprint
+/// orientation (ignoring image parity). Under this metric 1° and 179° are 2°
+/// apart and 0° vs 90° is the maximum. Standard double-angle treatment
+/// (Fisher, *Statistical Analysis of Circular Data* §2.4): map θ → 2θ,
+/// take the circular distance, halve.
+///
+/// Not for directed quantities — a flat frame's rotator angle is *not*
+/// axial (vignetting and dust patterns are not 180°-symmetric); use
+/// [`circular_distance`] there.
+///
+/// ```
+/// use skymath::{axial_distance, Angle};
+///
+/// let d = axial_distance(Angle::from_degrees(179.0), Angle::from_degrees(1.0));
+/// assert!((d.degrees() - 2.0).abs() < 1e-9);
+/// ```
+#[must_use]
+pub fn axial_distance(a: Angle, b: Angle) -> Angle {
+    circular_distance(
+        Angle::from_radians(2.0 * a.radians),
+        Angle::from_radians(2.0 * b.radians),
+    ) / 2.0
+}
+
+/// Axial mean of an iterator of angles, `None` when empty: [`circular_mean`]
+/// for quantities where θ and θ+180° name the same axis, normalized to
+/// `[0°, 180°)`.
+///
+/// The plain circular mean is wrong for axial data: image axes at 1° and
+/// 179° are 2° apart under [`axial_distance`], but their circular mean is
+/// 90° — nowhere near either. The axial mean doubles each angle, takes the
+/// circular mean, and halves, giving 0° for that pair.
+///
+/// The antipodal caution from [`circular_mean`] transfers: a set whose
+/// *doubled* angles cancel (axes ~90° apart, e.g. `[0°, 90°]`) has a
+/// numerically meaningless direction.
+///
+/// ```
+/// use skymath::{axial_mean, Angle};
+///
+/// let mean = axial_mean([179.0, 1.0].map(Angle::from_degrees)).unwrap();
+/// let m = mean.degrees();
+/// assert!(m < 1e-9 || (180.0 - m) < 1e-9); // the 0°/180° axis
+/// assert!(axial_mean(std::iter::empty()).is_none());
+/// ```
+pub fn axial_mean(angles: impl IntoIterator<Item = Angle>) -> Option<Angle> {
+    let mut acc = AxialMean::new();
+    for a in angles {
+        acc.push(a);
+    }
+    acc.mean()
+}
+
+/// Running axial-mean accumulator: [`axial_mean`] for angles that arrive
+/// incrementally, without buffering them. The axial counterpart of
+/// [`CircularMean`], with the same exactness and push-order properties.
+///
+/// ```
+/// use skymath::{Angle, AxialMean};
+///
+/// let mut acc = AxialMean::new();
+/// assert!(acc.mean().is_none());
+/// acc.push(Angle::from_degrees(179.0));
+/// acc.push(Angle::from_degrees(1.0));
+/// let m = acc.mean().unwrap().degrees();
+/// assert!(m < 1e-9 || (180.0 - m) < 1e-9);
+/// ```
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct AxialMean {
+    doubled: CircularMean,
+}
+
+impl AxialMean {
+    /// An empty accumulator ([`mean`](Self::mean) is `None`).
+    #[must_use]
+    pub fn new() -> Self {
+        Self::default()
+    }
+    /// Fold one angle into the running mean.
+    pub fn push(&mut self, angle: Angle) {
+        self.doubled.push(Angle::from_radians(2.0 * angle.radians));
+    }
+    /// Axial mean of everything pushed so far, normalized to `[0°, 180°)`;
+    /// `None` when nothing has been pushed.
+    #[must_use]
+    pub fn mean(&self) -> Option<Angle> {
+        self.doubled.mean().map(|m| m / 2.0)
+    }
 }
 
 // ── Parse modes and styles ─────────────────────────────────────────────────────
@@ -878,5 +973,77 @@ mod tests {
         assert!((d(0.0, 180.0) - 180.0).abs() < 1e-9); // antipodal maximum
         assert!(d(42.0, 42.0).abs() < 1e-9);
         assert!((d(-10.0, 10.0) - 20.0).abs() < 1e-9); // unnormalized inputs
+    }
+
+    #[test]
+    fn axial_distance_half_turn_period() {
+        let d = |a: f64, b: f64| {
+            axial_distance(Angle::from_degrees(a), Angle::from_degrees(b)).degrees()
+        };
+        assert!(d(0.0, 180.0).abs() < 1e-9); // same axis
+        assert!(d(10.0, 190.0).abs() < 1e-9); // same axis, offset
+        assert!((d(179.0, 1.0) - 2.0).abs() < 1e-9); // across the 0°/180° seam
+        assert!((d(0.0, 90.0) - 90.0).abs() < 1e-9); // perpendicular maximum
+        assert!((d(350.0, 10.0) - 20.0).abs() < 1e-9); // across the 0°/360° seam
+        assert!(d(42.0, 42.0).abs() < 1e-9);
+        assert!((d(-10.0, 10.0) - 20.0).abs() < 1e-9); // unnormalized inputs
+    }
+
+    #[test]
+    fn axial_distance_bounded_symmetric_and_flip_invariant() {
+        let mut deg = 0.0;
+        while deg < 720.0 {
+            let mut other = 0.0;
+            while other < 720.0 {
+                let a = Angle::from_degrees(deg);
+                let b = Angle::from_degrees(other);
+                let d = axial_distance(a, b).degrees();
+                assert!((0.0..=90.0 + 1e-9).contains(&d));
+                assert!((d - axial_distance(b, a).degrees()).abs() < 1e-9);
+                // Flipping either input by a half turn names the same axis.
+                let flipped = axial_distance(a + Angle::from_degrees(180.0), b).degrees();
+                assert!((d - flipped).abs() < 1e-9);
+                other += 7.3;
+            }
+            deg += 7.3;
+        }
+    }
+
+    #[test]
+    fn axial_mean_crosses_the_half_turn_seam() {
+        // Axes at 179° and 1° are 2° apart axially; their mean is the
+        // 0°/180° axis, where the plain circular mean would say 90°.
+        let mean = axial_mean([179.0, 1.0].map(Angle::from_degrees))
+            .unwrap()
+            .degrees();
+        assert!(mean < 1e-9 || (180.0 - mean) < 1e-9);
+        assert!(axial_mean(std::iter::empty()).is_none());
+
+        // A tight cluster away from any seam behaves like an ordinary mean.
+        let mean = axial_mean([44.0, 45.0, 46.0].map(Angle::from_degrees))
+            .unwrap()
+            .degrees();
+        assert!((mean - 45.0).abs() < 1e-9);
+    }
+
+    #[test]
+    fn axial_mean_is_flip_invariant() {
+        // Replacing any member by its 180° flip must not move the mean:
+        // both name the same axis.
+        let plain = axial_mean([10.0, 20.0, 30.0].map(Angle::from_degrees)).unwrap();
+        let flipped = axial_mean([190.0, 20.0, 210.0].map(Angle::from_degrees)).unwrap();
+        assert!(axial_distance(plain, flipped).degrees() < 1e-9);
+    }
+
+    #[test]
+    fn axial_mean_accumulator_matches_batch() {
+        let degs = [170.0, 178.0, 2.0, 10.0, 90.0];
+        let batch = axial_mean(degs.map(Angle::from_degrees)).unwrap();
+        let mut acc = AxialMean::new();
+        for d in degs {
+            acc.push(Angle::from_degrees(d));
+        }
+        assert!(axial_distance(acc.mean().unwrap(), batch).degrees() < 1e-12);
+        assert!(AxialMean::new().mean().is_none());
     }
 }
