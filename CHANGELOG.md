@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/nightwatch-astro/skymath/compare/v0.7.0...v0.7.1) (2026-07-24)
+
+
+### Bug Fixes
+
+* exclude machine-local binary git hooks from the published crate ([0b14b3e](https://github.com/nightwatch-astro/skymath/commit/0b14b3ed925cc63b3db5306e3dd6e979eeefbf46))
+
 ## [0.7.0](https://github.com/nightwatch-astro/skymath/compare/v0.6.0...v0.7.0) (2026-07-24)
 
 
