@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/nightwatch-astro/skymath/compare/v0.6.0...v0.7.0) (2026-07-24)
+
+
+### Features
+
+* axial angle statistics (axial_distance, axial_mean, AxialMean) ([#31](https://github.com/nightwatch-astro/skymath/issues/31)) ([ab208f6](https://github.com/nightwatch-astro/skymath/commit/ab208f66264ab5d277c9878503db32bd94c3bd32))
+
 ## [0.6.0](https://github.com/nightwatch-astro/skymath/compare/v0.5.0...v0.6.0) (2026-07-22)
 
 
