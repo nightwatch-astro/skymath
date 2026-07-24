@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "skymath",
+  "project_id": "569a800e-dabf-42cd-a961-e088b34043b3"
+}
