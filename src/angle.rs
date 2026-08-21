@@ -687,18 +687,36 @@ pub fn format_dec(a: Angle, style: SexaStyle) -> String {
     format_sexagesimal(a.degrees(), true, style, false)
 }
 
-/// Format a signed decimal value as sexagesimal, with rounding performed at the
-/// seconds precision *before* field splitting so `59.9996″` carries into the
-/// minute (never emitting a `60` field). `is_ra` selects the RA (`h`/`m`/`s`)
-/// vs Dec (`°`/`′`/`″`) glyph set when `style.separator` is
+/// Highest `seconds_places` that survives the `f64` round trip; beyond it the
+/// surplus decimals are emitted as zeros rather than float noise.
+const MAX_EXACT_SECONDS_PLACES: usize = 9;
+
+/// Format a signed decimal value as sexagesimal. Rounding happens once, in
+/// integer units of the display precision, and the fields are derived from that
+/// integer, so a carry propagates structurally and no field can hold `60`:
+/// `59.9996″` at two places becomes the next minute. `is_ra` selects the RA
+/// (`h`/`m`/`s`) vs Dec (`°`/`′`/`″`) glyph set when `style.separator` is
 /// [`Separator::Unicode`].
 fn format_sexagesimal(value: f64, signed: bool, style: SexaStyle, is_ra: bool) -> String {
     let neg = value.is_sign_negative() && value != 0.0;
     let decimals = usize::from(style.seconds_places);
-    let sec_scale = 3600.0 * 10f64.powi(i32::from(style.seconds_places));
-    let rounded = (value.abs() * sec_scale).round() / sec_scale;
-    let (a, b, c) = decompose_magnitude(rounded);
-    let width = if decimals > 0 { decimals + 3 } else { 2 };
+    let exact_decimals = decimals.min(MAX_EXACT_SECONDS_PLACES);
+    let per_second = 10u64.pow(exact_decimals as u32);
+    let per_minute = per_second * 60;
+    let per_unit = per_minute * 60;
+    let ticks = (value.abs() * per_unit as f64).round() as u64;
+    let (a, b) = (ticks / per_unit, (ticks % per_unit) / per_minute);
+    let whole_seconds = (ticks % per_minute) / per_second;
+    let c = if decimals == 0 {
+        format!("{whole_seconds:02}")
+    } else {
+        let mut c = format!(
+            "{whole_seconds:02}.{fraction:0exact_decimals$}",
+            fraction = ticks % per_second
+        );
+        c.extend(std::iter::repeat('0').take(decimals - exact_decimals));
+        c
+    };
     match style.separator {
         Separator::Colons | Separator::Spaces => {
             let sign = if neg {
@@ -713,7 +731,7 @@ fn format_sexagesimal(value: f64, signed: bool, style: SexaStyle, is_ra: bool) -
                 Separator::Spaces => ' ',
                 Separator::Unicode => unreachable!(),
             };
-            format!("{sign}{a:02}{sep}{b:02}{sep}{c:0width$.decimals$}")
+            format!("{sign}{a:02}{sep}{b:02}{sep}{c}")
         }
         Separator::Unicode => {
             let sign = if neg {
@@ -728,16 +746,15 @@ fn format_sexagesimal(value: f64, signed: bool, style: SexaStyle, is_ra: bool) -
             } else {
                 ("\u{b0}", "\u{2032}", "\u{2033}")
             };
-            format!("{sign}{a:02}{u1}{b:02}{u2}{c:0width$.decimals$}{u3}")
+            format!("{sign}{a:02}{u1}{b:02}{u2}{c}{u3}")
         }
     }
 }
 
 /// Split a non-negative decimal value into `(whole, minutes, seconds)`
-/// sexagesimal components. Shared by `format_sexagesimal` (after
-/// display-precision rounding) and the raw component accessors on
-/// `Equatorial` (no rounding there — callers own their own display
-/// precision).
+/// sexagesimal components. Backs the raw component accessors on `Equatorial`,
+/// which round nothing — callers own their own display precision, including the
+/// carry that rounding to it can produce.
 pub(crate) fn decompose_magnitude(v: f64) -> (u32, u32, f64) {
     let a = v.trunc();
     let rem_min = (v - a) * 60.0;
