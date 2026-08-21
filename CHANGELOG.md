@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.2](https://github.com/nightwatch-astro/skymath/compare/v0.7.1...v0.7.2) (2026-08-21)
+
+
+### Bug Fixes
+
+* never emit a 60 seconds field from sexagesimal formatting ([#35](https://github.com/nightwatch-astro/skymath/issues/35)) ([a4cbc72](https://github.com/nightwatch-astro/skymath/commit/a4cbc72f3da721a5cb9bf789f1576835b3210933))
+
 ## [0.7.1](https://github.com/nightwatch-astro/skymath/compare/v0.7.0...v0.7.1) (2026-07-24)
 
 
