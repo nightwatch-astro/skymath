@@ -276,3 +276,4 @@ specs/**/spec-status.md
 *.db
 .beads-credential-key
 .beads/proxieddb/
+*.gate.lock*
