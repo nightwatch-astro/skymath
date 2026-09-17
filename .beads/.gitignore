@@ -18,6 +18,8 @@ push-state.json
 
 # Lock files (various runtime locks)
 *.lock
+# Beads gate lock files (runtime, local-only)
+*.gate.lock*
 
 # Credential key (encryption key for federation peer auth — never commit)
 .beads-credential-key
