@@ -1,0 +1,7 @@
+{
+  "packages": [
+    "npm:@srobroek/pi-lang-rust",
+    "npm:@srobroek/pi-speckit-beads"
+  ]
+}
+
